@@ -1,0 +1,116 @@
+artifact_id: vbtpro_notebook_script_test_index_20260408
+artifact_version: 1
+artifact_type: topic_router
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Machine-first router for runnable and semi-runnable surfaces: notebooks, demo scripts,
+  and test targets. Use this router when the goal is to inspect, prototype, validate,
+  or demonstrate rather than just read static notes.
+
+surfaces:
+  capability_lookup:
+    primary_artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+    best_for:
+      - source lookup
+      - import verification
+      - quick capability experiments
+
+  repo_fit_tracking:
+    primary_artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_optimization_map_20260408.ipynb
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+    best_for:
+      - tracking where VBT PRO belongs in the repo
+      - converting discovery into implementation notes
+
+  split_parity_and_honesty:
+    planned_surfaces:
+      - splitter_parity_review_notebook
+      - truth_honesty_notebook
+    primary_note_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+    repo_targets:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_oos.py
+
+  blackwell_post_prediction_review:
+    planned_surfaces:
+      - blackwell_vbt_review_notebook
+      - vbt_blackwell_holdout_mirror_script
+    primary_note_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      - /home/benji/trade_scanner2/scripts/run_blackwell_ensemble_practice.py
+
+  execution_chunking_and_param_sweeps:
+    planned_surfaces:
+      - vbt_execution_perf_sandbox_notebook
+      - vbt_exec_engine_smoke_script
+      - vbt_chunked_eval_smoke_script
+      - vbt_param_sweep_smoke_script
+      - vbt_pfopt_overlay_smoke_script
+    primary_note_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+
+  report_and_dashboard_enrichment:
+    planned_surfaces:
+      - reporting_dashboard_playbook_notebook
+    primary_note_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_pages.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_review.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+      - /home/benji/trade_scanner2/scripts/render_loop_runs_dashboard.py
+
+  schema_and_sparse_record_audits:
+    planned_surfaces:
+      - sparse_record_truth_notebook
+      - parquet_csv_row_column_audit_script
+      - feature_label_schema_compare_notebook
+    primary_note_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/feature_validation.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/reference_data.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+
+  reporting_surface_design:
+    planned_surfaces:
+      - review_surface_router_notebook
+      - vbt_reporting_playbook_notebook
+    primary_note_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_review.py
+      - /home/benji/trade_scanner2/scripts/render_loop_runs_dashboard.py
+
+usage_rule:
+  statement: >
+    When the task is to prototype, test, demonstrate, or validate behavior interactively,
+    start here before opening the broad long-form encyclopedia.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml

@@ -1,0 +1,346 @@
+artifact_id: vbtpro_repo_replacement_registry_20260409
+artifact_version: 1
+artifact_type: replacement_registry
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Machine-first registry mapping current repo modules and responsibilities to VBT PRO
+  replacement or augmentation candidates, adoption mode, risk level, and first safe move.
+
+adoption_mode_enum:
+  - direct_replace
+  - adapter_first
+  - overlay_sidecar
+  - shadow_pipeline_only
+  - future_build_only
+  - keep_current_authority
+
+entries:
+  - registry_id: RR001_history_and_store_io
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/benchmarks.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/flatfiles.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/research_loop.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/reference_data.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_data_prep.py
+    current_role: price/reference ingestion, refresh, persistence, alignment
+    vbt_candidates:
+      - Data
+      - updater_and_saver
+      - parquet_csv_feather_duckdb_adapters
+      - public_data_from_data_feature_store
+      - parquet_keyed_adapter
+      - csv_keyed_adapter
+      - duckdb_query_adapter
+      - wrapper_aware_array_concat
+      - incremental_saver_reference
+      - data_updater_loop
+      - saver_update_bridge
+      - filedata_base_adapter
+      - feather_keyed_adapter
+      - duckdb_last_index_update
+      - record_replace_contract
+    adoption_mode: adapter_first
+    why_now: repeated keyed-adapter and refresh findings now fit one stable IO registry instead of living in batch intake
+    first_safe_move:
+      - build keyed update adapter sidecar
+      - add deterministic replace-vs-append and last-index refresh contracts
+      - register schema manifests for parquet, csv, feather, and duckdb-backed keyed surfaces
+    blockers:
+      - provider-specific behavior must remain explicit
+      - storage format swaps must remain opt-in until cache parity is proven
+    risk_level: medium
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - registry_id: RR002_split_generation_and_cv
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    current_role: train/valid/test masks, walkforward, holdout contracts
+    vbt_candidates:
+      - Splitter
+      - SplitterCV
+      - public_split_decorator_surface
+      - purged_kfold
+      - purged_walkforward
+    adoption_mode: adapter_first
+    why_now: strong VBT fit, but parity-sensitive
+    first_safe_move:
+      - build translator from current split plan to VBT splitter objects
+      - compare exact membership, chronology, and overlap
+    blockers:
+      - no replacement before exact split-membership parity
+    risk_level: high
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+
+  - registry_id: RR003_feature_engineering
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/features.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_data_prep.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+    current_role: feature generation and discovery
+    vbt_candidates:
+      - generic_accessors
+      - custom_indicators
+      - PATSIM
+      - PatternRanges
+      - sklearn_transform_bridge
+      - transform_bridge_models
+      - column_mapper_stack
+      - benchmark_exposure_kernels
+    adoption_mode: adapter_first
+    why_now: additive feature families are low-risk and high-value
+    first_safe_move:
+      - add side-by-side VBT feature families with provenance and honesty tags
+      - route transform, column-map, and benchmark-relative kernels through additive feature sidecars only
+    blockers:
+      - do not mix future target families into model inputs
+    risk_level: medium
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+
+  - registry_id: RR004_labels_and_targets
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_data_prep.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/targets.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/family_signal_engine.py
+    current_role: label and target generation
+    vbt_candidates:
+      - TRENDLB
+      - PIVOTLB
+      - MEANLB
+      - FIXLB
+      - BOLB
+      - future_stat_generators
+      - labels_fmax
+      - labels_fmin
+      - labels_fmean_fstd
+      - label_wait_control
+      - trend_label_modes
+      - pivot_threshold_labels
+      - breakout_labels
+      - fixlb_fixed_horizon_pct_target
+      - meanlb_future_mean_pct_target
+      - future_stats_reverse_window_math
+    adoption_mode: overlay_sidecar
+    why_now: the repeated label-capability batch is stable enough to promote into one queryable shadow-target registry
+    first_safe_move:
+      - create auxiliary target panel only
+      - compare wait/window and horizon semantics
+      - keep continuous, pivot, breakout, and fixed-horizon target math in audit-only sidecars
+    blockers:
+      - current label authority must remain preserved
+    risk_level: high
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+
+  - registry_id: RR005_signal_runtime_and_execution
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_runtime.py
+    current_role: signal execution and portfolio simulation
+    vbt_candidates:
+      - Portfolio.from_signals
+      - Portfolio.from_order_func
+      - orders_trades_logs
+      - stop_reason_truth
+      - merged_trade_history_audit
+    adoption_mode: keep_current_authority
+    why_now: already materially VBT-backed
+    first_safe_move:
+      - enrich with reporting and review sidecars
+    blockers:
+      - none for sidecars
+    risk_level: low
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+
+  - registry_id: RR006_evaluation_and_review
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/benchmark_baseline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/monitoring_baseline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/equivalence_reports.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime_equivalence.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_harness.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/feature_validation.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_pages.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_review.py
+      - /home/benji/trade_scanner2/scripts/generate_vbtpro_native_runtime_equivalence_report.py
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_vbt.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_roster.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/periodic_revalidation.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/rollback_handling.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/release_status_reports.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/promotion_decision_freeze.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/archive_and_lineage_closure.py
+    current_role: reporting, holdout review, bias evaluation, and machine-queryable validation dashboards
+    vbt_candidates:
+      - returns_accessors
+      - qs_adapter
+      - stats_builder
+      - stats_defaults_registry
+      - plots_builder
+      - record_readable_surfaces
+      - records_mask_and_sort
+      - records_first_last_n
+      - qs_tearsheet_bridge
+      - benchmark_close_alignment
+      - benchmark_only_returns_accessor
+      - record_conflict_and_coverage_map
+      - tail_risk_kernels
+      - portfolio_review_dashboard_bundle
+      - public_synthetic_ohlc_for_leakage_tests
+      - trade_cohort_filters
+      - streak_bias_diagnostics
+      - benchmark_relative_confidence
+    adoption_mode: adapter_first
+    why_now: high return on standardized review and bias surfaces
+    first_safe_move:
+      - add tearsheet, benchmark-relative, and bias-check sidecars
+      - add conflict and coverage plus streak-fragility review bundles
+    blockers:
+      - avoid metric-definition drift from mixed defaults
+    risk_level: medium
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+
+  - registry_id: RR007_search_and_model_selection
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/stacker.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/llm_backend_adapter.py
+    current_role: model fitting and search orchestration
+    vbt_candidates:
+      - parameterized
+      - chunking
+      - SplitterCV
+      - PortfolioOptimizer
+    adoption_mode: shadow_pipeline_only
+    why_now: strong future fit, but touches authority-sensitive selection logic
+    first_safe_move:
+      - build search-sidecar over frozen split and feature artifacts
+    blockers:
+      - no search backend replacement before split parity and bias checks are stable
+    risk_level: high
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_cpu_gpu_role_map_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+
+  - registry_id: RR008_greenfield_shadow_pipeline
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+    current_role: whole orchestration skeleton
+    vbt_candidates:
+      - splitters
+      - features_and_labels
+      - signals
+      - portfolios
+      - reporting
+      - optimization_helpers
+    adoption_mode: future_build_only
+    why_now: best place for a clean VBT-native design without contaminating live authority
+    first_safe_move:
+      - build shadow stage contracts and parity gates first
+    blockers:
+      - requires end-to-end artifact contract design
+    risk_level: high
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unified_end_state_build_plan_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+
+  - registry_id: RR009_semantic_runtime_gate_review
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_runtime_filters.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_execution_integration.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+    current_role: semantic entry gating, bucket-policy normalization, runtime gate decision audits
+    vbt_candidates:
+      - signal_cleaning_truth
+      - record_conflict_and_coverage_map
+      - record_readable_surfaces
+    adoption_mode: overlay_sidecar
+    why_now: semantic gating is authority-adjacent and benefits from explicit audit surfaces before any deeper adoption
+    first_safe_move:
+      - emit bucket-to-entry gate audit tables without altering entry decisions
+      - compare filtered entry masks against current runtime outputs
+    blockers:
+      - semantic runtime contract must remain the current authority
+    risk_level: medium
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+
+  - registry_id: RR010_blackwell_parity_and_review_sidecars
+    repo_paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/family_pipeline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/parity_audit.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/explainability.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/contracts.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/artifacts.py
+    current_role: shadow artifact emission, parity evidence, and reusable review bundle assembly
+    vbt_candidates:
+      - qs_defaults_consistency_bridge
+      - portfolio_review_dashboard_bundle
+      - order_to_trade_reconstruction
+      - record_readable_surfaces
+      - aggregate_feature_importance_rollup
+    adoption_mode: overlay_sidecar
+    why_now: blackwell parity and review surfaces are reused across shadow runs and should be canonical rather than batch-only
+    first_safe_move:
+      - emit VBT-backed parity and review bundles adjacent to current blackwell artifacts
+      - keep current scoring and artifact authority unchanged
+    blockers:
+      - avoid metric-definition drift from mixed review defaults
+    risk_level: medium
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_cpu_gpu_role_map_20260409.yaml
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml

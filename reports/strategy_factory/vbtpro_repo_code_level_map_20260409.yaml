@@ -1,0 +1,1164 @@
+artifact_id: vbtpro_repo_code_level_map_20260409
+artifact_version: 1
+artifact_type: code_level_map
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  More detailed machine-first repo code map for Strategy Factory, Equities LLM Lab,
+  Blackwell ensemble, scripts, and tests. This extends the file matrix by naming stage,
+  local role, VBT adoption mode, and first-safe integration target at a code-surface level.
+
+entries:
+  - map_id: CL001_models_split_and_train_masks
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+    stage_ids:
+      - S1_split_planning_and_membership_truth
+      - S7_search_optimization_and_model_selection
+    local_roles:
+      - chrono_train_valid_mask_generation
+      - model_fit_orchestration
+      - fold_safe_transform_control
+    vbt_candidates:
+      - Splitter
+      - SplitterCV
+      - sklearn_transform_bridge
+    adoption_mode: adapter_first
+    first_safe_target: translate current split contract into VBT splitter objects without changing artifacts
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - map_id: CL002_walk_forward_fold_authority
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+    stage_ids:
+      - S1_split_planning_and_membership_truth
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - fold_generation
+      - walkforward_baseline_evaluation
+      - benchmark_and_return_path_review
+    vbt_candidates:
+      - Splitter.from_rolling
+      - Splitter.from_expanding
+      - returns_accessors
+    adoption_mode: adapter_first
+    first_safe_target: exact fold-membership and chronology parity bundle
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+
+  - map_id: CL003_validation_segment_contracts
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+    stage_ids:
+      - S1_split_planning_and_membership_truth
+    local_roles:
+      - validation_window_authority
+      - range_contract_definition
+      - membership_boundary_semantics
+    vbt_candidates:
+      - Splitter.from_ranges
+      - split_overlap_coverage_utilities
+    adoption_mode: adapter_first
+    first_safe_target: repo-to-vbt splitter translator with exact range semantics
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - map_id: CL004_reference_data_and_store_refresh
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/reference_data.py
+    stage_ids:
+      - S0_data_ingestion_and_canonicalization
+    local_roles:
+      - reference_query_and_cache_surface
+      - parquet_duckdb_reads
+      - schema_and_windowed_reference access
+    vbt_candidates:
+      - duckdb_adapters
+      - updater_and_saver
+      - wrapping_and_merging
+    adoption_mode: adapter_first
+    first_safe_target: explicit keyed update and schema manifest sidecar
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_reference_data.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+
+  - map_id: CL005_semantic_lane2_data_prep
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_data_prep.py
+    stage_ids:
+      - S0_data_ingestion_and_canonicalization
+      - S2_feature_family_build
+      - S3_label_and_target_build
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - dataset_assembly
+      - benchmark_relative feature prep
+      - transform_and_scaling prep
+      - target shadow prep
+    vbt_candidates:
+      - generic_accessors
+      - sklearn_transform_bridge
+      - returns_accessors
+      - label_generators
+    adoption_mode: adapter_first
+    first_safe_target: additive VBT feature/target sidecar with strict provenance and honesty tags
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_data_prep.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+
+  - map_id: CL006_lane2_feature_discovery
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+    stage_ids:
+      - S2_feature_family_build
+    local_roles:
+      - regime_feature_discovery
+      - pattern_similarity_expansion
+      - explanatory feature surfacing
+    vbt_candidates:
+      - PATSIM
+      - PatternRanges
+      - rolling_pattern_similarity
+      - custom_indicators
+    adoption_mode: adapter_first
+    first_safe_target: additive pattern/regime feature families plus drift audits
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_coarse_medium_feature_discovery.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+
+  - map_id: CL007_labels_and_targets
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+    stage_ids:
+      - S3_label_and_target_build
+    local_roles:
+      - realized_label_generation
+      - forward target policy
+      - wait/window semantics
+    vbt_candidates:
+      - FIXLB
+      - MEANLB
+      - TRENDLB
+      - PIVOTLB
+      - BOLB
+    adoption_mode: overlay_sidecar
+    first_safe_target: auxiliary target panel and semantic audit only
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_data_prep.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - map_id: CL008_dataset_construction
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+    stage_ids:
+      - S2_feature_family_build
+      - S3_label_and_target_build
+    local_roles:
+      - candidate_dataset_construction
+      - feature_target assembly
+      - dataset export contracts
+    vbt_candidates:
+      - PatternRanges
+      - label_generators
+      - wrapping_and_merging
+    adoption_mode: adapter_first
+    first_safe_target: side-by-side derived feature and target families with manifest registration
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_data_prep.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_family_contract_schema_20260408.yaml
+
+  - map_id: CL009_vbt_runtime_surfaces
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+    stage_ids:
+      - S4_signal_and_strategy_surface_build
+      - S5_simulation_and_execution_mirror
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - signal_execution
+      - portfolio_simulation
+      - execution_reconstruction
+      - review_enrichment
+    vbt_candidates:
+      - Portfolio.from_signals
+      - Portfolio.from_order_func
+      - orders_trades_logs
+      - stop_reason_surfaces
+    adoption_mode: keep_current_authority
+    first_safe_target: richer review/audit sidecars, not runtime replacement
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime.py
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_vbt_loop.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+
+  - map_id: CL010_reporting_and_holdout_review
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/benchmark_baseline.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - report_writing
+      - holdout_audit
+      - benchmark_relative review
+      - bias diagnostics
+    vbt_candidates:
+      - returns_accessors
+      - qs_adapter
+      - stats_builder
+      - trade_review_surfaces
+    adoption_mode: adapter_first
+    first_safe_target: benchmark-relative and bias-check appendix bundle
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_holdout.py
+      - /home/benji/trade_scanner2/tests/test_benchmark_baseline.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - map_id: CL011_pipeline_orchestration
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+    stage_ids:
+      - S4_signal_and_strategy_surface_build
+      - S7_search_optimization_and_model_selection
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - stage routing
+      - search orchestration
+      - artifact wiring
+    vbt_candidates:
+      - split_backend_routing
+      - parameterized_research_routing
+      - shadow_pipeline_hooks
+    adoption_mode: adapter_first
+    first_safe_target: opt-in sidecar backend routing, not authoritative orchestration replacement
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+
+  - map_id: CL012_blackwell_split_dataset_train_eval_stack
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/targets.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/stacker.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+    stage_ids:
+      - S1_split_planning_and_membership_truth
+      - S2_feature_family_build
+      - S3_label_and_target_build
+      - S6_evaluation_review_and_bias_audit
+      - S7_search_optimization_and_model_selection
+    local_roles:
+      - split_plan authority
+      - GPU panel feature prep
+      - target prep
+      - ranking and evaluation
+      - stacking and search grids
+    vbt_candidates:
+      - SplitterCV
+      - PATSIM
+      - PatternRanges
+      - returns_accessors
+      - PortfolioOptimizer
+      - parameterized
+    adoption_mode: shadow_pipeline_only
+    first_safe_target: frozen-split sidecars and VBT evaluation mirrors feeding Blackwell, not replacing GPU trainer
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_dataset.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_cpu_gpu_role_map_20260409.yaml
+
+  - map_id: CL013_scripts_and_operator_surfaces
+    paths:
+      - /home/benji/trade_scanner2/scripts/run_blackwell_ensemble_practice.py
+      - /home/benji/trade_scanner2/scripts/run_blackwell_ensemble_guarded.py
+      - /home/benji/trade_scanner2/scripts/run_semantic_lane2_data_prep.py
+      - /home/benji/trade_scanner2/scripts/render_loop_runs_dashboard.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - operator entrypoints
+      - practice run outputs
+      - dashboard rendering
+      - shadow artifact emission
+    vbt_candidates:
+      - notebook_and_dashboard_sidecars
+      - mirror_artifact_emission
+      - stats_and_plot_panels
+    adoption_mode: overlay_sidecar
+    first_safe_target: emit optional VBT mirror artifacts and review bundles next to existing outputs
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_cli.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+
+  - map_id: CL014_semantic_runtime_gate_filters
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_runtime_filters.py
+    stage_ids:
+      - S4_signal_and_strategy_surface_build
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - semantic_runtime_contract_loading
+      - multi_horizon_context_bucket_join
+      - entry_mask_gate_application
+      - gate_decision_audit_payload
+    vbt_candidates:
+      - signal_cleaning_truth
+      - record_conflict_and_coverage_map
+      - generic_accessors
+    adoption_mode: overlay_sidecar
+    first_safe_target: optional gate-decision audit sidecar comparing semantic bucket filters against emitted entry masks
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_runtime_filters.py
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_execution_integration.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+
+  - map_id: CL015_blackwell_gpu_training_control
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+    stage_ids:
+      - S7_search_optimization_and_model_selection
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - gpu_inventory_and_binding_validation
+      - device_matrix_materialization
+      - per_gpu_runtime_summary
+      - development_and_holdout_fit_execution
+    vbt_candidates:
+      - parameterized
+      - chunking
+      - mirror_artifact_emission
+    adoption_mode: shadow_pipeline_only
+    first_safe_target: emit search-sidecar runtime summaries and parameter sweep traces without changing GPU training authority
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_gpu_smoke.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_runner_resume.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_cpu_gpu_role_map_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+
+  - map_id: CL016_blackwell_runner_artifact_orchestration
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+    stage_ids:
+      - S2_feature_family_build
+      - S6_evaluation_review_and_bias_audit
+      - S7_search_optimization_and_model_selection
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - subcommand_entrypoint_routing
+      - artifact_tree_and_progress_emission
+      - parity_and_family_pipeline_dispatch
+      - evaluation_and_summary_wiring
+    vbt_candidates:
+      - parameterized
+      - portfolio_review_dashboard_bundle
+      - order_to_trade_reconstruction
+      - mirror_artifact_emission
+    adoption_mode: shadow_pipeline_only
+    first_safe_target: add queryable shadow-run manifests and review sidecars beside existing Blackwell artifacts
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_run_all_logging.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_runner_resume.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_cli.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+
+  - map_id: CL017_blackwell_family_pipeline_and_parity_audits
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/family_pipeline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/parity_audit.py
+    stage_ids:
+      - S2_feature_family_build
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - family_registry_mirror_and_bundle_emission
+      - content_hash_parity_audits
+      - promotion_gate_evidence_surface
+      - machine_queryable_shadow_artifact_writing
+    vbt_candidates:
+      - qs_defaults_consistency_bridge
+      - portfolio_review_dashboard_bundle
+      - record_readable_surfaces
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve family mirror and parity results as machine-queryable gate evidence next to current Blackwell outputs
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_family_pipeline.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - map_id: CL018_strategy_factory_library_spine
+    path: /home/benji/trade_scanner2/reports/strategy_factory
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - machine_library_note_spine
+      - repo_topic_and_alias_routing
+      - compiled_lookup_input_authority
+      - coverage_dashboard_and_build_manifest_surface
+    vbt_candidates:
+      - knowledge_doc_ranking
+      - text_splitting
+      - compiled_machine_lookup_layer
+      - machine_query_alias_routing
+    adoption_mode: overlay_sidecar
+    first_safe_target: keep note authority in place while refreshing compiled lookup, routing, and coverage sidecars from the same frozen note spine
+    tests_to_touch:
+      - /home/benji/vectorbtpro-machine-library/tests/test_machine_library.py
+      - /home/benji/trade_scanner2/tests/test_validation_harness.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+
+  - map_id: CL019_vbt_metadata_adapter_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+    stage_ids:
+      - S0_data_ingestion_and_canonicalization
+    local_roles:
+      - customdata_symbol_metadata_adapter
+      - point_in_time_snapshot_fetch
+      - partitioned_metadata_cache_writes
+      - metadata_pull_manifest_emission
+    vbt_candidates:
+      - CustomData
+      - updater_and_saver
+      - wrapping_and_merging
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve the existing CustomData-backed adapter while making metadata cache outputs and manifests easier to route into feature-side enrichments
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_reference_data.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+
+  - map_id: CL020_equivalence_reporting_and_parity_contracts
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/equivalence_reports.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - runner_equivalence_coverage_registry
+      - serial_parallel_equivalence_coverage_registry
+      - contract_semantics_normalization
+      - equivalence_report_artifact_emission
+    vbt_candidates:
+      - qs_defaults_consistency_bridge
+      - record_readable_surfaces
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: keep current equivalence authority while emitting richer machine-queryable parity and review bundles alongside the existing reports
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_equivalence_reports.py
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime_equivalence.py
+      - /home/benji/trade_scanner2/tests/proof_matrix/test_runner_equivalence.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+
+  - map_id: CL021_lane2_feature_discovery_driver
+    path: /home/benji/trade_scanner2/scripts/run_lane_2_coarse_medium_regime_feature_discovery.py
+    stage_ids:
+      - S2_feature_family_build
+    local_roles:
+      - cli_argument_resolution
+      - feature_discovery_driver_entrypoint
+      - resolved_input_surface_handoff
+      - manifest_print_and_operator_feedback
+    vbt_candidates:
+      - PATSIM
+      - PatternRanges
+      - custom_indicators
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve the current operator entrypoint while making VBT-backed feature-discovery runs easier to invoke and compare side by side
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_coarse_medium_feature_discovery.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+
+  - map_id: CL022_equities_history_and_full_store_surfaces
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+    stage_ids:
+      - S0_data_ingestion_and_canonicalization
+    local_roles:
+      - provider_history_pull_and_partition_writes
+      - vectorbt_runtime_discovery_and_resampling
+      - full_store_validation_orchestration
+      - refresh_and_schema_manifest_emission
+    vbt_candidates:
+      - Data
+      - CustomData
+      - updater_and_saver
+      - parquet_csv_feather_duckdb_adapters
+    adoption_mode: adapter_first
+    first_safe_target: preserve current history and full-store authority while adding keyed update, alignment, and idempotence sidecars around refresh flows
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_history.py
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_full_store.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - map_id: CL023_equities_feature_and_viewer_review_surfaces
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/features.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+    stage_ids:
+      - S2_feature_family_build
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - additive_feature_family_generation
+      - rolling_stats_and_custom_indicator_blocks
+      - benchmark_aware_review_panels
+      - research_plot_and_viewer_surface
+    vbt_candidates:
+      - generic_accessors
+      - custom_indicators
+      - plots_builder
+      - px_accessor
+    adoption_mode: overlay_sidecar
+    first_safe_target: add side-by-side feature blocks and VBT-backed review panels without replacing current research outputs
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_history.py
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_viewer.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+
+  - map_id: CL024_equities_feature_validation_audits
+    path: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/feature_validation.py
+    stage_ids:
+      - S2_feature_family_build
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - feature_validation_runner_entrypoint
+      - sparse_conflict_and_coverage_report_build
+      - contamination_and_missing_region_checks
+      - schema_and_column_contract_audits
+    vbt_candidates:
+      - record_conflict_and_coverage_map
+      - column_mapper_stack
+      - benchmark_relative_confidence
+    adoption_mode: overlay_sidecar
+    first_safe_target: emit machine-queryable conflict, coverage, and schema-audit surfaces beside the current validation outputs without replacing the existing validation authority
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_feature_validation.py
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_indicator_parity.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+
+  - map_id: CL025_equities_viewer_page_review_extensions
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_pages.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_review.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - viewer_page_resolution
+      - review_bundle_panel_composition
+      - benchmark_and_tearsheet_drilldown
+      - machine_queryable_review_surface_rendering
+    vbt_candidates:
+      - plots_builder
+      - qs_tearsheet_bridge
+      - portfolio_review_dashboard_bundle
+      - benchmark_relative_confidence
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve the current viewer page flow while wiring VBT-backed review bundles and benchmark-relative tear sheets into dedicated review panels
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_viewer.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+
+  - map_id: CL026_lane2_semantic_execution_integration
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_execution_integration.py
+    stage_ids:
+      - S4_signal_and_strategy_surface_build
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - semantic_spec_to_runtime_config_materialization
+      - bounded_execution_slice_comparison
+      - blocked_probe_contract_detection
+      - parity_report_artifact_emission
+    vbt_candidates:
+      - signals_accessors
+      - parameterized
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current lane-1 and runtime authority while emitting machine-queryable semantic execution parity reports and blocked-probe evidence
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_execution_integration.py
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_runtime_widening_analysis.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_execution_integration.py
+
+  - map_id: CL027_machine_library_build_compiler
+    path: /home/benji/trade_scanner2/scripts/build_vbtpro_machine_library.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - canonical_registry_ingestion
+      - sqlite_lookup_schema_build
+      - search_document_index_materialization
+      - coverage_dashboard_and_manifest_emission
+    vbt_candidates:
+      - compiled_machine_lookup_layer
+      - machine_query_alias_routing
+      - knowledge_doc_ranking
+      - text_splitting
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve the current machine-library builder while extending canonical source ingestion and coverage validation without changing frozen query shapes
+    tests_to_touch:
+      - /home/benji/vectorbtpro-machine-library/tests/test_machine_library.py
+      - /home/benji/trade_scanner2/tests/test_validation_harness.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+
+  - map_id: CL028_machine_library_query_contract
+    path: /home/benji/trade_scanner2/scripts/query_vbtpro_machine_library.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - low_context_query_dispatch
+      - alias_resolution_and_recursive_lookup
+      - frozen_result_shape_enforcement
+      - repo_stage_risk_registry_module_lookup_surface
+    vbt_candidates:
+      - machine_query_alias_routing
+      - compiled_machine_lookup_layer
+      - knowledge_doc_ranking
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve the current query contract while expanding alias coverage and example-driven retrieval without altering required result shapes
+    tests_to_touch:
+      - /home/benji/vectorbtpro-machine-library/tests/test_machine_library.py
+      - /home/benji/trade_scanner2/tests/test_validation_harness.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml
+
+  - map_id: CL029_native_runtime_equivalence_proof_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime_equivalence.py
+    stage_ids:
+      - S5_simulation_and_execution_mirror
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - current_vs_native_runtime_case_execution
+      - normalized_summary_trade_and_symbol_surface_comparison
+      - resource_guard_and_worker_budget_enforcement
+      - equivalence_and_order_func_gate_report_emission
+    vbt_candidates:
+      - Portfolio.from_order_func
+      - orders_trades_logs
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current runtime authority while emitting machine-queryable native-runtime equivalence and resource-guard proof bundles for promotion gating
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime_equivalence.py
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime_equivalence.py
+
+  - map_id: CL030_sparse_record_review_tables
+    paths:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/feature_validation.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/eval.py
+    stage_ids:
+      - S2_feature_family_build
+      - S6_evaluation_review_and_bias_audit
+    local_roles:
+      - sparse_record_to_readable_table_rendering
+      - overlap_conflict_and_coverage_exports
+      - review_bundle_record_table_adapters
+    vbt_candidates:
+      - record_readable_surfaces
+      - record_conflict_and_coverage_map
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current validation authority while emitting readable sparse-record conflict and coverage tables beside the existing review outputs
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_equities_llm_lab_feature_validation.py
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_vbt_loop.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+
+  - map_id: CL031_monitoring_baseline_contract_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/monitoring_baseline.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - runtime_monitoring_contract_definition
+      - integrity_and_drift_check_baseline_build
+      - monitored_roster_entry_projection
+      - monitoring_baseline_artifact_emission
+    vbt_candidates:
+      - benchmark_relative_confidence
+      - stats_defaults_registry
+      - streak_bias_diagnostics
+      - tail_risk_kernels
+      - trade_cohort_filters
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve the current monitoring authority while attaching queryable benchmark-relative and drift-review sidecars to the defined monitoring baseline contract
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_monitoring_baseline.py
+      - /home/benji/trade_scanner2/tests/test_periodic_revalidation.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+      - /home/benji/trade_scanner2/tests/test_monitoring_baseline.py
+
+  - map_id: CL032_validation_harness_inventory_and_manifest_proofs
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_harness.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - authoritative_plan_loading
+      - validation_inventory_matrix_build
+      - golden_manifest_inventory_build
+      - validation_report_artifact_emission
+    vbt_candidates:
+      - record_readable_surfaces
+      - mirror_artifact_emission
+      - compiled_machine_lookup_layer
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve the current validation-harness authority while emitting machine-queryable inventory and golden-manifest proof tables for parity gating
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_validation_harness.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+
+  - map_id: CL033_blackwell_explainability_review_payloads
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/explainability.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - per_model_contribution_summarization
+      - aggregate_feature_importance_rollup
+      - model_summary_to_review_payload_bridge
+    vbt_candidates:
+      - portfolio_review_dashboard_bundle
+      - record_readable_surfaces
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current explainability summaries while emitting model-comparable contribution rollups inside review bundles and parity evidence
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_runner_resume.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+
+  - map_id: CL034_native_runtime_equivalence_report_driver
+    path: /home/benji/trade_scanner2/scripts/generate_vbtpro_native_runtime_equivalence_report.py
+    stage_ids:
+      - S5_simulation_and_execution_mirror
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - equivalence_cli_mode_selection
+      - local_and_guarded_report_driver
+      - cohort_runtime_equivalence_dispatch
+    vbt_candidates:
+      - Portfolio.from_order_func
+      - orders_trades_logs
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve the current equivalence report driver while exposing local, guarded, and cohort report modes as machine-queryable promotion-gate entrypoints
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime_equivalence.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+
+  - map_id: CL035_per_family_vbt_integration_tests
+    path: /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_vbt.py
+    stage_ids:
+      - S4_signal_and_strategy_surface_build
+      - S5_simulation_and_execution_mirror
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - family_config_to_sweep_fixture_validation
+      - per_family_round_execution_validation
+      - post_round_freeze_roster_holdout_validation
+      - feature_coverage_materialization_validation
+    vbt_candidates:
+      - Portfolio.from_signals
+      - returns_accessors
+      - record_readable_surfaces
+      - benchmark_relative_confidence
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current per-family integration authority while capturing family-round, freeze, and holdout validation as machine-queryable proof surfaces
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_vbt.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+
+  - map_id: CL036_public_synthetic_ohlc_test_fixtures
+    paths:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_dataset.py
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_data_prep.py
+    stage_ids:
+      - S0_data_ingestion_and_canonicalization
+      - S1_split_planning_and_membership_truth
+    local_roles:
+      - synthetic_ohlc_fixture_generation
+      - leakage_and_chronology_fixture_control
+      - test_dataset_contract_validation
+    vbt_candidates:
+      - GBMOHLCData.pull
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current fixture authority while registering synthetic OHLC generators as repeatable leakage and chronology test surfaces
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_dataset.py
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_data_prep.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+
+  - map_id: CL037_public_knowledge_refactor_tooling_surfaces
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory
+      - /home/benji/trade_scanner2/scripts
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - knowledge_attachment_enabled_doc_search
+      - repo_refactor_source_lookup
+      - portfolio_optimizer_asset_search_assist
+      - code_assist_surface_routing
+    vbt_candidates:
+      - knowledge_doc_ranking
+      - compiled_machine_lookup_layer
+      - public_attach_knowledge_refactor_surface
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current report and script authority while registering public doc-search and refactor-assist surfaces for future external mining and code-assist flows
+    tests_to_touch:
+      - /home/benji/vectorbtpro-machine-library/tests/test_machine_library.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+
+  - map_id: CL038_lane2_indicator_evidence_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_indicator_evidence_surface.py
+    stage_ids:
+      - S4_signal_and_strategy_surface_build
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - loop_partition_row_surface_build
+      - repeated_state_signature_clustering
+      - indicator_partition_summary_build
+      - llm_safe_evidence_card_emission
+    vbt_candidates:
+      - record_readable_surfaces
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current lane-2 candidate authority while emitting machine-only partition evidence and llm-safe indicator cards for review and promotion gating
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_indicator_evidence_surface.py
+      - /home/benji/trade_scanner2/tests/test_regime_experiment_bundle_builder.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+      - /home/benji/trade_scanner2/tests/test_semantic_lane2_indicator_evidence_surface.py
+
+  - map_id: CL039_per_family_roster_selection_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_roster.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - frozen_champion_roster_selection
+      - daily_pnl_correlation_pruning
+      - phenotype_cap_enforcement
+      - selected_live_roster_artifact_emission
+    vbt_candidates:
+      - benchmark_relative_confidence
+      - trade_cohort_filters
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current roster authority while registering selected-live-roster artifacts and pruning proofs as machine-queryable promotion-gate surfaces
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_roster.py
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_vbt.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_roster.py
+
+  - map_id: CL040_periodic_revalidation_policy_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/periodic_revalidation.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - scheduled_revalidation_contract_build
+      - trigger_based_revalidation_definition
+      - rollback_and_monitoring_linkage_projection
+      - periodic_revalidation_manifest_emission
+    vbt_candidates:
+      - benchmark_relative_confidence
+      - tail_risk_kernels
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current revalidation authority while exposing scheduled and trigger-based revalidation manifests as machine-queryable release-gate artifacts
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_periodic_revalidation.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/tests/test_periodic_revalidation.py
+
+  - map_id: CL041_rollback_manifest_policy_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/rollback_handling.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - incident_trigger_contract_build
+      - rollback_target_manifest_selection
+      - baseline_linkage_projection
+      - rollback_manifest_artifact_emission
+    vbt_candidates:
+      - benchmark_relative_confidence
+      - mirror_artifact_emission
+      - compiled_machine_lookup_layer
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve rollback authority while registering rollback manifests and monitoring-linked incident triggers as machine-queryable parity-gate surfaces
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_rollback_handling.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/tests/test_rollback_handling.py
+
+  - map_id: CL042_per_family_runtime_round_orchestrator
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_runtime.py
+    stage_ids:
+      - S4_signal_and_strategy_surface_build
+      - S5_simulation_and_execution_mirror
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - family_round_bundle_validation
+      - proposal_to_config_compilation
+      - backtest_and_walkforward_round_execution
+      - per_round_artifact_emission
+    vbt_candidates:
+      - Portfolio.from_signals
+      - returns_accessors
+      - benchmark_relative_confidence
+      - mirror_artifact_emission
+    adoption_mode: overlay_sidecar
+    first_safe_target: preserve current per-family runtime authority while exposing round-level validation and artifact emission as machine-queryable proof surfaces
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_runtime.py
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_vbt.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_runtime.py
+
+  - map_id: CL043_release_status_gate_reporting_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/release_status_reports.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - promotion_gate_manifest_build
+      - runner_adoption_status_build
+      - release_blocker_status_projection
+      - release_status_report_artifact_emission
+    vbt_candidates:
+      - compiled_machine_lookup_layer
+      - mirror_artifact_emission
+      - benchmark_relative_confidence
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve current release-status authority while making blocker and promotion-gate reports directly queryable from the machine library
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_release_status_report_artifacts.py
+      - /home/benji/trade_scanner2/tests/proof_matrix/test_release_status_reports.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/tests/test_release_status_report_artifacts.py
+
+  - map_id: CL044_blackwell_llm_backend_adapter_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/llm_backend_adapter.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S7_search_optimization_and_model_selection
+    local_roles:
+      - experiment_reinjection_summary_build
+      - next_experiment_request_payload_build
+      - evaluation_shap_runtime_to_planner_bridge
+    vbt_candidates:
+      - parameterized
+      - portfolio_review_dashboard_bundle
+      - aggregate_feature_importance_rollup
+    adoption_mode: shadow_pipeline_only
+    first_safe_target: preserve current planner bridge while registering experiment reinjection and next-request payloads as machine-queryable search-sidecar surfaces
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_runner_resume.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/README.md
+
+  - map_id: CL100_promotion_decision_freeze_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/promotion_decision_freeze.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - promotion_decision_record_build
+      - gate_outcome_projection
+      - approved_artifact_set_freeze
+      - phase6_handoff_row_emission
+    vbt_candidates:
+      - mirror_artifact_emission
+      - record_readable_surfaces
+      - compiled_machine_lookup_layer
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve current promotion-freeze authority while exposing gate outcomes and approved artifact sets as machine-queryable promotion records
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_promotion_decision_freeze.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/tests/test_promotion_decision_freeze.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/release_status_reports.py
+
+  - map_id: CL101_archive_and_lineage_closure_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/archive_and_lineage_closure.py
+    stage_ids:
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - final_closure_manifest_build
+      - canonical_artifact_ref_consistency_checks
+      - forbidden_path_hygiene_scan
+      - lineage_chain_closure_assertions
+    vbt_candidates:
+      - compiled_machine_lookup_layer
+      - mirror_artifact_emission
+      - record_readable_surfaces
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve current archive-closure authority while exposing lineage closure checks and final manifests as machine-queryable promotion evidence
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_archive_and_lineage_closure.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/tests/test_archive_and_lineage_closure.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/promotion_decision_freeze.py
+
+  - map_id: CL102_blackwell_artifact_contract_constants
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/contracts.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - blackwell_artifact_path_contract_constants
+      - required_artifact_bundle_schema
+      - run_output_layout_authority
+    vbt_candidates:
+      - compiled_machine_lookup_layer
+      - mirror_artifact_emission
+      - record_readable_surfaces
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve current Blackwell artifact contract authority while exposing bundle schema and output-layout constants as machine-queryable artifact contracts
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_artifacts.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/README.md
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/artifacts.py
+
+  - map_id: CL103_blackwell_artifact_io_surface
+    path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/artifacts.py
+    stage_ids:
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    local_roles:
+      - blackwell_artifact_tree_materialization
+      - yaml_json_parquet_dataset_io
+      - artifact_dataset_reset_and_iteration
+    vbt_candidates:
+      - compiled_machine_lookup_layer
+      - parquet_csv_feather_duckdb_adapters
+      - mirror_artifact_emission
+    adoption_mode: keep_current_authority
+    first_safe_target: preserve current artifact IO authority while exposing artifact-tree and dataset-iteration surfaces as machine-queryable review and parity inputs
+    tests_to_touch:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_artifacts.py
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/contracts.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/README.md
+
+mapping_rules:
+  - every entry must bind to one or more stage_ids
+  - every entry must name a first_safe_target rather than a vague future idea
+  - runtime and authority-sensitive surfaces must not be marked direct_replace without parity gates
+  - GPU-heavy entries must bind back to CPU truth stages when relevant
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml

@@ -1,0 +1,90 @@
+artifact_id: vbtpro_external_vectorbtpro_library_index_20260416
+artifact_version: 1
+artifact_type: external_vectorbtpro_library_index
+status: active_support
+created_on: '2026-04-16'
+owner: codex
+purpose: Repo-owned VectorBT PRO source-tree index for the active sqlite-backed machine
+  library. This is the first-class native-script build lookup surface inside vbtpro-lab.
+source_repo:
+  repo_root: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro
+  package_root: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro
+  remote_url: https://github.com/polakowo/vectorbt.pro.git
+  branch: main
+  head: 286ef59b6ce30bf8f0dfdf2493110ed8715be0dc
+  python_file_count: 244
+top_level_package_areas:
+- area: utils
+  python_file_count: 44
+- area: data
+  python_file_count: 34
+- area: generic
+  python_file_count: 26
+- area: indicators
+  python_file_count: 24
+- area: portfolio
+  python_file_count: 23
+- area: base
+  python_file_count: 18
+- area: signals
+  python_file_count: 17
+- area: knowledge
+  python_file_count: 13
+- area: labels
+  python_file_count: 13
+- area: records
+  python_file_count: 7
+- area: registries
+  python_file_count: 5
+- area: returns
+  python_file_count: 5
+- area: ohlcv
+  python_file_count: 4
+- area: px
+  python_file_count: 3
+- area: __init__.py
+  python_file_count: 1
+- area: _dtypes.py
+  python_file_count: 1
+- area: _opt_deps.py
+  python_file_count: 1
+- area: _settings.py
+  python_file_count: 1
+- area: _typing.py
+  python_file_count: 1
+- area: _version.py
+  python_file_count: 1
+- area: accessors.py
+  python_file_count: 1
+- area: mcp_server.py
+  python_file_count: 1
+key_entrypoints:
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/purged.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+recommended_aliases:
+  vbtpro_repo: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+  vbtpro_splitters: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+  vbtpro_portfolio: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+  vbtpro_from_signals: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+  vbtpro_polygon: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+  vbtpro_mcp: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+  vbtpro_execution: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+validation_targets:
+- repo_owned_clone_exists
+- git_remote_matches_github
+- git_head_resolves
+- python_repo_paths_are_indexed_into_sqlite
+- text_search_returns_repo_owned_vectorbtpro_files
+source_refs:
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_external_vectorbtpro_repo_import_active_project_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/README.md
+- /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/pyproject.toml

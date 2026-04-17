@@ -1,0 +1,354 @@
+artifact_id: vbtpro_reporting_retrieval_specs_20260409
+artifact_version: 1
+artifact_type: schema_note
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Preserve extended machine-only retrieval structure for reporting, notebooks, scripts,
+  dashboards, knowledge surfaces, and implementation playbooks.
+
+top_level_deltas:
+  add_keys:
+    - record_catalog
+    - retrieval_profiles
+    - minimal_views
+    - denormalized_indexes
+    - query_contract
+    - chunking_policy
+    - lineage_fields
+    - freshness_fields
+    - retrieval_rules
+    - packing_rules
+
+record_catalog:
+  shape:
+    record_id:
+      record_ref: "records/<theme>.yaml#<record_id>"
+  machine_library:
+    required_collections:
+      - router_records
+      - denormalized_indexes
+      - minimal_view_cache
+      - note_section_index
+      - source_document_index
+      - query_examples
+      - build_manifest
+
+minimal_views:
+  summary_card:
+    fields:
+      - record_id
+      - title
+      - theme
+      - subtype
+      - priority
+      - status
+      - repo_surface.file_path
+      - repo_surface.function_names
+      - addresses_risks
+  implementation_card:
+    fields:
+      - record_id
+      - recommended_first_touchpoints
+      - touch_mode
+      - core_safety
+      - sidecar_path_pattern
+      - validation_hooks
+  audit_card:
+    fields:
+      - record_id
+      - addresses_risks
+      - visibility_goal
+      - drift_signal_type
+      - comparison_axis
+      - evidence_granularity
+  notebook_card:
+    fields:
+      - record_id
+      - notebook_cells
+      - inputs
+      - outputs
+      - anti_patterns
+  dashboard_card:
+    fields:
+      - record_id
+      - plot_surfaces
+      - export_surfaces
+      - operator_audience
+  knowledge_card:
+    fields:
+      - record_id
+      - dependencies
+      - source_refs
+      - reproducibility_requirements
+
+retrieval_profiles:
+  implement_first:
+    preferred_indexes:
+      - by_theme_and_priority
+      - by_repo_path_and_function
+      - by_core_safety
+    preferred_view: implementation_card
+  audit_first:
+    preferred_indexes:
+      - by_risk_and_stage
+      - by_contract_anchor_and_risk
+      - by_visibility_goal_and_touch_mode
+    preferred_view: audit_card
+  notebook_build:
+    preferred_indexes:
+      - by_theme
+      - by_notebook_section
+      - by_input_type
+    preferred_view: notebook_card
+  dashboard_build:
+    preferred_indexes:
+      - by_theme
+      - by_operator_audience
+      - by_sidecar_pattern
+    preferred_view: dashboard_card
+  knowledge_lookup:
+    preferred_indexes:
+      - by_tag
+      - by_contract_anchor_and_risk
+      - by_vbt_api_entry
+    preferred_view: knowledge_card
+
+denormalized_indexes:
+  - by_repo_path_and_function
+  - by_vbt_api_entry
+  - by_tag
+  - by_input_type
+  - by_output_type
+  - by_risk_and_stage
+  - by_theme_and_priority
+  - by_contract_anchor_and_risk
+  - by_visibility_goal_and_touch_mode
+  - by_notebook_section
+  - by_helper_module
+  - by_sidecar_pattern
+
+query_contract:
+  required_fields:
+    - query_id
+    - intent
+    - filters
+  optional_fields:
+    - preferred_profile
+    - max_records
+    - required_fields
+    - include_related
+  filter_keys:
+    - theme
+    - subtype
+    - repo_file
+    - repo_function
+    - vbt_family
+    - vbt_api_entry
+    - risk_type
+    - stage
+    - priority
+    - status
+    - touch_mode
+    - core_safety
+    - operator_audience
+    - contract_anchor_ref
+    - tag
+
+chunking_policy:
+  max_records_per_chunk: 25
+  max_themes_per_chunk: 1
+  preferred_chunk_boundaries:
+    - theme
+    - repo_file
+    - stage
+    - contract_anchor_ref
+  chunk_summary_fields:
+    - chunk_id
+    - theme
+    - boundary_key
+    - record_ids
+    - risk_types
+    - repo_files
+
+packing_rules:
+  - keep_source_refs_deduplicated_at_router_level_when_shared
+  - move_long_anti_patterns_to_shared_taxonomy_refs
+  - prefer_enum_keys_over_free_text_when_possible
+  - store_large_notebook_cell_examples_outside_atomic_records
+  - keep_atomic_records_under_fixed_field_budget
+
+lineage_fields:
+  - created_from_passes
+  - normalized_from_notes
+  - last_reviewed_at
+  - last_reviewed_by
+  - supersedes
+  - superseded_by
+
+freshness_fields:
+  - freshness_class
+  - revalidation_trigger
+  - stale_if_repo_paths_missing
+  - stale_if_vbt_paths_missing
+
+resolver_contract:
+  required_fields:
+    - resolver_version
+    - index_resolution_order
+    - fallback_policy
+    - low_context_policy
+    - cache_lookup_policy
+  index_resolution_order:
+    - by_record_id
+    - by_repo_file_function
+    - by_contract_anchor_risk
+    - by_risk_stage
+    - by_theme_priority
+  fallback_policy:
+    - if_exact_index_miss_then_drop_to_theme_or_repo_file_index
+    - if_context_cost_exceeds_budget_then_return_minimal_view_only
+    - if_multiple_profiles_match_choose_lower_context_profile
+  low_context_policy:
+    - never_return_context_cost_class_l_without_override
+    - prefer_minimal_views_before_full_records
+  cache_lookup_policy:
+    - cache_minimal_view_results
+    - cache_index_hits_by_query_signature
+
+cache_contract:
+  required_fields:
+    - cache_key_components
+    - invalidation_triggers
+    - cacheable_artifacts
+  cache_key_components:
+    - profile_id
+    - query_filters_hash
+    - view_name
+    - router_version
+  invalidation_triggers:
+    - record_change
+    - index_change
+    - router_version_change
+    - freshness_revalidation
+  cacheable_artifacts:
+    - summary_view
+    - implementation_view
+    - audit_view
+    - notebook_view
+    - exact_repo_path_hits
+    - topic_hits
+    - truth_hits
+    - text_search_hits
+
+retrieval_outputs:
+  exact_hit_record:
+    fields:
+      - query_type
+      - match_kind
+      - source_path
+      - record_id
+      - section_name
+      - minimal_view
+  low_context_bundle:
+    fields:
+      - query_signature
+      - matched_records
+      - matched_sections
+      - minimal_views
+      - followup_paths
+  full_expansion_bundle:
+    fields:
+      - query_signature
+      - matched_records
+      - expanded_source_refs
+      - note_body_refs
+      - related_routes
+
+index_family_catalog:
+  equality_indexes:
+    - by_record_id
+    - by_record_ptr
+    - by_repo_file_function
+    - by_vbt_api_entry
+    - by_helper_module
+    - by_contract_anchor
+  grouping_indexes:
+    - by_theme
+    - by_subtype
+    - by_status
+    - by_priority
+    - by_stage
+    - by_touch_mode
+    - by_core_safety
+    - by_operator_audience
+    - by_freshness_class
+    - by_freshness_status
+  composite_indexes:
+    - by_theme_priority
+    - by_risk_stage
+    - by_repo_file_stage
+    - by_repo_file_risk
+    - by_stage_touch_mode
+    - by_stage_priority
+    - by_contract_anchor_risk
+    - by_contract_anchor_stage
+    - by_contract_anchor_visibility_goal
+    - by_visibility_goal_touch_mode
+    - by_freshness_status_priority
+    - by_profile_view_pair
+  dependency_indexes:
+    - by_index_dependency
+    - by_dependency_status
+    - by_revalidation_trigger
+    - by_extraction_batch_id
+    - by_normalization_revision
+    - by_lineage_parent
+    - by_lineage_child
+  query_indexes:
+    - by_query_intent
+    - by_input_type
+    - by_output_type
+    - by_tag
+    - by_notebook_section
+    - by_sidecar_pattern
+
+compact_view_catalog:
+  exact_compact_views:
+    - pointer_view
+    - compact_summary_view
+    - compact_impl_view
+    - compact_audit_view
+    - compact_dashboard_view
+    - compact_notebook_view
+    - compact_knowledge_view
+    - compact_freshness_view
+    - compact_lineage_view
+    - compact_query_match_view
+  constraints:
+    - compact views must exclude long_free_text
+    - compact views must exclude repeated_source_refs when shared refs are available
+    - compact views must preserve deterministic field order
+
+cache_layer_catalog:
+  - pointer_resolution_cache
+  - exact_match_cache
+  - compact_view_cache
+  - query_profile_cache
+  - chunk_summary_cache
+  - freshness_projection_cache
+  - lineage_projection_cache
+
+retrieval_rules:
+  - if_query_has_repo_function_then_use_by_repo_path_and_function_first
+  - if_query_has_risk_type_then_use_by_risk_and_stage_or_by_contract_anchor_and_risk
+  - if_query_has_operator_audience_then_filter_before_loading_full_records
+  - if_query_has_touch_mode_notebook_only_then_exclude_inline_extension_records
+  - if_query_requests_low_context_return_minimal_view_only
+  - if_query_requests_sidecar_exports_prioritize_records_with_sidecar_path_pattern
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml

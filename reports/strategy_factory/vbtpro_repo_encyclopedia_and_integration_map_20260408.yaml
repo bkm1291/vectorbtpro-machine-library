@@ -1,0 +1,742 @@
+artifact_id: vbtpro_repo_encyclopedia_and_integration_map_20260408
+artifact_version: 1
+artifact_type: repo_encyclopedia_and_integration_map
+status: active_research_note
+created_on: 2026-04-08
+owner: codex
+artifact:
+  schema_version: 1
+  artifact_version: 2026-04-08
+  artifact_purpose: vbtpro_repo_encyclopedia_and_integration_map
+  status: active_research_note
+  owner: codex
+  scope:
+    - installed_vectorbtpro_capabilities_relevant_to_repo
+    - current_repo_architecture_map_for_ml_walkforward_holdout_and_vbt_execution
+    - integration_instructions_for_minimal_intrusion_and_aggressive_vbt_native_adoption
+    - blackwell_gpu_specific_vbtpro_adoption_options
+
+authority_and_method:
+  repo_root: /home/benji/trade_scanner2
+  local_vectorbtpro_version:
+    value: 2026.3.1
+    evidence:
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/__init__.py
+  local_vectorbtpro_python:
+    value: /home/benji/miniconda3/envs/vectorbtpro/bin/python
+  default_shell_python_can_import_vectorbtpro: false
+  local_vectorbtpro_source_tree:
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro
+  method:
+    repo_passes:
+      - pass_1_repo_code_inventory
+      - pass_2_blackwell_and_ml_path_inventory
+      - pass_3_contracts_notes_and_workspace_intent_inventory
+    vectorbtpro_passes:
+      - installed_env_api_inventory
+      - local_source_tree_module_inventory
+      - performance_chunking_parameterization_labeling_inventory
+  important_correction:
+    statement: installed version uses vbt.Splitter, not vbt.splitter
+    evidence:
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/sklearn_.py
+
+encyclopedia:
+  capability_to_repo_benefit_matrix:
+    splitter_and_cv:
+      primary_repo_benefit:
+        - stronger walk-forward and purged CV research without rewriting repo window authority
+        - sklearn-compatible CV surface for model selection experiments
+      best_repo_targets:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    parameterized_and_chunked:
+      primary_repo_benefit:
+        - bounded hyperparameter surface exploration
+        - controlled chunk-wise execution for memory management
+        - easier experiment expansion without one-off loop code
+      best_repo_targets:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_loop.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_loop.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+    pattern_similarity_and_search:
+      primary_repo_benefit:
+        - new feature families for pattern analogs, similarity scores, and structural context
+        - potentially stronger cross-sectional ranking features for Blackwell or Lane 2 research
+      best_repo_targets:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+    label_generators:
+      primary_repo_benefit:
+        - fast research labels and target-adjacent descriptors
+        - alternate supervised targets for ablation or auxiliary tasks
+      best_repo_targets:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+    portfolio_and_pfopt:
+      primary_repo_benefit:
+        - tighter mapping from predictions to portfolio simulation
+        - research path for weight/selection optimization beyond current rank-to-view transform
+      best_repo_targets:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+  splitting_and_cross_validation:
+    summary: >
+      Installed vectorbtpro already provides a richer splitter/CV surface than the repo
+      currently uses. This is the clearest direct upgrade path for walk-forward,
+      purged CV, and sklearn-compatible cross-validation.
+    core_types:
+      - symbol: vbt.Splitter
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+        key_locations:
+          class: 369
+          from_rolling: 622
+          from_sklearn: 1701
+          from_purged_walkforward: 1788
+          from_purged_kfold: 1842
+      - symbol: vbt.SplitterCV
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/sklearn_.py
+        key_locations:
+          class: 27
+          split: 350
+      - symbol: vbt.split
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/decorators.py
+        key_locations:
+          function: 38
+      - symbol: vbt.cv_split
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/decorators.py
+        key_locations:
+          function: 334
+    installed_methods:
+      - from_expanding
+      - from_grouper
+      - from_n_expanding
+      - from_n_random
+      - from_n_rolling
+      - from_purged
+      - from_purged_kfold
+      - from_purged_walkforward
+      - from_ranges
+      - from_rolling
+      - from_single
+      - from_sklearn
+      - from_split_func
+      - from_splits
+    repo_fit:
+      best_current_attach_points:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      preserve_contract:
+        - repo role-based windows remain authoritative
+        - training/walkforward/holdout boundaries must remain explicit
+        - any VBT splitter should initially be derived from repo contracts, not replace them
+
+  parameterization_and_chunking:
+    summary: >
+      vectorbtpro has explicit utilities for parameter sweeps and chunked execution
+      that can improve search scale and memory behavior, especially in research lanes.
+    core_types:
+      - symbol: Param
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+        key_locations:
+          class: 336
+      - symbol: combine_params
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+        key_locations:
+          function: 507
+      - symbol: parameterized
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+        key_locations:
+          function: 2407
+      - symbol: broadcast_params
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+        key_locations:
+          function: 138
+      - symbol: create_param_product
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+        key_locations:
+          function: 177
+      - symbol: ChunkMeta
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/chunking.py
+        key_locations:
+          class: 301
+      - symbol: ChunkMapper
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/chunking.py
+        key_locations:
+          class: 466
+      - symbol: chunked
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/chunking.py
+        key_locations:
+          function: 2329
+    repo_fit:
+      best_current_attach_points:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_loop.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_loop.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      preserve_contract:
+        - chunking must not alter date-order semantics
+        - parameter sweeps must preserve no-leak split law
+        - any expanded search must write existing manifest/report artifacts
+
+  pattern_feature_and_label_tooling:
+    summary: >
+      vectorbtpro includes pattern search, rolling similarity, and label generators
+      that could augment current handcrafted or store-derived features.
+    core_types:
+      - symbol: PatternRanges
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/ranges.py
+        key_locations:
+          class: 2081
+          from_pattern_search: 2178
+      - symbol: PATSIM
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/indicators/custom/patsim.py
+      - symbol: rolling_pattern_similarity
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/accessors.py
+        key_locations:
+          function: 1272
+      - symbol: find_pattern
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/accessors.py
+        key_locations:
+          function: 5371
+      - symbol: TRENDLB
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/trendlb.py
+      - symbol: PIVOTLB
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/pivotlb.py
+      - symbol: FMEAN
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/fmean.py
+      - symbol: FIXLB
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/fixlb.py
+      - symbol: BOLB
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/bolb.py
+    repo_fit:
+      best_current_attach_points:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+      preserve_contract:
+        - pattern-derived features must remain point-in-time safe
+        - feature manifests must explicitly record added columns and builder version
+        - labels must not peek beyond declared target horizon
+
+  simulation_and_evaluation:
+    summary: >
+      vectorbtpro already provides the simulation layer the repo uses in several places,
+      and that surface is broader than the repo currently exploits.
+    core_types:
+      - symbol: Portfolio
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/base.py
+        key_locations:
+          class: 1324
+          from_signals: 3992
+          from_optimizer: 5350
+          from_order_func: 5490
+      - symbol: PortfolioOptimizer
+        file: /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/pfopt/base.py
+        key_locations:
+          class: 1832
+    repo_fit:
+      current_usage_anchors:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      preserve_contract:
+        - execution parity with current vbt runtime migration work
+        - order-func parity where portfolio_limit_policy and stop/take logic matter
+        - current walkforward and holdout reporting surfaces remain stable
+
+  performance_parallelism_and_cache:
+    summary: >
+      vectorbtpro exposes chunking, parameterization, caching, jitted functions with
+      can_parallel tags, and preparation-time chunked options in the portfolio layer.
+      This matters for search scale, repeated evaluation cost, and controlled memory use.
+    key_sources:
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/chunking.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/preparing.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/nb.py
+    notable_signals:
+      - label kernels are jitted with cache=True and can_parallel tags
+      - portfolio preparing exposes chunked options for from_signals and from_order_func
+      - chunk metadata and mapping are explicit first-class surfaces
+    repo_fit:
+      best_current_attach_points:
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+        - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_runtime.py
+      preserve_contract:
+        - current thread-policy/resource-policy contracts must stay operator-visible
+        - performance changes must not redefine artifact semantics
+
+repo_architecture_map:
+  authoritative_contracts_to_preserve:
+    lane_command_contract:
+      path: /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+      preserved_rules:
+        - training walkforward holdout flags are the normalized split surface
+        - walkforward is the primary ranking segment
+        - holdout is a mandatory pass-fail gate by default
+        - explicit validation_segments still remain supported
+    lane_artifact_map:
+      path: /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+      preserved_rules:
+        - strategy_summary surfaces remain canonical for strategy execution
+        - walkforward_summary surfaces remain canonical for walkforward ranking
+        - honest_validation surfaces remain canonical for guarded validation
+        - Blackwell artifacts remain canonical for panel, split, predictions, evaluation, and hyperparameter trial outputs
+    failure_regime_pipeline_architecture:
+      path: /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+      preserved_rules:
+        - ingestion and feature store precede signal and simulation layers
+        - event split and runtime guardrails precede simulation
+        - deterministic pipeline remains the truth path
+
+  current_repo_ml_and_vbt_paths:
+    runtime_binding_and_entrypoints:
+      purpose: ensure any vbtpro integration executes in the correct interpreter and through the current toolchain
+      files:
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+          functions:
+            - import_vectorbtpro
+            - apply_vectorbt_cpu_profile
+          role: resolves vectorbtpro root and applies runtime profile
+        - path: /home/benji/trade_scanner2/trade_scanner/tools/strategy_factory.py
+          role: toolchain CLI entrypoint for run-vbt-sweep and run-honest-validation
+        - path: /home/benji/trade_scanner2/scripts/run_blackwell_ensemble_guarded.py
+          role: guarded Blackwell launcher
+        - path: /home/benji/trade_scanner2/scripts/run_blackwell_ensemble_practice.py
+          role: thin Blackwell runner wrapper
+      preserved_rule:
+        - default shell python is not the vectorbtpro runtime, so any new VBT code path must respect existing interpreter discovery or explicit vectorbtpro_path handoff
+    candidate_gating_meta_loop:
+      purpose: build candidate dataset, label realized outcomes, train model, score candidates, evaluate accept-reject decisions
+      files:
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+          functions:
+            - build_candidate_dataset
+          role: candidate dataset build from alerts plus feature index
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+          functions:
+            - label_candidate_dataset
+          role: realized-outcome labeling from simulated trades and forward returns
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+          functions:
+            - train_meta_model
+            - score_candidate_dataset
+          role: train/valid split, model fit, scoring decisions
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+          functions:
+            - evaluate_execution_decisions
+            - run_walk_forward_baselines
+          role: decision evaluation and baseline fold analysis
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+          functions:
+            - run_meta_loop
+            - run_meta_batch
+          role: end-to-end orchestration
+      current_split_behavior:
+        - models.py uses chronological train/valid split via _train_valid_mask
+        - walk_forward.py uses _split_dates and policy evaluation
+      best_vbtpro_attach_points:
+        - replace or augment _train_valid_mask with Splitter-derived train/valid masks
+        - replace or augment _split_dates with Splitter.from_rolling or Splitter.from_purged_walkforward derived folds
+        - optionally wrap train/eval functions with vbt.split or vbt.cv_split
+
+    strategy_execution_lane:
+      purpose: generate strategy signals and run vectorbtpro-backed strategy sweeps
+      files:
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+          functions:
+            - import_vectorbtpro
+            - apply_vectorbt_cpu_profile
+            - run_strategy_sweep
+          role: signal generation, runtime normalization, variant/symbol execution
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+          functions:
+            - run_native_signal_portfolio
+            - run_native_order_func_portfolio
+          role: native Portfolio/PF execution wrappers
+      current_vbt_usage:
+        - vectorbtpro execution is already central for signals/order-func simulation
+        - resource policy and parity concerns are active contracts
+      best_vbtpro_attach_points:
+        - split-aware execution research via vbt.split applied to signal or portfolio generation
+        - parameterized strategy sweeps for bounded family research
+        - chunked portfolio runs where current memory/throughput is constrained
+
+    validation_and_holdout_lane:
+      purpose: preserve no-leak windows, rank on walkforward, gate on holdout
+      files:
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+          functions:
+            - build_role_validation_segments
+            - build_honest_validation_segments
+            - resolve_validation_segment
+          role: normalized role-based split authority
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+          functions:
+            - write_walkforward_leaderboard
+            - freeze_walkforward_baselines
+          role: walkforward ranking and baseline freeze
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+          functions:
+            - run_per_family_final_holdout_audit
+          role: final holdout gate
+      best_vbtpro_attach_points:
+        - export repo split law into VBT Splitter objects for internal execution only
+        - use SplitterCV bridge where sklearn-compatible CV is needed without redefining window authority
+
+    blackwell_lane:
+      purpose: strongest existing train/validate/holdout ML lane with explicit artifact and GPU topology
+      files:
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/README.md
+          role: runbook and stage ordering
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+          role: staged orchestration build-panel parity-audit run-base-models fit-stacker evaluate
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+          role: panel build from validated store and feature surface
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+          role: local feature augmentation and feature manifest
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+          role: nested walk-forward and frozen holdout split law
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+          role: GPU XGBoost training, holdout prediction, SHAP, hyperparameter trial payload
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+          role: model variants and candidate hyperparameters
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+          role: rank predictions and build portfolio view
+        - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+          role: regression and portfolio metrics
+        - path: /home/benji/trade_scanner2/configs/strategy_factory/research/blackwell_ensemble_v1.yaml
+          role: runtime topology, split law, target, ranking
+      current_strength:
+        - clearest existing ML architecture in repo
+        - strongest place to adopt vbt.Splitter-derived internals
+        - explicit GPU boundary already exists
+      best_vbtpro_attach_points:
+        - derive split_plan and/or split diagnostics from vbt.Splitter.from_purged_walkforward
+        - add pattern- and label-based features to feature_builders_gpu.py
+        - add optional Portfolio.from_signals or from_optimizer evaluation branch after rank_predictions
+        - use parameterized/chunked helpers for bounded experiment expansion
+
+integration_map:
+  minimal_intrusion_path:
+    fit_assessment: best_fit_for_current_repo
+    why:
+      - preserves current repo contracts and artifact shapes
+      - introduces VBT PRO as an internal engine, not a contract rewrite
+      - easiest to validate against current no-leak walkforward/holdout behavior
+    implementation_targets:
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+        add:
+          - helper to export role-based validation segments into a VBT Splitter spec
+          - helper to emit splitter manifest for diagnostics
+        do_not_change:
+          - existing role-based contract authority
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+        add:
+          - optional splitter_backend argument
+          - optional VBT Splitter-backed train/valid slicing path
+          - optional SplitterCV-backed sklearn fit path for cross-validation experiments
+        do_not_change:
+          - default chronological split behavior until parity is proven
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+        add:
+          - optional VBT Splitter-backed fold builder
+          - optional purged walkforward research path
+        do_not_change:
+          - default fold metrics artifact shape
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+        add:
+          - adapter that exports existing split plan into VBT Splitter-compatible diagnostics
+          - optional parity check between repo split plan and VBT Splitter date membership
+        do_not_change:
+          - current split plan schema and validate_split_plan semantics
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+        add:
+          - optional VBT pattern and label-derived feature block
+          - manifest entries for pattern-derived feature families
+        do_not_change:
+          - current feature manifest fields unless versioned
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+        add:
+          - optional research path for Portfolio.from_optimizer
+          - optional split-aware simulation wrapper for research-only experiments
+        do_not_change:
+          - current parity-critical signal/order_func defaults
+
+  aggressive_vbt_native_ml_path:
+    fit_assessment: useful_as_research_lane_only
+    why:
+      - could compress split, CV, parameterization, and portfolio evaluation into a tighter VBT-native loop
+      - higher upside for research velocity, higher risk to current repo contract clarity
+    implementation_targets:
+      - create: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_ml_splitters.py
+        contents:
+          - repo contract to VBT Splitter builders
+          - purged walkforward and sklearn bridge helpers
+      - create: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_ml_features.py
+        contents:
+          - pattern search wrappers
+          - rolling similarity wrappers
+          - VBT label generator wrappers
+      - create: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_ml_backtests.py
+        contents:
+          - prediction-to-signal mapping
+          - split-aware Portfolio evaluation
+          - optional PortfolioOptimizer flows
+      - extend:
+          - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+          - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+        with:
+          - backend selection for repo-native vs VBT-native ML execution
+      - research_only_rule:
+          - do not replace current authoritative reporting path until exact artifact parity is proven
+
+  blackwell_gpu_specific_path:
+    fit_assessment: highest_value_target_for_new_vbtpro_ml_adoption
+    why:
+      - Blackwell already has explicit split law, GPU topology, model catalog, feature builder, ranking, and evaluation stages
+      - it is the cleanest isolated lane for trying VBT-native ML without disturbing canon strategy validation
+    specific_adoption_points:
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+        add:
+          - vbt.Splitter parity manifest for development_outer_folds and frozen_holdout
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+        add:
+          - PATSIM similarity features
+          - PatternRanges match-count or similarity-score features
+          - TRENDLB/PIVOTLB/FMEAN/FIXLB derived target-adjacent research features where point-in-time safe
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+        add:
+          - optional VBT Portfolio evaluation branch from selected ranks
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+        add:
+          - parameterization manifest aligned to vbt.Param or create_param_product
+      - file: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+        add:
+          - chunked hyperparameter candidate execution
+          - bounded batch scheduling for candidate sets
+        note:
+          - training itself is XGBoost-driven; VBT adds more value around split management, parameter surfacing, and downstream portfolio evaluation than replacing XGBoost training
+
+detailed_code_instructions:
+  instruction_set_1_split_contract_adapter:
+    goal: use VBT PRO splitters without surrendering repo authority
+    create_or_modify:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    required_behavior:
+      - derive splitter membership from repo date windows
+      - emit explicit mapping from repo role names to splitter labels
+      - preserve walkforward as ranking and holdout as gate
+    validation:
+      - repo split-plan date membership equals derived splitter membership
+      - no training/validation/holdout overlap
+
+  instruction_set_2_meta_loop_cv_upgrade:
+    goal: add better CV to candidate-gating ML without rewriting the loop
+    modify:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+    required_behavior:
+      - keep current default fit path
+      - add research path for splitter_backend=repo_contract_vbt_splitter
+      - allow SplitterCV for sklearn-compatible validation experiments
+      - keep training_summary artifact stable or version any new fields
+    validation:
+      - current path unchanged by default
+      - VBT CV path produces deterministic row membership manifest
+
+  instruction_set_3_feature_and_label_augmentation:
+    goal: add pattern-derived and VBT-label-derived features safely
+    modify:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+    add:
+      - explicit feature_family: vbt_pattern_similarity
+      - explicit feature_family: vbt_pattern_search
+      - explicit feature_family: vbt_label_research
+    required_behavior:
+      - every added feature must be point-in-time safe
+      - every feature family must be declared in manifest
+      - every feature family must be switchable off
+    validation:
+      - no forward-looking leakage
+      - manifest and column inventory updated
+
+  instruction_set_4_vbt_portfolio_evaluation_for_ml_predictions:
+    goal: convert model predictions into a native VBT portfolio evaluation layer
+    modify:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+    required_behavior:
+      - keep current ranking and portfolio_view as baseline
+      - add optional research branch that feeds predictions into Portfolio.from_signals or from_optimizer
+      - keep output artifacts side-by-side, not silently replaced
+    validation:
+      - research branch writes separate metrics refs
+      - baseline metrics remain reproducible
+
+  instruction_set_5_parameterized_search_and_chunking:
+    goal: use VBT PRO parameterization/chunking for bounded search scale improvements
+    modify:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_loop.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_loop.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+    required_behavior:
+      - parameter manifests remain explicit and reviewable
+      - chunking remains bounded and deterministic
+      - no change to no-leak split law
+    validation:
+      - result equivalence per chunk merge
+      - stable parameter identity and artifact lineage
+
+  instruction_set_6_test_and_guardrail_surface:
+    goal: use existing tests and add targeted new ones to keep VBT adoption safe
+    existing_guardrail_files:
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_vbt.py
+      - /home/benji/trade_scanner2/tests/test_strategy_factory_vbt_loop.py
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime.py
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime_equivalence.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_dataset.py
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+    add_new_tests_for:
+      - repo_split_plan_to_vbt_splitter_membership_parity
+      - splitter_backed_models_py_row_membership_vs_current_chronological_split
+      - pattern_feature_builder_point_in_time_safety
+      - blackwell_vbt_portfolio_research_branch_artifact_shape
+      - parameterized_chunked_candidate_merge_equivalence
+
+recommended_adoption_order:
+  - phase_id: 1
+    title: splitter_adapter_only
+    reason: lowest risk and highest architectural clarity
+    outputs:
+      - repo_contract_to_vbt_splitter_adapter
+      - splitter_membership_parity_manifest
+  - phase_id: 2
+    title: meta_loop_cv_research_branch
+    reason: fastest direct ML benefit with minimal execution risk
+    outputs:
+      - optional SplitterCV path in models.py
+      - research-only scoring comparison
+  - phase_id: 3
+    title: blackwell_feature_augmentation
+    reason: best place to exploit pattern/label features and Blackwell GPUs
+    outputs:
+      - VBT-derived pattern features
+      - manifest version bump
+  - phase_id: 4
+    title: blackwell_portfolio_research_branch
+    reason: natural place to evaluate VBT-native portfolio simulation against current rank-to-view logic
+    outputs:
+      - optional Portfolio.from_signals or from_optimizer evaluation branch
+  - phase_id: 5
+    title: parameterized_chunked_research
+    reason: search-scale and runtime improvements after correctness and split integrity are established
+    outputs:
+      - bounded parameterized research mode
+      - chunked hyperparameter candidate execution
+
+what_fits_repo_best:
+  verdict: minimal_intrusion_path_first_blackwell_gpu_specific_second
+  rationale:
+    - repo already has strong split authority and no-leak contracts
+    - repo already uses vectorbtpro for execution, so internal VBT extension is easier than full workflow replacement
+    - Blackwell is already an isolated ML lane and is the best place for more aggressive VBT-native experimentation
+  avoid_first:
+    - replacing current role-based split law with VBT-native split definitions as authority
+    - replacing current artifact contracts before parity manifests exist
+    - pushing pattern-derived features into truth-path reports before point-in-time validation
+
+guardrails:
+  must_preserve:
+    - /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+  must_not_assume:
+    - that VBT splitter semantics automatically match repo date windows
+    - that pattern features are point-in-time safe without explicit proof
+    - that chunking or parameterization is free of lineage/reporting consequences
+  must_validate:
+    - date membership parity
+    - artifact parity or explicit versioning
+    - no overlap across training walkforward holdout
+    - no silent holdout contamination
+
+high_value_next_actions:
+  - write vbt splitter adapter note and prototype in validation_segments.py
+  - add research-only splitter backend to models.py
+  - add Blackwell pattern feature experiment behind a config flag
+  - add research-only VBT portfolio evaluation branch after Blackwell ranking
+  - add parameterized candidate manifest generation in model_catalog.py
+
+source_refs:
+  repo_core:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+  blackwell:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/README.md
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+    - /home/benji/trade_scanner2/configs/strategy_factory/research/blackwell_ensemble_v1.yaml
+  repo_contracts:
+    - /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/pipeline_modularity_resource_plan_20260401.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/pipeline_modularity_risk_cleanup_plan_20260401.yaml
+  vectorbtpro:
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/sklearn_.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/decorators.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/purged.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/chunking.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/ranges.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/accessors.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/indicators/custom/patsim.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/base.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/pfopt/base.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/preparing.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/fmean.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/fixlb.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/pivotlb.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/trendlb.py
+    - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators/bolb.py
+source_refs:
+  - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+  - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/sklearn_.py
+  - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/decorators.py
+  - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/indicators/custom/patsim.py
+  - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+  - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py

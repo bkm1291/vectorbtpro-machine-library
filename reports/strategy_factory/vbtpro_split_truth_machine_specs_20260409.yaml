@@ -1,0 +1,403 @@
+artifact_id: vbtpro_split_truth_machine_specs_20260409
+artifact_version: 1
+artifact_type: schema_note
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Preserve extended split-truth machine structures beyond the base schema: router indexes,
+  parity matrices, artifact contracts, notebook audit registries, and test registries.
+
+note_structures:
+  split_truth_router_index_v1:
+    purpose: global routing index over all split, leakage, chronology, and artifact truth records
+    required_fields:
+      - artifact_type
+      - version
+      - route_table
+      - record_locations
+      - indexes
+    route_table_fields:
+      - canonical_route
+      - theme
+      - canonical_subject
+      - canonical_assertion
+      - priority
+      - record_ids
+    indexes:
+      - by_identity_key
+      - by_artifact_scope
+      - by_repo_owner
+      - by_failure_consequence
+      - by_vbt_tool
+      - by_validation_surface
+
+  split_truth_parity_matrix_v1:
+    purpose: explicit parity matrix between repo contract, VBT reconstruction, and output artifact
+    matrix_row_fields:
+      - parity_id
+      - identity_key
+      - artifact_scope
+      - repo_contract_truth
+      - vbt_truth
+      - output_truth
+      - assertion_level
+      - parity_status
+      - mismatch_axes
+      - source_refs
+
+  split_truth_artifact_contracts_v1:
+    purpose: normalize artifact-level split, fold, and schema truth requirements
+    artifact_contract_fields:
+      - artifact_scope
+      - writer_stage
+      - required_columns
+      - semantic_tag_columns
+      - row_identity_columns
+      - uniqueness_constraints
+      - expected_split_labels
+      - expected_set_labels
+      - truth_source
+      - validator_functions
+      - parity_tests
+
+  split_truth_notebook_cells_v1:
+    purpose: registry of notebook audit cells with exact inputs, outputs, and assertions
+    notebook_cell_fields:
+      - cell_id
+      - theme
+      - purpose
+      - inputs
+      - vbt_tools
+      - repo_targets
+      - outputs
+      - assertion_kind
+      - comparison_mode
+      - pass_condition
+
+  split_truth_test_registry_v1:
+    purpose: registry of exact tests to add or extend
+    test_record_fields:
+      - test_id
+      - repo_test_file
+      - repo_test_target
+      - assertion_scope
+      - identity_key
+      - artifact_scope
+      - parity_basis
+      - required_fixtures
+      - pass_condition
+      - fail_signal
+
+layout_deltas:
+  required_notes:
+    - split_truth_router_index_v1
+    - split_truth_inventory_v1
+    - split_truth_parity_matrix_v1
+    - split_truth_artifact_contracts_v1
+    - split_truth_test_registry_v1
+    - split_truth_notebook_registry_v1
+    - split_truth_coverage_index_v1
+  optional_notes:
+    - split_truth_failures_index_v1
+    - split_truth_remap_registry_v1
+    - split_truth_lineage_registry_v1
+  route_target_kind_allowed:
+    - inventory_record
+    - parity_row
+    - artifact_contract
+    - test_record
+    - notebook_cell
+    - coverage_row
+    - failure_record
+    - lineage_record
+    - remap_record
+  primary_join_keys:
+    - semantic_contract_id
+    - parity_group_id
+    - artifact_scope
+  secondary_join_keys:
+    - identity_key
+    - route_ref
+    - contract_id
+    - test_id
+    - cell_id
+
+compact_indexes:
+  by_route_ref:
+    fields:
+      - route_ref
+      - note_type
+      - local_record_id
+  by_semantic_contract:
+    fields:
+      - semantic_contract_id
+      - note_type
+      - local_record_id
+      - status
+  by_artifact_scope:
+    fields:
+      - artifact_scope
+      - note_type
+      - local_record_id
+      - parity_status
+  by_parity_group:
+    fields:
+      - parity_group_id
+      - note_type
+      - local_record_id
+      - mismatch_axes
+
+canonical_layout_views:
+  - name: split_truth_contract_view
+    joins:
+      - split_truth_inventory_v1
+      - split_truth_artifact_contracts_v1
+      - split_truth_router_index_v1
+  - name: split_truth_parity_view
+    joins:
+      - split_truth_inventory_v1
+      - split_truth_parity_matrix_v1
+      - split_truth_coverage_index_v1
+  - name: split_truth_validation_view
+    joins:
+      - split_truth_test_registry_v1
+      - split_truth_notebook_registry_v1
+      - split_truth_coverage_index_v1
+  - name: split_truth_failure_view
+    joins:
+      - split_truth_failures_index_v1
+      - split_truth_parity_matrix_v1
+      - split_truth_inventory_v1
+
+extra_atomic_fields:
+  required:
+    - repo_owner
+    - artifact_scope
+    - truth_source
+    - parity_status
+    - mismatch_axes
+    - validator_functions
+    - semantic_contract_id
+    - parity_group_id
+    - ownership_group
+  recommended_booleans:
+    - has_explicit_row_identity_key
+    - has_semantic_tag_columns
+    - has_validator_guard
+    - has_notebook_audit
+    - has_unit_test
+    - requires_range_remap
+    - requires_purge_or_embargo_logic
+    - supports_exact_membership_equality
+  recommended_lists:
+    - row_identity_columns
+    - semantic_tag_columns
+    - chronology_columns
+    - leakage_boundary_columns
+    - output_artifact_paths
+    - validator_function_refs
+    - notebook_cell_ids
+    - test_ids
+
+separate_indexes:
+  split_membership_index_v1:
+    key_fields:
+      - identity_key
+      - artifact_scope
+      - equality_unit
+      - equality_key_columns
+      - parity_status
+  chronology_truth_index_v1:
+    key_fields:
+      - semantic_contract_id
+      - artifact_scope
+      - boundary_semantics
+      - chronology_scope
+      - parity_status
+  overlap_leakage_index_v1:
+    key_fields:
+      - contamination_boundary
+      - overlap_unit
+      - leakage_detector
+      - parity_status
+      - failure_consequence
+  fold_lineage_index_v1:
+    key_fields:
+      - parent_identity
+      - child_identity
+      - lineage_labels_expected
+      - lineage_drift_detected
+      - parity_status
+  artifact_parity_index_v1:
+    key_fields:
+      - artifact_scope
+      - semantic_tag_columns
+      - row_identity_columns
+      - validator_functions
+      - parity_status
+
+coverage_dimensions:
+  - chronology_boundaries
+  - embargo_and_purge_rules
+  - membership_equality
+  - overlap_and_contamination
+  - fold_parentage_and_lineage
+  - artifact_schema_and_row_identity
+  - notebook_audit_coverage
+  - unit_test_coverage
+
+retrieval_priority_order:
+  - by_semantic_contract
+  - by_parity_group
+  - by_artifact_scope
+  - by_identity_key
+  - by_failure_consequence
+  - by_validation_surface
+
+failure_record_shape:
+  required_fields:
+    - failure_id
+    - parity_group_id
+    - semantic_contract_id
+    - artifact_scope
+    - failure_kind
+    - mismatch_axes
+    - failure_consequence
+    - likely_root_cause
+    - validator_refs
+    - source_refs
+
+lineage_record_shape:
+  required_fields:
+    - lineage_id
+    - parent_identity
+    - child_identity
+    - artifact_scope
+    - lineage_labels_expected
+    - lineage_labels_observed
+    - lineage_drift_detected
+    - source_refs
+
+remap_record_shape:
+  required_fields:
+    - remap_id
+    - artifact_scope
+    - source_identity_key
+    - target_identity_key
+    - remap_reason
+    - remap_function
+    - parity_status
+    - source_refs
+
+artifact_parity_registry_v1:
+  purpose: exact artifact-level parity registry for row identity, semantic tags, chronology boundaries, and uniqueness
+  required_fields:
+    - artifact_parity_id
+    - semantic_contract_id
+    - artifact_scope
+    - contract_id
+    - parity_group_id
+    - route_ref
+    - writer_stage
+    - artifact_path_ref
+    - parity_subjects
+    - required_identity_columns
+    - required_semantic_tag_columns
+    - required_boundary_columns
+    - exact_match_policy
+    - parity_status
+    - mismatch_axes
+    - blocking
+  parity_subjects_allowed:
+    - row_identity
+    - semantic_tags
+    - chronology_boundaries
+    - split_membership
+    - fold_lineage
+    - uniqueness
+    - overlap_exclusion
+  indexes:
+    - by_artifact_parity_id
+    - by_semantic_contract_id
+    - by_artifact_scope
+    - by_parity_status
+    - by_blocking
+    - by_writer_stage
+
+chronology_contract_registry_v1:
+  purpose: chronology boundary and purge/embargo truth registry
+  required_fields:
+    - chronology_contract_id
+    - semantic_contract_id
+    - artifact_scope
+    - route_ref
+    - boundary_family
+    - boundary_fields
+    - boundary_semantics
+    - ordering_constraints
+    - embargo_purge_constraints
+    - chronology_truth_source
+    - validator_refs
+    - status
+  boundary_family_allowed:
+    - train_valid
+    - train_walkforward_holdout
+    - development_holdout
+    - inner_outer_fold
+    - output_artifact_boundary
+  indexes:
+    - by_chronology_contract_id
+    - by_semantic_contract_id
+    - by_artifact_scope
+    - by_boundary_family
+    - by_status
+
+lookup_views_v1:
+  purpose: low-context machine views for artifact parity and chronology lookups
+  required_views:
+    - split_truth_artifact_lookup_view
+    - split_truth_chronology_lookup_view
+    - split_truth_router_lookup_view
+    - split_truth_blocking_failures_view
+  split_truth_artifact_lookup_view:
+    key_fields:
+      - artifact_scope
+      - semantic_contract_id
+    materialized_columns:
+      - writer_stage
+      - required_columns
+      - semantic_tag_columns
+      - row_identity_columns
+      - parity_status
+      - mismatch_axes_sorted
+      - blocking
+      - validator_refs
+  split_truth_chronology_lookup_view:
+    key_fields:
+      - semantic_contract_id
+      - artifact_scope
+      - boundary_family
+    materialized_columns:
+      - boundary_fields
+      - boundary_semantics
+      - ordering_constraints
+      - embargo_purge_constraints
+      - status
+
+normalization_rules:
+  - semantic_contract_id must be stable across repo, vbt, and output records for the same contract
+  - parity_group_id must group exactly one parity question
+  - artifact_scope must name the written or computed output, not only the module
+  - mismatch_axes must be empty whenever parity_status is exact
+  - equality_key_columns must be present for exact_row_identity_equality
+  - semantic_tag_columns must be present whenever artifact_scope is not notebook_only
+  - lineage_labels_expected must be present for exact_fold_parentage
+  - contamination_boundary must not be none for overlap_leakage records
+  - artifact parity records must link back to contract_id and route_ref
+  - chronology contracts must exist whenever parity subject includes chronology_boundaries
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml

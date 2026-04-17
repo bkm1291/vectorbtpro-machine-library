@@ -1,0 +1,47 @@
+artifact_id: vbtpro_library_completion_contract_20260409
+artifact_version: 1
+artifact_type: completion_contract
+status: frozen
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Final definition of what counts as library complete. Completion is content-complete
+  enough for frozen authority use, not a statement that research can never add more data.
+
+completion_thresholds:
+  vbt_family_coverage_threshold:
+    target: 0.9
+    meaning: at least 90 percent of repo-relevant VBT family groups are mapped into canonical notes or reservoir
+  repo_mapping_threshold:
+    target: 0.9
+    meaning: at least 90 percent of repo-path router entries have canonical stage or replacement mapping
+  normalization_threshold:
+    target: 0.8
+    meaning: at least 80 percent of stable reused records live in canonical registries rather than batch-only intake
+  alias_coverage_threshold:
+    target: 0.9
+    meaning: at least 90 percent of repeated query patterns have stable aliases
+  truth_risk_coverage_threshold:
+    target: 1.0
+    meaning: all known blocking or high truth risks are recorded in the truth-risk matrix
+
+completion_requires:
+  - constitution_frozen
+  - normalization_boundary_frozen
+  - retrieval_contract_frozen
+  - agent_output_protocol_frozen
+  - coverage_dashboard_generated
+  - compiled_lookup_validate_only_passes
+
+ongoing_growth_after_completion:
+  allowed:
+    - add_new_content_records_that_follow_frozen_contracts
+    - add_new_alias_entries_that_follow_frozen_contracts
+    - add_new_repo_mappings_that_follow_frozen_contracts
+  forbidden:
+    - mutate_threshold_definitions_without_version_bump
+    - claim_completion_if_truth_risk_coverage_is_below_threshold
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml

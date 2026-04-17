@@ -1,0 +1,116 @@
+artifact_id: vbtpro_module_family_index_20260408
+artifact_version: 1
+artifact_type: source_index
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Fast index of the installed VectorBT PRO package families so the full capability capture can
+  be condensed later without losing where important tools live.
+
+installed_root: /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro
+
+module_families:
+  - family: base
+    python_file_count: 18
+    relevance:
+      - wrapping
+      - grouping
+      - resampling
+  - family: data
+    python_file_count: 34
+    relevance:
+      - Data
+      - CustomData
+      - alignment
+      - resampling
+      - ingestion helpers
+  - family: generic
+    python_file_count: 26
+    relevance:
+      - accessors
+      - ranges
+      - splitters
+      - drawdowns
+      - stats/plots builders
+  - family: indicators
+    python_file_count: 24
+    relevance:
+      - IndicatorFactory
+      - custom indicators
+      - feature engineering
+  - family: labels
+    python_file_count: 13
+    relevance:
+      - target generation
+      - future-stat labels
+      - trend/pivot labels
+  - family: portfolio
+    python_file_count: 23
+    relevance:
+      - Portfolio
+      - orders/trades/logs/positions
+      - pfopt
+  - family: records
+    python_file_count: 7
+    relevance:
+      - records
+      - resampling
+      - stats/plots
+  - family: returns
+    python_file_count: 5
+    relevance:
+      - returns accessors
+      - benchmark metrics
+      - QS adapter
+  - family: signals
+    python_file_count: 17
+    relevance:
+      - signals accessors
+      - SignalFactory
+      - stop generators
+      - random/prob generators
+  - family: utils
+    python_file_count: 44
+    relevance:
+      - execution
+      - params
+      - chunking
+      - caching
+      - jitting
+  - family: registries
+    python_file_count: 5
+    relevance:
+      - jitted registry
+      - chunkable registry
+      - cacheable registry
+  - family: ohlcv
+    python_file_count: 4
+    relevance:
+      - OHLCV accessors
+      - plotting/review
+  - family: px
+    python_file_count: 3
+    relevance:
+      - plotting accessors
+      - notebook review
+  - family: knowledge
+    python_file_count: 13
+    relevance:
+      - still being mapped
+      - likely lower priority
+
+primary_families_for_repo:
+  - data
+  - generic
+  - indicators
+  - labels
+  - portfolio
+  - returns
+  - signals
+  - utils
+
+source_refs:
+  installed_root: /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro
+  encyclopedia: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+  capability_dump_notebook: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb

@@ -1,0 +1,176 @@
+artifact_id: vbtpro_machine_contract_constitution_20260409
+artifact_version: 1
+artifact_type: machine_contract_constitution
+status: frozen
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Final immutable machine contract for the VBT PRO library. This freezes id families,
+  status enums, artifact kinds, registry field requirements, cross-link types, and
+  validator expectations. Information may continue to grow, but only inside this
+  frozen contract system.
+
+immutability_rule:
+  schema_drift_allowed_without_version_bump: false
+  enum_drift_allowed_without_version_bump: false
+  query_shape_drift_allowed_without_version_bump: false
+  cross_link_drift_allowed_without_version_bump: false
+
+id_families:
+  artifact_id:
+    pattern: vbtpro_[a-z0-9_]+_YYYYMMDD
+    examples:
+      - vbtpro_research_master_index_20260408
+      - vbtpro_lab_build_registry_20260409
+  stage_id:
+    pattern: S[0-9]+_[a-z0-9_]+
+    authority_source: /home/benji/vectorbtpro-machine-library/contracts/stage_registry.yaml
+  risk_id:
+    pattern: TR[0-9]{3}_[a-z0-9_]+
+    authority_source: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+  registry_id:
+    pattern: RR[0-9]{3}_[a-z0-9_]+
+    authority_source: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+  map_id:
+    pattern: CL[0-9]{3}_[a-z0-9_]+
+    authority_source: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+  alias_id:
+    pattern: QA[0-9]{3}
+    authority_source: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+  module_id:
+    pattern: '[a-z_]+'
+    authority_source: /home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml
+  build_slice_artifact_id:
+    pattern: vbtpro_[a-z0-9_]+_build_slice_YYYYMMDD
+  module_contract_artifact_id:
+    pattern: vbtpro_[a-z0-9_]+_module_contract(_[0-9]{8})?
+
+status_enums:
+  artifact_status:
+    - active_research
+    - active_next
+    - bootstrap
+    - built_validated
+    - frozen
+    - parked
+  build_status:
+    - built_validated
+    - active_next
+    - pending_foundation
+    - pending_after_truth_modules
+    - pending_after_runtime_parity
+    - parked
+  priority:
+    - highest
+    - high
+    - medium
+    - low
+  adoption_mode:
+    - direct_replace
+    - adapter_first
+    - overlay_sidecar
+    - shadow_pipeline_only
+    - future_build_only
+    - keep_current_authority
+
+artifact_kinds:
+  immutable_set:
+    - authority_contract
+    - master_index
+    - master_program_note
+    - machine_contract_constitution
+    - normalization_boundary_contract
+    - retrieval_contract
+    - completion_contract
+    - agent_output_protocol
+    - topic_router
+    - repo_router
+    - truth_risk_matrix
+    - replacement_registry
+    - code_level_map
+    - query_alias_registry
+    - build_registry
+    - coverage_dashboard
+    - compiled_lookup_store
+    - build_manifest
+    - query_examples
+    - stage_contract_note
+    - repo_manifest
+    - module_contract
+    - module_contract_bundle
+    - build_slice_plan
+
+registry_required_fields:
+  stage_record:
+    - stage_id
+    - stage_kind
+    - purpose
+    - cpu_role
+    - gpu_role
+    - payload_json
+  truth_risk_record:
+    - risk_id
+    - blocking_severity
+    - failure_mode
+    - payload_json
+  replacement_record:
+    - registry_id
+    - adoption_mode
+    - risk_level
+    - current_role
+    - payload_json
+  code_map_record:
+    - map_id
+    - primary_path
+    - adoption_mode
+    - payload_json
+  build_module_record:
+    - module_id
+    - module_path
+    - build_status
+    - rollout_phase
+    - payload_json
+  query_alias_record:
+    - alias
+    - alias_id
+    - target_kind
+    - target_value
+    - description
+
+cross_link_types:
+  immutable_set:
+    - repo_path_to_stage_id
+    - repo_path_to_truth_risk
+    - repo_path_to_vbt_candidate
+    - stage_id_to_truth_risk
+    - module_id_to_stage_id
+
+validator_expectations:
+  yaml_contracts_parse_cleanly: required
+  source_python_compiles_cleanly: required_for_code_changes
+  compiled_lookup_rebuild_passes: required_for_library_contract_changes
+  compiled_lookup_validate_only_passes: required_for_library_contract_changes
+  artifact_query_smoke_passes: required_for_new_registered_artifacts
+  status_enum_violation_without_version_bump: forbidden
+  required_field_omission_without_version_bump: forbidden
+
+version_bump_rules:
+  required_when:
+    - adding_or_removing_status_enum_values
+    - adding_or_removing_required_registry_fields
+    - renaming_id_families
+    - renaming_cross_link_types
+    - changing_query_result_shapes
+  not_required_when:
+    - adding_new_content_records_that_follow_existing_schema
+    - adding_new_alias_entries_that_follow_existing_schema
+    - adding_new_artifacts_that_follow_existing_artifact_kinds_and_registration_rules
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/stage_registry.yaml

@@ -1,0 +1,831 @@
+artifact_id: vbtpro_encyclopedia_program_20260408
+artifact_version: 1
+artifact_type: master_program_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Top-level program note for building and maintaining the VBT PRO encyclopedia, repo-fit map,
+  indexing layer, notebooks, and implementation planning surfaces without losing information
+  to context limits. This note is the durable operating plan for the encyclopedia project.
+
+library_constitution_status:
+  frozen_contracts:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_normalization_boundary_contract_20260409.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_agent_output_protocol_20260409.yaml
+  content_growth_allowed_inside_frozen_contracts: true
+  contract_drift_allowed_without_version_bump: false
+
+primary_consumer_contract:
+  primary_consumers:
+    - codex_main_agent
+    - delegated_subagents
+    - future_machine_processes
+  optimization_target:
+    statement: >
+      This library is being built for agent and machine use only. Human readability is not
+      an optimization target. Retrieval speed, exact disambiguation, low-context lookup,
+      stable routing, and safe handoff are the only relevant design goals.
+  design_consequences:
+    - machine retrieval efficiency takes priority over any prose preference
+    - stable keys take priority over literary compression
+    - routing layers take priority over human intuition
+    - structured records take priority over prose-only explanations
+    - human-oriented readability is irrelevant unless it also helps machine use
+
+machine_optimization_contract:
+  goals:
+    - maximize parseability by future agents and scripts
+    - minimize ambiguity in artifact roles and project phases
+    - preserve stable ids and stable routing categories
+    - keep structures additive and append-friendly
+  conventions:
+    ids_are_stable: true
+    enums_preferred_over_freeform_where_practical: true
+    line_hints_are_advisory_not_authoritative: true
+    absolute_paths_preferred: true
+    artifact_registration_required: true
+    router_registration_required_for_major_topics: true
+  preferred_status_values:
+    project_phase:
+      - in_progress
+      - active_next
+      - pending
+      - parked
+      - complete
+    artifact_priority:
+      - highest
+      - medium
+      - low
+    adoption_mode:
+      - adapter_first
+      - overlay_research
+      - keep_custom_or_gpu
+      - greenfield_shadow_candidate
+  normalization_rules:
+    - use snake_case keys
+    - use flat lists for enumerations
+    - avoid burying critical state only in prose paragraphs
+    - keep every artifact path absolute
+    - prefer explicit step ids and phase ids
+    - separate authority artifacts from research artifacts explicitly
+
+compiled_lookup_enforcement:
+  rules:
+    - every_new_stable_registry_should_be_queryable_without_note_body_search
+    - every_common_lookup_pattern_should_gain_an_alias_if_repeated
+    - every_active_new_repo_module_must_exist_in_the_build_registry
+    - every_major_repo_mapping_note_should_land_in_normalized_compiled_tables
+    - every_major_library_rebuild_should_refresh_the_coverage_dashboard
+  normalized_record_targets:
+    - stage_records
+    - truth_risk_records
+    - replacement_records
+    - code_map_records
+    - build_module_records
+    - query_aliases
+  preferred_cross_links:
+    - repo_path_to_stage_id
+    - repo_path_to_truth_risk
+    - repo_path_to_vbt_candidate
+    - stage_id_to_truth_risk
+    - module_id_to_stage_id
+
+agent_enforcement_contract:
+  miner_requirements:
+    - output_stable_ids_when_capability_or_risk_is_reusable
+    - emit_exact_vbt_paths_and_repo_paths
+    - include_stage_ids_or_truth_risk_ids_when_known
+    - propose_alias_candidates_when_a_lookup_pattern_is_repeated
+    - preserve_unmapped_but_useful_capabilities_in_reservoir_or_batch_records
+  organizer_requirements:
+    - normalize_agent_returns_into_canonical_registries_when_schema_exists
+    - do_not_leave_high_value_findings_only_in_agent_output
+    - update_master_index_when_a_new_major_artifact_is_added
+    - keep_vbtpro_lab_build_registry_current_when_new_repo_focus_changes
+    - rebuild_and_validate_compiled_lookup_after_major_registry_changes
+  phase_split_enforcement:
+    miners_half_of_agents: true
+    organizers_half_of_agents: true
+    immediate_requeue_required: true
+
+information_absorption_strategy:
+  objective: >
+    Organize the library around how a reasoning system actually finds and uses information:
+    first route to the right scope, then pull only the minimum necessary deep context, then
+    expand into implementation detail on demand.
+  preferred_ingestion_units:
+    - unit_id: capability_family
+      meaning: one VBT PRO tool family with repo-relevant fit and anti-patterns
+    - unit_id: repo_path_cluster
+      meaning: one repo file or tightly related subsystem with explicit VBT fit classification
+    - unit_id: truth_risk
+      meaning: one leakage, drift, bias, schema, or honesty risk with exact controls
+    - unit_id: implementation_move
+      meaning: one bounded adoptable action with exact files, validation, and stop conditions
+  preferred_retrieval_order:
+    - identify objective or repo path first
+    - route through master index or routers
+    - open one long-form section only
+    - pull supporting repo file matrix entries
+    - only then expand into notebooks or secondary notes if needed
+  anti_overload_rules:
+    - avoid opening the full encyclopedia when one routed section is enough
+    - avoid mixing authority contracts with speculative greenfield ideas in the same retrieval step
+    - keep future playbooks narrower than the encyclopedia and broader than a single patch
+  machine_best_practice:
+    statement: >
+      The library should be optimized for selective retrieval, not sequential reading.
+      The right structure is many small access routes into a few dense authoritative notes.
+  agent_first_rule:
+    - optimize for question -> router -> deep section -> repo file flow
+    - avoid any organization that depends on remembering prior chat context
+    - prefer durable handoff files over conversational recap
+
+primary_goal:
+  statement: >
+    Build a zero-loss, fast-access, implementation-grade encyclopedia of VBT PRO capabilities
+    and exact repo integration points so future work does not depend on fragile conversational
+    context or repeated rediscovery.
+  success_conditions:
+    - every major VBT PRO family relevant to the repo is mapped
+    - every major repo subsystem has a file-level VBT fit classification
+    - fast-access routing exists by topic, repo path, and objective
+    - anti-patterns, truth risks, leakage risks, and drift risks are explicitly recorded
+    - notebooks and implementation notes can be built from the index layer without rereading all long notes
+
+mission:
+  statement: >
+    Build an internal encyclopedia that is fast to navigate, comprehensive at implementation
+    depth, and resilient to context loss. The encyclopedia must support discovery, planning,
+    safe adoption, validation, and later greenfield VBT-native design work.
+  subgoals:
+    - capture every materially relevant VBT PRO capability for this repo
+    - map each capability to exact repo files, functions, and likely adoption order
+    - preserve negative knowledge such as anti-patterns, leakage risks, and drift risks
+    - support future coding work without re-mining the same research repeatedly
+
+execution_split:
+  phase_1_discovery:
+    phase_id: phase_1_discovery
+    objective:
+      - saturate agents on discovery
+      - keep widening coverage
+      - preserve everything
+      - avoid premature condensation
+    agent_role: miners
+    main_thread_role:
+      - preserve findings
+      - validate artifacts
+      - maintain routing and structure
+  phase_2_organization_and_writing:
+    phase_id: phase_2_organization_and_writing
+    objective:
+      - normalize findings
+      - dedupe overlaps
+      - build topic indexes
+      - build repo-path indexes
+      - expand detailed code-use notes
+      - write implementation playbooks
+      - write honesty/leakage/drift notebooks
+      - write VBT-native shadow-pipeline plans
+    agent_role:
+      - librarians
+      - technical writers
+      - detail expanders
+    main_thread_role:
+      - approve structure
+      - keep contracts coherent
+      - preserve zero-loss navigation
+
+context_limit_strategy:
+  design_principles:
+    - never rely on chat memory as the primary store of research state
+    - preserve zero information loss by adding indexes rather than compressing away detail
+    - split long-form research from fast-access routing
+    - keep durable line-hinted routers into long notes
+    - maintain one stable master index that points to all current authoritative research artifacts
+  anti_failure_rules:
+    - no key finding should exist only in commentary or agent output
+    - any major new capability family must be added to the encyclopedia and at least one router
+    - any new repo-fit finding must be added to the file matrix or a successor matrix
+    - any new truth/leakage/drift finding must be added to the honesty surfaces, not just the general note
+    - notebooks should be index-backed, not ad hoc dumping grounds
+    - active build status for vbtpro-lab must live in the build registry, not only in chat
+    - repeated fast queries should be routed through alias registry, not memory
+
+artifact_stack:
+  layer_0_program:
+    artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_encyclopedia_program_20260408.yaml
+    role: top_level_operating_plan
+  layer_0a_frozen_constitution:
+    artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_normalization_boundary_contract_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_agent_output_protocol_20260409.yaml
+    role: immutable_machine_contract_layer
+  layer_0b_compiled_controls:
+    artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+    role: machine_lookup_aliases_coverage_and_new_repo_build_control
+  layer_1_master_index:
+    artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+    role: one_hop_entrypoint_to_all_research_surfaces
+  layer_2_routers:
+    artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+    role: fast_access_routing
+  layer_3_long_form_notes:
+    artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_module_family_index_20260408.yaml
+    role: comprehensive_storage
+  layer_4_notebooks:
+    artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_optimization_map_20260408.ipynb
+    role: exploratory_and_implementation_sandbox
+  layer_5_repo_authority:
+    artifacts:
+      - /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+    role: nonnegotiable_repo_contracts_to_preserve
+
+artifact_role_registry:
+  roles:
+    - role_id: program_note
+      meaning: top-level operating contract for the encyclopedia project
+    - role_id: master_index
+      meaning: one-hop entrypoint to all durable research artifacts
+    - role_id: topic_router
+      meaning: route by capability family or problem domain
+    - role_id: repo_path_router
+      meaning: route by repo file or subsystem
+    - role_id: authority_contract
+      meaning: repo truth contract not superseded by research notes
+    - role_id: long_form_encyclopedia
+      meaning: primary comprehensive deep reference
+    - role_id: repo_fit_matrix
+      meaning: file-by-file implementation and adoption mapping
+    - role_id: brainstorm_note
+      meaning: preserved future ideas outside restore-safe implementation ordering
+    - role_id: source_index
+      meaning: inventory or family map of VBT PRO source surfaces
+    - role_id: notebook
+      meaning: exploratory or implementation-support interactive artifact
+    - role_id: handbook
+      meaning: specialized implementation-grade note split from the encyclopedia
+  required_registration_fields:
+    - artifact_path
+    - artifact_kind
+    - role
+    - priority
+
+organization_model:
+  shape:
+    - one top-level program note
+    - one master index
+    - multiple routers
+    - a small set of long-form comprehensive notes
+    - notebooks for exploration and implementation support
+    - authority contracts kept separate from research notes
+    - one unmapped capability reservoir for preserved non-local VBT PRO knowledge
+  routing_dimensions:
+    - by topic
+    - by repo path
+    - by objective
+    - by implementation phase
+  zero_loss_rule:
+    statement: >
+      Long-form notes remain the canonical research store. Routers and indexes summarize
+      navigation only; they do not replace or compress away the underlying findings.
+  preservation_rule:
+    statement: >
+      Useful VBT PRO knowledge must be preserved even when it does not yet map onto the
+      current repo. Repo-mapped and unmapped-but-valuable capabilities are both first-class
+      encyclopedia citizens.
+  machine_navigation_rules:
+    - a new artifact should be reachable through the master index
+    - a new major topic should be reachable through a topic router
+    - a repo implementation artifact should be reachable through the repo path router
+    - specialized handbooks should point back to the long-form encyclopedia sections they refine
+  current_structure_snapshot:
+    statement: >
+      The encyclopedia is already organized as a layered stack rather than a flat note dump.
+      The current structure is fast to navigate while still preserving deep detail.
+    live_layers:
+      - layer: program
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_encyclopedia_program_20260408.yaml
+        role: operating contract for the project
+      - layer: master_index
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+        role: one-hop router into the full research set
+      - layer: topic_router
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+        role: route by capability family or problem type
+      - layer: repo_path_router
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+        role: route by repo file or subsystem
+      - layer: long_form_encyclopedia
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        role: comprehensive capability and integration reference
+      - layer: repo_fit_matrix
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+        role: file-by-file implementation routing
+      - layer: brainstorm
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+        role: preserved future ideas and greenfield tracks
+      - layer: module_index
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_module_family_index_20260408.yaml
+        role: installed VBT PRO family inventory
+      - layer: auxiliary_encyclopedia
+        artifact: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+        role: alternate deep reference from agent research
+      - layer: notebooks
+        artifacts:
+          - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb
+          - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_optimization_map_20260408.ipynb
+        role: exploratory lookup and optimization sandbox
+    strengths_now:
+      - fast access already exists by artifact, topic, and repo file
+      - long-form detail is preserved
+      - authority contracts are kept separate from research notes
+      - the stack is resilient to context loss
+    weaknesses_now:
+      - honesty/truth surfaces are still embedded inside the long-form encyclopedia rather than having their own router
+      - notebooks are still lighter than the long-form research set
+      - repo-fit detail can still be deepened across more files and scripts
+      - implementation playbooks are not yet split out into dedicated handbooks
+
+target_end_state:
+  statement: >
+    The most efficient end-state is a durable internal reference system with thin routing
+    layers and deep implementation-grade backing notes. It should support instant navigation,
+    safe implementation, and future greenfield VBT-native design work without re-research.
+  desired_shape:
+    - one stable program note
+    - one stable master index
+    - a small set of routers:
+      - topic router
+      - repo path router
+      - truth/honesty router
+      - notebook/script/test router
+    - one primary long-form encyclopedia
+    - one deep repo-fit matrix
+    - one unmapped capability reservoir
+    - a small set of specialized handbooks:
+      - Blackwell integration playbook
+      - feature/signal/label playbook
+      - truth/leakage/drift handbook
+      - reporting/dashboard playbook
+    - notebooks that mirror the handbook structure
+  properties:
+    - zero information loss
+    - fast one-hop navigation
+    - exact repo insertion guidance
+    - explicit anti-pattern and validation layers
+    - clean separation between:
+      - authority contracts
+      - research reference
+      - implementation playbooks
+      - future greenfield design
+  what_makes_it_efficient:
+    - no repeated rediscovery
+    - no reliance on conversational memory
+    - no need to reread the full encyclopedia for common tasks
+    - direct routing from repo file or question type to the correct deep note
+    - future code work can be driven from handbooks rather than raw mining notes
+  ideal_library_shape_for_agent_use:
+    routing_frontend:
+      - program note for operating rules
+      - master index for global routing
+      - topic router for tool-family questions
+      - repo path router for implementation questions
+      - truth/honesty router for validation and anti-leak work
+      - notebook/script/test router for runnable surfaces
+    deep_reference_core:
+      - one primary encyclopedia
+      - one repo-fit matrix
+      - one unmapped capability reservoir
+      - one truth/drift handbook
+      - one blackwell integration playbook
+      - one feature/signal/label playbook
+      - one reporting/dashboard playbook
+    exploration_layer:
+      - capability dump notebook
+      - repo optimization notebook
+      - parity/honesty notebooks
+      - demo scripts
+    authority_boundary:
+      - repo command/artifact/architecture contracts always remain separately routed and easy to reach
+  agent_first_design_preferences:
+    - prefer exact section keys over rhetorical headings
+    - prefer explicit registries over implicit relationships
+    - prefer additive routers over one giant narrative note
+    - prefer machine-readable field bundles over prose-only explanations
+    - prefer one-hop retrieval into dense notes over wide shallow summaries
+    - prefer durable file-based handoff over memory-based continuation
+  ideal_record_shape:
+    fields_every_durable_finding_should_have_when_practical:
+      - stable_id
+      - topic_family
+      - repo_targets
+      - vbt_sources
+      - adoption_mode
+      - value_statement
+      - truth_or_drift_risk
+      - validation_hook
+      - notebook_or_test_surface
+      - status
+    rationale: >
+      This record shape makes findings easy to sort, filter, route, and later convert into
+      implementation playbooks without re-reading surrounding prose.
+
+library_build_directives:
+  directives:
+    - treat the encyclopedia as an internal machine library
+    - optimize every new artifact for agent lookup and downstream reuse
+    - if a choice exists between human readability and stricter machine structure, choose stricter machine structure every time
+    - preserve exact repo paths and exact VBT source paths whenever practical
+    - maintain explicit routeability from objective to router to deep note to repo file
+    - preserve valuable unmapped capabilities in a dedicated reservoir instead of dropping them
+  forbidden_defaults:
+    - do not optimize primarily for human narrative flow
+    - do not optimize secondarily for human narrative flow either
+    - do not rely on memory of prior chat turns as a structural layer
+    - do not store important findings only in notebooks or agent replies
+
+steps_from_here_to_target:
+  - step_id: S1_continue_discovery
+    status: in_progress
+    goal:
+      - keep agents saturated on uncovered VBT PRO and repo-fit surfaces
+      - keep preserving findings into the long-form encyclopedia and file matrix
+    outputs:
+      - broader capability coverage
+      - deeper repo-path coverage
+      - more explicit truth/leakage/drift findings
+  - step_id: S2_finish_zero_loss_indexing
+    status: in_progress
+    goal:
+      - ensure every major discovery is reachable from the index stack
+    outputs:
+      - updated master index
+      - updated topic router
+      - updated repo path router
+      - likely truth/honesty router
+      - likely notebook/script/test router
+  - step_id: S3_expand_repo_fit_matrix
+    status: active_next
+    goal:
+      - deepen file-by-file mapping across more repo files, scripts, and tests
+    outputs:
+      - richer repo path coverage
+      - clearer adapter-vs-overlay-vs-keep-custom guidance
+  - step_id: S4_split_specialized_handbooks
+    status: pending
+    goal:
+      - extract the largest implementation-critical topics from the encyclopedia into dedicated playbooks
+    outputs:
+      - Blackwell integration playbook
+      - feature/signal/label playbook
+      - truth/leakage/drift handbook
+      - reporting/dashboard playbook
+  - step_id: S5_align_notebooks_with_handbooks
+    status: pending
+    goal:
+      - make notebooks mirror the handbook structure so exploration and implementation stay aligned
+    outputs:
+      - expanded capability notebook
+      - expanded repo optimization notebook
+      - dedicated parity and honesty notebooks
+  - step_id: S6_build_first_implementation_guides
+    status: pending
+    goal:
+      - convert reference material into actionable, bounded build plans
+    outputs:
+      - first-moves implementation guide
+      - adapter-first build sequence
+      - validation-first rollout checklist
+  - step_id: S7_prepare_shadow_pipeline_design
+    status: pending
+    goal:
+      - define the possible VBT-native shadow pipeline only after the reference system is mature
+    outputs:
+      - shadow architecture note
+      - scope boundary
+      - promotion and parity rules for the shadow lane
+  - step_id: S8_convert_key_findings_into_atomic_records
+    status: pending
+    goal:
+      - normalize the highest-value findings into stable machine-friendly records
+    outputs:
+      - atomic capability records
+      - atomic repo-fit records
+      - atomic truth-risk records
+  - step_id: S9_add_truth_and_notebook_routers
+    status: pending
+    goal:
+      - finish the ideal routing frontend
+    outputs:
+      - truth/honesty router
+      - notebook/script/test router
+
+project_phases:
+  - phase_id: P1_discovery
+    status: in_progress
+    goal:
+      - keep all six agents saturated on uncovered VBT PRO and repo-fit surfaces
+      - preserve findings into durable notes continuously
+    outputs:
+      - capability families
+      - repo insertion points
+      - anti-patterns
+      - truth/leakage/drift findings
+  - phase_id: P2_indexing_and_navigation
+    status: in_progress
+    goal:
+      - make the research set navigable in one hop
+      - prevent future context collapse
+    outputs:
+      - master index
+      - topic router
+      - repo path router
+      - future honesty router if needed
+  - phase_id: P3_repo_fit_detail
+    status: active_next
+    goal:
+      - expand the file matrix deeper across the repo
+      - mark exact VBT replacement candidates vs adapter-only vs keep-custom/GPU
+    outputs:
+      - deeper repo matrix
+      - implementation checklists
+  - phase_id: P4_notebooks_and_playbooks
+    status: pending
+    goal:
+      - convert research into runnable review and parity notebooks
+      - add bounded playbooks for adoption
+    outputs:
+      - notebook expansions
+      - script demos
+      - test plans
+  - phase_id: P5_shadow_pipeline_planning
+    status: pending
+    goal:
+      - define the possible VBT-native shadow pipeline without contaminating mainline authority
+    outputs:
+      - shadow pipeline architecture note
+      - phased migration experiments
+  - phase_id: P6_condensed_operator_views
+    status: pending
+    goal:
+      - build condensed operator-oriented views only after the deep encyclopedia is mature
+    outputs:
+      - short operator guide
+      - first-moves guide
+      - decision trees
+
+implementation_model:
+  build_order:
+    - discovery first
+    - indexing second
+    - repo-fit detail third
+    - notebook/playbook expansion fourth
+    - shadow-pipeline design fifth
+    - condensed operator views last
+  adoption_order_for_repo_work:
+    - adapter first
+    - research overlay second
+    - parity and honesty validation third
+    - authority replacement only after explicit proof
+  non_replacement_rule:
+    - VBT PRO is not assumed to replace the entire repo
+    - Blackwell GPU training remains GPU-native unless a future explicit redesign proves otherwise
+    - repo authority contracts remain primary until deliberately superseded
+
+implementation_state_machine:
+  states:
+    - state_id: discovered
+      meaning: capability or repo-fit finding exists in durable notes
+    - state_id: indexed
+      meaning: finding is reachable through at least one router
+    - state_id: classified
+      meaning: finding is labeled as adapter_first, overlay_research, keep_custom_or_gpu, or greenfield_shadow_candidate
+    - state_id: playbook_ready
+      meaning: finding has enough detail for bounded implementation work
+    - state_id: validated
+      meaning: supporting validation strategy has been recorded
+    - state_id: implementable
+      meaning: can be handed off as a concrete build task without rereading broad discovery notes
+  transition_rules:
+    - do not mark a finding implementable if it is only discovered but not indexed
+    - do not mark a finding playbook_ready without exact repo insertion points
+    - do not mark a finding validated unless validation hooks or tests are named
+
+build_rules:
+  note_build_rules:
+    - add to existing long-form notes before creating new overlapping notes
+    - create new deep notes only when a topic becomes too large or deserves its own playbook
+    - every new note must be registered in the master index
+    - every new top-level topic must be reachable from at least one router
+  indexing_rules:
+    - line hints should be refreshed when major structure shifts
+    - routers should prefer stable conceptual sections over fragile prose references
+    - repo-path routes should point to the first practical implementation note, not all notes at once
+  notebook_rules:
+    - notebooks are exploratory and implementation-support tools, not primary storage
+    - important findings discovered in notebooks must be copied into YAML notes
+    - notebooks should link back to authority and encyclopedia artifacts
+  anti_sprawl_rules:
+    - do not fork redundant encyclopedia notes
+    - do not bury key findings only inside agent replies
+    - do not condense aggressively before coverage is mature
+  machine_friendly_build_rules:
+    - prefer stable section keys over prose-only headings
+    - prefer explicit ids for steps, phases, and artifact groups
+    - add new topic families as sibling keys rather than scattered prose
+    - keep lists of artifacts and outputs explicit and machine-enumerable
+
+validation_protocol:
+  required_for_new_or_changed_yaml:
+    - yaml must parse cleanly
+    - artifact path must be added to the master index if it is part of the encyclopedia stack
+    - router updates must preserve navigability
+  required_for_new_or_changed_notebooks:
+    - notebook JSON must parse cleanly
+    - notebook purpose must be recorded in the master index if it is durable
+  structural_validation_checks:
+    - master index references existing files
+    - router entries reference existing files
+    - top-level program note remains consistent with the artifact stack
+  content_validation_rules:
+    - major findings should cite concrete file paths
+    - anti-patterns and honesty risks should be explicit, not implied
+    - repo-fit recommendations should separate adapter-first from replacement ideas
+    - any future build playbook should preserve repo authority rules unless it explicitly declares a new research lane
+  machine_validation_rules:
+    - artifact ids should remain unique
+    - artifact paths referenced by indexes should exist
+    - router topics should point to existing artifacts
+    - line hints should be refreshed after major structural edits
+    - new artifacts should declare artifact_type, status, created_on, and owner
+
+bounded_artifact_policy:
+  rule:
+    - keep one comprehensive encyclopedia note rather than many overlapping medium notes
+    - use routers and indexes for speed, not duplication
+    - add new deep notes only when a topic becomes too large or too implementation-heavy
+  split_triggers:
+    - a single section becomes too large to navigate even with routers
+    - a topic needs its own implementation-grade playbook
+    - a notebook grows beyond practical exploratory use
+  preferred_future_splits:
+    - vbtpro_truth_and_honesty_handbook
+    - vbtpro_blackwell_integration_playbook
+    - vbtpro_feature_and_signal_factory_handbook
+    - vbtpro_reporting_and_dashboard_playbook
+
+update_protocol:
+  when_new_agent_findings_arrive:
+    - add them to the long-form encyclopedia if they introduce new capability or new exact repo fit
+    - add them to the file matrix if they change where a repo file should use VBT PRO
+    - add them to routers if they open a new top-level navigation path
+    - send the returning agent back out immediately on an uncovered slice
+  when_a_new_note_is_created:
+    - register it in the master index
+    - add at least one route into it from either the topic router or repo path router
+  when_line_numbers_shift_materially:
+    - refresh line hints in the master index and routers
+  when_context_is_running_long:
+    - summarize state into the durable artifacts, not into ephemeral prose
+
+agent_usage_policy:
+  continuous_utilization: true
+  rule:
+    - agents should remain saturated on distinct uncovered slices
+    - returned agents should be requeued immediately
+    - main thread integrates, validates, indexes, and redirects
+  role_split:
+    agents:
+      - mine new capability families
+      - mine new repo fit points
+      - mine anti-patterns and honesty risks
+      - mine notebook/demo/test opportunities
+    main_thread:
+      - preserve findings
+      - dedupe at the note layer
+      - maintain indexes and routers
+      - keep research coherent and durable
+
+working_rules:
+  discovery_rules:
+    - bias toward uncovered surfaces
+    - keep separate passes for capabilities, repo fit, anti-patterns, and honesty when useful
+    - preserve even blocked or awkward ideas if they contain reusable lessons
+  organization_rules:
+    - build fast-access routes without deleting depth
+    - prefer additive organization over destructive consolidation
+  implementation_rules:
+    - implementation notes must identify exact repo files and exact VBT PRO source anchors
+    - build plans should separate safe first moves from aggressive future moves
+    - truth/leakage/drift controls must be recorded before any major replacement proposal
+
+indexing_requirements:
+  every_major_topic_must_route_by:
+    - tool_family
+    - repo_file_or_subsystem
+    - objective
+  high_priority_objectives:
+    - splitters_and_no_leak
+    - blackwell_fit
+    - pattern_features_and_labels
+    - portfolio_and_reporting
+    - schema_rows_columns_accuracy
+    - truth_bias_leakage_drift
+    - execution_chunking_params
+    - dashboards_and_review
+    - internal_ai_retrieval
+  future_router_candidates:
+    - truth_honesty_router
+    - notebook_script_test_router
+    - implementation_playbook_router
+
+implementation_safety_policy:
+  preserve_repo_authority:
+    - lane command contract remains authoritative
+    - lane artifact map remains authoritative
+    - failure-regime pipeline architecture remains authoritative
+  vbt_adoption_order:
+    - adapter first
+    - research overlay second
+    - parity tests third
+    - authority replacement only after proof
+  explicit_non_goals:
+    - do not assume VBT PRO replaces GPU ML training
+    - do not let VBT splitters redefine holdout or promotion semantics by default
+    - do not move too fast from research note to code mutation
+
+handoff_contract:
+  purpose: >
+    Allow future sessions or agents to resume work from files instead of conversational memory.
+  minimum_handoff_bundle:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_encyclopedia_program_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+  resume_order:
+    - read program note
+    - read master index
+    - choose topic router or repo path router
+    - open only the needed long-form note sections
+
+future_artifacts_planned:
+  likely_next_indexes:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+  likely_next_handbooks:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_blackwell_integration_playbook_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_feature_signal_label_playbook_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_and_drift_handbook_20260408.yaml
+  future_build_bridge:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+
+current_status_snapshot:
+  major_artifacts_live:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_module_family_index_20260408.yaml
+  encyclopedia_character:
+    fast_access: indexes_and_routers
+    full_depth: encyclopedia_and_file_matrix
+    zero_loss: true
+
+operating_note:
+  statement: >
+    The encyclopedia project should behave like a durable internal reference system, not
+    a chat transcript. Every important finding should land in the artifact stack above so
+    future work can resume from the files, not from memory.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml

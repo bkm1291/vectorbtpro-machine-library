@@ -1,0 +1,403 @@
+artifact_id: vbtpro_native_pipeline_stage_contracts_20260409
+artifact_version: 1
+artifact_type: stage_contract_note
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Machine-first stage contracts for an eventual VBT-native or hybrid-shadow pipeline.
+  Each stage is defined as a bounded module with explicit inputs, outputs, allowed VBT
+  families, forbidden shortcuts, CPU/GPU role, and required validation hooks.
+
+global_design_rules:
+  - preserve_current_repo_authority_until_explicitly_replaced
+  - prefer_adapter_and_shadow_adoption_before_runtime_replacement
+  - correctness_and_truth_gates_precede_speed_gates
+  - every_stage_must_emit_machine_validatable_artifacts
+  - every_stage_must_name_its_truth_risks_and_validation_hooks
+
+stage_order:
+  - S0_data_ingestion_and_canonicalization
+  - S1_split_planning_and_membership_truth
+  - S2_feature_family_build
+  - S3_label_and_target_build
+  - S4_signal_and_strategy_surface_build
+  - S5_simulation_and_execution_mirror
+  - S6_evaluation_review_and_bias_audit
+  - S7_search_optimization_and_model_selection
+  - S8_shadow_parity_and_promotion_gate
+
+stages:
+  S0_data_ingestion_and_canonicalization:
+    stage_kind: io_and_alignment
+    purpose: canonical price, benchmark, metadata, and reference surface assembly
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/reference_data.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+    allowed_vbt_families:
+      - Data
+      - CustomData
+      - parquet_csv_feather_sql_duckdb_adapters
+      - updater_and_saver
+      - wrapping_and_merging
+    forbidden_shortcuts:
+      - implicit_index_realignment_without_contract
+      - provider_specific_refresh_logic_without_adapter_contract
+      - lossy_column_rename_without_schema_registry
+    cpu_gpu_role:
+      cpu_role: authoritative io, alignment, resampling, persistence, schema checks
+      gpu_role: none_required
+    required_inputs:
+      - ohlcv_or_close_surfaces
+      - benchmark_surfaces
+      - metadata_surfaces
+      - refresh_or_snapshot_contract
+    required_outputs:
+      - canonical_price_surface
+      - canonical_benchmark_surface
+      - canonical_metadata_surface
+      - schema_manifest
+    truth_risks:
+      - schema_drift
+      - row_loss
+      - duplicate_rows
+      - benchmark_misalignment
+    validation_hooks:
+      - exact_index_equality
+      - required_column_contract
+      - update_idempotence_check
+      - benchmark_calendar_alignment_check
+
+  S1_split_planning_and_membership_truth:
+    stage_kind: chronology_and_cv
+    purpose: split generation, fold lineage, purge/embargo, and no-leak truth
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    allowed_vbt_families:
+      - Splitter
+      - SplitterCV
+      - split_decorators
+      - purged_kfold
+      - purged_walkforward
+      - rolling_and_expanding_splitters
+    forbidden_shortcuts:
+      - split_membership_translation_without_parity_tests
+      - range_reconstruction_without_identity_key_preservation
+      - future_data_visibility_in_train_or_valid_masks
+    cpu_gpu_role:
+      cpu_role: split planning, membership equality, lineage audits
+      gpu_role: consume already-frozen split masks only
+    required_inputs:
+      - canonical_price_surface
+      - split_policy
+      - purge_or_embargo_policy
+    required_outputs:
+      - split_plan
+      - split_membership_rows
+      - fold_lineage_rows
+      - overlap_and_purge_audit
+    truth_risks:
+      - chronology_leakage
+      - overlap_contamination
+      - fold_parentage_drift
+      - membership_inequality
+    validation_hooks:
+      - exact_membership_equality
+      - no_overlap_across_forbidden_sets
+      - purge_embargo_boundary_assertion
+      - fold_parentage_parity
+
+  S2_feature_family_build:
+    stage_kind: feature_engineering
+    purpose: additive trailing, regime, pattern, and benchmark-relative feature generation
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/features.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_data_prep.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+    allowed_vbt_families:
+      - generic_accessors
+      - custom_indicators
+      - PATSIM
+      - PatternRanges
+      - rolling_pattern_similarity
+      - stats_builder
+      - benchmark_relative_returns_metrics
+      - sklearn_transform_bridge
+    forbidden_shortcuts:
+      - future_target_columns_in_feature_inputs
+      - mixed_honesty_family_outputs_without_split
+      - feature_write_without_provenance
+    cpu_gpu_role:
+      cpu_role: truth-safe additive feature families and audit features
+      gpu_role: heavy panel feature expansion after feature honesty classification
+    required_inputs:
+      - canonical_price_surface
+      - split_plan
+      - metadata_surface_optional
+    required_outputs:
+      - feature_panel
+      - feature_manifest
+      - feature_provenance_rows
+      - feature_audit_rows
+    truth_risks:
+      - target_feature_mixing
+      - stale_state
+      - benchmark_misalignment
+      - schema_prefix_drift
+    validation_hooks:
+      - feature_family_contract_guard
+      - no_future_lookahead_feature_assertion
+      - provenance_required_field_check
+      - transform_wrapper_parity_check
+
+  S3_label_and_target_build:
+    stage_kind: target_generation
+    purpose: build future targets, trend labels, pivot labels, breakout labels, and audit-only target families
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/targets.py
+    allowed_vbt_families:
+      - TRENDLB
+      - PIVOTLB
+      - FIXLB
+      - MEANLB
+      - BOLB
+      - future_stat_generators
+    forbidden_shortcuts:
+      - target_columns_reused_as_runtime_inputs_without_split
+      - unlabeled_multi_mode_outputs_without_family_registry
+      - wait_or_window_semantics_implicit
+    cpu_gpu_role:
+      cpu_role: target generation, honesty tagging, auxiliary audit targets
+      gpu_role: consume frozen target sets for model training only
+    required_inputs:
+      - canonical_price_surface
+      - split_plan
+      - target_policy
+    required_outputs:
+      - labeled_target_panel
+      - target_manifest
+      - target_honesty_registry
+    truth_risks:
+      - lookahead_misclassification
+      - wait_semantics_drift
+      - window_semantics_drift
+      - target_feature_mixing
+    validation_hooks:
+      - target_shift_contract_check
+      - wait_parameter_required_check
+      - target_prefix_contract_check
+      - split_required_from_forbidden_outputs_check
+
+  S4_signal_and_strategy_surface_build:
+    stage_kind: signal_generation
+    purpose: generate cleaned signals, strategy masks, runtime gates, and candidate strategy surfaces
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/family_signal_engine.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+    allowed_vbt_families:
+      - signals_accessors
+      - parameterized
+      - chunking
+      - indicator_factory
+    forbidden_shortcuts:
+      - duplicated_signal_events_without_cleaning
+      - paired_entry_exit_signal_breakage
+      - strategy_surface_without_manifest
+    cpu_gpu_role:
+      cpu_role: signal cleaning, signal family registry, runtime-safe parameter sweeps
+      gpu_role: optional model-assisted signal ranking on already-safe features
+    required_inputs:
+      - feature_panel
+      - optional_model_predictions
+      - strategy_policy
+    required_outputs:
+      - signal_panel
+      - signal_manifest
+      - cleaned_signal_audit
+      - strategy_surface_manifest
+    truth_risks:
+      - trade_inflation
+      - duplicate_signal_firing
+      - mixed_signal_honesty
+    validation_hooks:
+      - signal_cleaning_truth_check
+      - paired_signal_contract_check
+      - manifest_registration_check
+
+  S5_simulation_and_execution_mirror:
+    stage_kind: execution_and_portfolio
+    purpose: simulate trades, orders, logs, stops, portfolio value, and execution mirrors
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/benchmark_baseline.py
+    allowed_vbt_families:
+      - Portfolio.from_signals
+      - Portfolio.from_order_func
+      - orders_trades_logs
+      - stop_type_and_stop_price_surfaces
+    forbidden_shortcuts:
+      - simulation_without_benchmark_alignment
+      - execution_reconstruction_without_order_identity
+      - stop_reason_loss
+    cpu_gpu_role:
+      cpu_role: authoritative simulation and mirror reconstruction
+      gpu_role: none_required
+    required_inputs:
+      - signal_panel
+      - canonical_price_surface
+      - benchmark_surface
+      - execution_policy
+    required_outputs:
+      - portfolio_surface
+      - orders_surface
+      - trades_surface
+      - logs_surface
+      - execution_delta_surface
+    truth_risks:
+      - execution_drift
+      - stop_reason_loss
+      - benchmark_fill_misalignment
+      - trade_reconstruction_mismatch
+    validation_hooks:
+      - order_to_trade_reconstruction_check
+      - stop_reason_truth_check
+      - benchmark_close_alignment_check
+      - exposure_value_consistency_check
+
+  S6_evaluation_review_and_bias_audit:
+    stage_kind: analytics_and_audit
+    purpose: performance review, benchmark-relative metrics, bias checks, tearsheets, and drift audits
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+    allowed_vbt_families:
+      - returns_accessors
+      - qs_adapter
+      - stats_builder
+      - plots_builder
+      - record_readable_surfaces
+    forbidden_shortcuts:
+      - high_sharpe_claim_without_bias_check
+      - aggregate_summary_without_tail_risk
+      - benchmark_comparison_without_calendar_parity
+    cpu_gpu_role:
+      cpu_role: review metrics, bias diagnostics, audit exports, plots, and dashboards
+      gpu_role: none_required
+    required_inputs:
+      - portfolio_surface
+      - trades_surface
+      - benchmark_surface
+      - evaluation_policy
+    required_outputs:
+      - review_bundle
+      - benchmark_relative_metrics
+      - bias_audit_bundle
+      - audit_notebook_surfaces
+    truth_risks:
+      - multiple_testing_bias
+      - metric_definition_drift
+      - hidden_tail_risk
+      - benchmark_comparison_dishonesty
+    validation_hooks:
+      - probabilistic_sharpe_check
+      - deflated_sharpe_check
+      - downside_tail_risk_check
+      - qs_defaults_consistency_check
+
+  S7_search_optimization_and_model_selection:
+    stage_kind: parameter_search_and_ml
+    purpose: parameter sweeps, model selection, split-aware CV, and search-space evaluation
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/trainers.py
+    allowed_vbt_families:
+      - parameterized
+      - chunking
+      - SplitterCV
+      - PortfolioOptimizer
+      - optimization_helpers
+    forbidden_shortcuts:
+      - search_without_fixed_split_contract
+      - model_selection_using_holdout_visibility
+      - optimization_without_bias_audit
+    cpu_gpu_role:
+      cpu_role: split-aware search orchestration, bounded parameter sweeps, audit summaries
+      gpu_role: model training and heavy tensor inference on frozen features and splits
+    required_inputs:
+      - split_plan
+      - feature_panel
+      - labeled_target_panel
+      - search_policy
+    required_outputs:
+      - search_results
+      - model_selection_registry
+      - cv_audit_bundle
+    truth_risks:
+      - cv_leakage
+      - selection_bias
+      - metric_drift_under_search
+    validation_hooks:
+      - splitter_membership_parity_check
+      - holdout_visibility_forbidden_check
+      - bias_audit_required_check
+
+  S8_shadow_parity_and_promotion_gate:
+    stage_kind: parity_and_promotion
+    purpose: compare VBT-native or hybrid-shadow artifacts against current repo authority before promotion
+    primary_repo_targets:
+      - /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+    allowed_vbt_families:
+      - split_truth_router
+      - artifact_parity_registry
+      - review_notebooks
+      - compiled_machine_lookup_layer
+    forbidden_shortcuts:
+      - promotion_on_speed_without_correctness
+      - replacing_authority_without_parity_bundle
+      - discarding_failed_branch_lessons
+    cpu_gpu_role:
+      cpu_role: parity calculation, artifact diffing, promotion decision
+      gpu_role: none_required
+    required_inputs:
+      - shadow_outputs
+      - current_repo_authority_outputs
+      - parity_policy
+    required_outputs:
+      - parity_matrix
+      - promotion_decision
+      - blocker_or_acceptance_report
+    truth_risks:
+      - silent_contract_change
+      - artifact_surface_drift
+      - authority_misalignment
+    validation_hooks:
+      - exact_artifact_parity_check
+      - command_contract_parity_check
+      - truth_risk_matrix_satisfaction_check
+
+cross_stage_rules:
+  - every stage output must have a named writer and validator
+  - every stage that emits columns must declare row identity and semantic tag columns
+  - stages with lookahead outputs must emit family honesty metadata
+  - any GPU consumer must consume frozen split and honesty-safe inputs only
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml

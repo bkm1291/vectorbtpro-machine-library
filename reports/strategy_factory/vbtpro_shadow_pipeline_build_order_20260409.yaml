@@ -1,0 +1,140 @@
+artifact_id: vbtpro_shadow_pipeline_build_order_20260409
+artifact_version: 1
+artifact_type: build_order_note
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Machine-first staged build order for a VBT-native or hybrid-shadow pipeline. The order
+  is restore-safe and truth-first: build the shell that proves parity before building the
+  shell that optimizes speed.
+
+ordering_rule:
+  - build_truth_and_parity_infrastructure_before_new_runtime_surfaces
+  - build_sidecars_before_replacements
+  - build_gpu_consumers_only_after_cpu_truth_contracts_are_frozen
+
+steps:
+  - step_id: SB001_compile_machine_library
+    goal: exact lookup over all VBT encyclopedia artifacts and future-build notes
+    output:
+      - compiled_machine_lookup_store
+    dependency_steps: []
+    validation:
+      - exact_path_topic_truth_and_text_query_smoke
+
+  - step_id: SB002_define_stage_contracts
+    goal: freeze stage boundaries, allowed VBT families, and validation hooks
+    output:
+      - stage_contract_registry
+    dependency_steps:
+      - SB001_compile_machine_library
+    validation:
+      - stage_contract_completeness_check
+
+  - step_id: SB003_define_truth_risk_matrix
+    goal: bind stage work to explicit blocking tests and honesty gates
+    output:
+      - truth_risk_test_matrix
+    dependency_steps:
+      - SB002_define_stage_contracts
+    validation:
+      - every_stage_has_truth_risk_binding
+
+  - step_id: SB004_build_split_translation_sidecar
+    goal: translate current split contracts into VBT splitters without replacing authority
+    output:
+      - split_translation_sidecar
+      - split_parity_bundle
+    dependency_steps:
+      - SB002_define_stage_contracts
+      - SB003_define_truth_risk_matrix
+    validation:
+      - exact_membership_equality
+      - no_overlap_across_forbidden_sets
+      - purge_embargo_boundary_assertion
+
+  - step_id: SB005_build_feature_family_sidecars
+    goal: add VBT feature families with provenance and honesty metadata
+    output:
+      - vbt_feature_panel_sidecar
+      - feature_family_manifest
+    dependency_steps:
+      - SB004_build_split_translation_sidecar
+    validation:
+      - feature_family_contract_guard
+      - no_future_lookahead_feature_assertion
+      - provenance_required_field_check
+
+  - step_id: SB006_build_target_sidecars
+    goal: add VBT target families as auxiliary labels only
+    output:
+      - vbt_target_panel_sidecar
+      - target_comparison_bundle
+    dependency_steps:
+      - SB004_build_split_translation_sidecar
+    validation:
+      - target_shift_contract_check
+      - wait_parameter_required_check
+      - target_feature_mixing_forbidden_check
+
+  - step_id: SB007_build_execution_review_sidecars
+    goal: enrich current VBT runtime with standardized review, order/trade reconstruction, and bias checks
+    output:
+      - review_bundle_sidecar
+      - execution_truth_audit
+    dependency_steps:
+      - SB005_build_feature_family_sidecars
+      - SB006_build_target_sidecars
+    validation:
+      - order_to_trade_reconstruction_check
+      - stop_reason_truth_check
+      - probabilistic_sharpe_check
+      - deflated_sharpe_check
+
+  - step_id: SB008_build_search_sidecar
+    goal: use VBT parameterization and split-aware search over frozen artifacts
+    output:
+      - search_results_sidecar
+      - cv_audit_bundle
+    dependency_steps:
+      - SB004_build_split_translation_sidecar
+      - SB005_build_feature_family_sidecars
+      - SB006_build_target_sidecars
+    validation:
+      - splitter_membership_parity_check
+      - bias_audit_required_check
+      - holdout_visibility_forbidden_check
+
+  - step_id: SB009_build_hybrid_shadow_pipeline
+    goal: connect split, features, labels, execution, and reporting into a full shadow lane
+    output:
+      - shadow_pipeline_outputs
+      - parity_matrix
+    dependency_steps:
+      - SB007_build_execution_review_sidecars
+      - SB008_build_search_sidecar
+    validation:
+      - exact_artifact_parity_check
+      - command_contract_parity_check
+
+  - step_id: SB010_decide_promotion_or_keep_shadow
+    goal: determine whether any shadow stage is promotable into the main pipeline
+    output:
+      - promotion_decision
+      - blocker_report_or_acceptance_report
+    dependency_steps:
+      - SB009_build_hybrid_shadow_pipeline
+    validation:
+      - truth_risk_matrix_satisfaction_check
+      - exact_artifact_parity_check
+
+stop_conditions:
+  - stop_if_split_parity_fails
+  - stop_if_target_feature_mixing_detected
+  - stop_if_execution_truth_drifts
+  - stop_if_command_or_artifact_contract_changes_silently
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml

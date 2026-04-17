@@ -1,0 +1,401 @@
+artifact_id: vbtpro_query_alias_registry_20260409
+artifact_version: 1
+artifact_type: query_alias_registry
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: 'Stable low-context query aliases for the compiled VBT PRO machine library.
+  These aliases are optimized for agent retrieval speed, not prose readability.
+
+  '
+entries:
+- alias_id: QA001
+  alias: splitters
+  target_kind: topic
+  target_value: splitters_cv_and_no_leak
+  description: fast route to splitter and CV surfaces
+- alias_id: QA002
+  alias: leakage
+  target_kind: truth_topic
+  target_value: target_and_label_leakage
+  description: fast route to target, label, and lookahead leakage surfaces
+- alias_id: QA003
+  alias: bias
+  target_kind: truth_topic
+  target_value: metric_and_evaluation_drift
+  description: fast route to metric drift, evaluation drift, and bias audit surfaces
+- alias_id: QA004
+  alias: schema
+  target_kind: truth_topic
+  target_value: schema_rows_columns_accuracy
+  description: fast route to schema, row, and column accuracy surfaces
+- alias_id: QA005
+  alias: features
+  target_kind: stage_id
+  target_value: S2_feature_family_build
+  description: route to feature-family stage contract and repo links
+- alias_id: QA006
+  alias: targets
+  target_kind: stage_id
+  target_value: S3_label_and_target_build
+  description: route to target-family stage contract and repo links
+- alias_id: QA007
+  alias: signals
+  target_kind: stage_id
+  target_value: S4_signal_and_strategy_surface_build
+  description: route to signal and strategy stage contract
+- alias_id: QA008
+  alias: execution
+  target_kind: stage_id
+  target_value: S5_simulation_and_execution_mirror
+  description: route to simulation and execution mirror contract
+- alias_id: QA009
+  alias: evaluation
+  target_kind: stage_id
+  target_value: S6_evaluation_review_and_bias_audit
+  description: route to evaluation and bias-audit contract
+- alias_id: QA010
+  alias: blackwell
+  target_kind: topic
+  target_value: blackwell_specific_adoption
+  description: fast route to Blackwell-specific adoption surfaces
+- alias_id: QA011
+  alias: dashboards
+  target_kind: topic
+  target_value: graphing_dashboards_and_review_surfaces
+  description: fast route to review and dashboard surfaces
+- alias_id: QA012
+  alias: notebooks
+  target_kind: topic
+  target_value: notebooks_demos_and_tests
+  description: fast route to notebook, demo, and test surfaces
+- alias_id: QA013
+  alias: pipeline
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_ml_integration_blueprint_20260409.yaml
+  description: direct route to current vbtpro-lab ML/GPU pipeline blueprint
+- alias_id: QA014
+  alias: split_authority
+  target_kind: module_id
+  target_value: split_authority
+  description: direct route to new-repo split authority module build status
+- alias_id: QA015
+  alias: machine_library
+  target_kind: module_id
+  target_value: machine_library
+  description: direct route to new-repo machine library module build status
+- alias_id: QA016
+  alias: new_repo
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/repo_manifest.yaml
+  description: direct route to new VBT-native authority repo bootstrap manifest
+- alias_id: QA017
+  alias: search
+  target_kind: registry_id
+  target_value: RR007_search_and_model_selection
+  description: direct route to search/model-selection replacement registry
+- alias_id: QA018
+  alias: split_risk
+  target_kind: risk_id
+  target_value: TR001_split_membership_drift
+  description: direct route to split-membership truth risk
+- alias_id: QA019
+  alias: data_authority
+  target_kind: module_id
+  target_value: data_authority
+  description: direct route to new-repo data authority module build status
+- alias_id: QA020
+  alias: runtime_filters
+  target_kind: repo_path
+  target_value: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/feature_authority/regime_layers.py
+  description: direct route to current regime layer and runtime gate mappings
+- alias_id: QA021
+  alias: gpu_executor
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+  description: direct route to Blackwell GPU binding and training control mappings
+- alias_id: QA022
+  alias: blackwell_runner
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+  description: direct route to Blackwell orchestration and artifact emission mappings
+- alias_id: QA023
+  alias: family_pipeline
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/family_pipeline.py
+  description: direct route to Blackwell family mirror and bundle mappings
+- alias_id: QA024
+  alias: parity_audit
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/parity_audit.py
+  description: direct route to Blackwell parity audit mappings
+- alias_id: QA025
+  alias: shadow_gate
+  target_kind: stage_id
+  target_value: S8_shadow_parity_and_promotion_gate
+  description: route to the shadow parity and promotion gate stage contract
+- alias_id: QA026
+  alias: coverage_dashboard
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+  description: direct route to the current vbtpro-lab machine-library coverage dashboard
+- alias_id: QA027
+  alias: labels
+  target_kind: stage_id
+  target_value: S3_label_and_target_build
+  description: route to label and target build contracts and linked repo surfaces
+- alias_id: QA028
+  alias: benchmark
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/benchmark_baseline.py
+  description: direct route to benchmark baseline mappings and linked honesty surfaces
+- alias_id: QA029
+  alias: parity
+  target_kind: stage_id
+  target_value: S8_shadow_parity_and_promotion_gate
+  description: route to shadow parity and promotion-gate contracts and linked repo
+    surfaces
+- alias_id: QA030
+  alias: equivalence
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/equivalence_reports.py
+  description: direct route to equivalence and parity reporting mappings
+- alias_id: QA031
+  alias: data
+  target_kind: topic
+  target_value: data_alignment_cleaning_and_store_shape
+  description: fast route to data alignment, store shape, and keyed refresh surfaces
+- alias_id: QA032
+  alias: store
+  target_kind: registry_id
+  target_value: RR001_history_and_store_io
+  description: direct route to the keyed history, store, and refresh replacement registry
+- alias_id: QA033
+  alias: history
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+  description: direct route to equities history loading and refresh mappings
+- alias_id: QA034
+  alias: viewer
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+  description: direct route to equities viewer review and dashboard mappings
+- alias_id: QA035
+  alias: reference_data
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/reference_data.py
+  description: direct route to canonical reference-data ingestion and refresh mappings
+- alias_id: QA036
+  alias: full_store
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+  description: direct route to full-store validation, persistence, and refresh mappings
+- alias_id: QA037
+  alias: feature_validation
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/feature_validation.py
+  description: direct route to feature-validation audits and conflict-coverage mappings
+- alias_id: QA038
+  alias: viewer_review
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_review.py
+  description: direct route to viewer review-panel mappings and linked review sidecars
+- alias_id: QA039
+  alias: monitoring
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/monitoring_baseline.py
+  description: direct route to runtime monitoring-baseline mappings and linked drift-check
+    surfaces
+- alias_id: QA040
+  alias: code_map
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+  description: direct route to the current vbtpro-lab repo code-level map
+- alias_id: QA041
+  alias: replacement_registry
+  target_kind: artifact_path
+  target_value: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+  description: direct route to the canonical repo replacement registry
+- alias_id: QA042
+  alias: truth_risks
+  target_kind: artifact_path
+  target_value: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+  description: direct route to the canonical truth-risk matrix
+- alias_id: QA043
+  alias: runtime_equivalence
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime_equivalence.py
+  description: direct route to native-runtime equivalence proofs and resource-guard
+    report mappings
+- alias_id: QA044
+  alias: sparse_records
+  target_kind: map_id
+  target_value: CL030_sparse_record_review_tables
+  description: direct route to readable sparse-record conflict and coverage review
+    mappings
+- alias_id: QA045
+  alias: validation_harness
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_harness.py
+  description: direct route to validation-harness inventory and manifest proof mappings
+- alias_id: QA046
+  alias: explainability
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/explainability.py
+  description: direct route to Blackwell explainability summary and review-payload
+    mappings
+- alias_id: QA047
+  alias: equivalence_driver
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/scripts/generate_vbtpro_native_runtime_equivalence_report.py
+  description: direct route to native-runtime equivalence report driver mappings
+- alias_id: QA048
+  alias: per_family_vbt
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/tests/test_strategy_factory_per_family_vbt.py
+  description: direct route to per-family VBT integration proof mappings
+- alias_id: QA049
+  alias: synthetic_ohlc
+  target_kind: map_id
+  target_value: CL036_public_synthetic_ohlc_test_fixtures
+  description: direct route to synthetic OHLC leakage and chronology fixture mappings
+- alias_id: QA050
+  alias: knowledge_tooling
+  target_kind: map_id
+  target_value: CL037_public_knowledge_refactor_tooling_surfaces
+  description: direct route to public doc-search and refactor-assist tooling mappings
+- alias_id: QA051
+  alias: indicator_evidence
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_indicator_evidence_surface.py
+  description: direct route to lane-2 indicator evidence cards and partition summary
+    mappings
+- alias_id: QA052
+  alias: release_status
+  target_kind: map_id
+  target_value: CL043_release_status_gate_reporting_surface
+  description: direct route to release-status, blocker, and promotion-gate reporting
+    mappings
+- alias_id: QA053
+  alias: promotion_gate
+  target_kind: map_id
+  target_value: CL043_release_status_gate_reporting_surface
+  description: direct route to promotion-gate manifest and runner-adoption status
+    mappings
+- alias_id: QA054
+  alias: per_family_roster
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_roster.py
+  description: direct route to frozen champion roster selection and pruning mappings
+- alias_id: QA055
+  alias: revalidation
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/periodic_revalidation.py
+  description: direct route to periodic revalidation policy and trigger mappings
+- alias_id: QA056
+  alias: rollback
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/rollback_handling.py
+  description: direct route to rollback manifest and incident-trigger mappings
+- alias_id: QA057
+  alias: per_family_runtime
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_runtime.py
+  description: direct route to per-family runtime round orchestration mappings
+- alias_id: QA058
+  alias: llm_backend
+  target_kind: repo_path
+  target_value: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/llm_backend_adapter.py
+  description: direct route to Blackwell LLM backend adapter and planner-bridge mappings
+- alias_id: QA059
+  alias: promotion_freeze
+  target_kind: map_id
+  target_value: CL100_promotion_decision_freeze_surface
+  description: direct route to promotion-decision freeze records and approved artifact-set
+    mappings
+- alias_id: QA060
+  alias: archive_closure
+  target_kind: map_id
+  target_value: CL101_archive_and_lineage_closure_surface
+  description: direct route to archive lineage-closure and forbidden-path hygiene
+    mappings
+- alias_id: QA061
+  alias: artifact_contracts
+  target_kind: map_id
+  target_value: CL102_blackwell_artifact_contract_constants
+  description: direct route to Blackwell artifact contract constants and bundle-schema
+    mappings
+- alias_id: QA062
+  alias: blackwell_artifacts
+  target_kind: map_id
+  target_value: CL103_blackwell_artifact_io_surface
+  description: direct route to Blackwell artifact tree IO and dataset-iteration mappings
+- alias_id: QA063
+  alias: plan_stack
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml
+  description: direct route to the current research execution plan stack index
+- alias_id: QA064
+  alias: current_build_plan
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_operator_cut_20260416.yaml
+  description: direct route to the active detailed research execution operator cut
+- alias_id: QA065
+  alias: active_slice
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_active_slice_20260416.yaml
+  description: direct route to the current day-to-day execution slice
+- alias_id: QA066
+  alias: research_master
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_20260416.yaml
+  description: direct route to the full current research master plan
+- alias_id: QA067
+  alias: vbtpro_repo
+  target_kind: artifact_path
+  target_value: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+  description: direct route to the repo-owned VectorBT PRO source-tree library index
+- alias_id: QA068
+  alias: vbtpro_splitters
+  target_kind: repo_path
+  target_value: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+  description: direct route to native VectorBT PRO splitters and CV entrypoints
+- alias_id: QA069
+  alias: vbtpro_portfolio
+  target_kind: repo_path
+  target_value: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+  description: direct route to native VectorBT PRO portfolio runtime surfaces
+- alias_id: QA070
+  alias: vbtpro_from_signals
+  target_kind: repo_path
+  target_value: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+  description: direct route to native VectorBT PRO from_signals execution boundary
+- alias_id: QA071
+  alias: vbtpro_polygon
+  target_kind: repo_path
+  target_value: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+  description: direct route to native VectorBT PRO Polygon data surfaces
+- alias_id: QA072
+  alias: vbtpro_mcp
+  target_kind: repo_path
+  target_value: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+  description: direct route to the repo-owned VectorBT PRO MCP server surface
+- alias_id: QA073
+  alias: vbtpro_execution
+  target_kind: repo_path
+  target_value: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+  description: direct route to native VectorBT PRO execution engines and task dispatch
+- alias_id: QA074
+  alias: vbtpro_native
+  target_kind: topic
+  target_value: vectorbtpro_native_build_surfaces
+  description: fast route to the repo-owned VectorBT PRO native build topic
+source_refs:
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml

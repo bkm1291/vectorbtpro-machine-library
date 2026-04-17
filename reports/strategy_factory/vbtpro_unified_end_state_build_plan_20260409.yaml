@@ -1,0 +1,194 @@
+artifact_id: vbtpro_unified_end_state_build_plan_20260409
+artifact_version: 1
+artifact_type: unified_build_plan
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Machine-first end-state build plan for a new VBT-native authority repo. This note
+  resolves the rollout-vs-architecture tension by treating sidecar-first and shadow-first
+  as rollout phases only. In the end-state, the pipeline is one coherent architecture.
+
+core_rule:
+  statement: >
+    Sidecar-first and shadow-first are temporary rollout modes, not permanent module classes.
+    Every adopted component must either become an end-state module inside the new authority
+    repo or remain outside by explicit policy.
+
+end_state_architecture:
+  mission: >
+    Build a new repo whose first-class authority is a VBT-native, truth-first, split-safe,
+    benchmark-honest, Blackwell-aware research and execution pipeline.
+  permanent_modules:
+    - module_id: M0_machine_library
+      role: internal knowledge, routing, contracts, and low-context retrieval
+      permanent: true
+    - module_id: M1_data_authority
+      role: canonical price, benchmark, metadata, refresh, and schema authority
+      permanent: true
+    - module_id: M2_split_authority
+      role: split generation, membership truth, purge/embargo, fold lineage
+      permanent: true
+    - module_id: M3_feature_authority
+      role: trailing/pattern/regime/benchmark-relative feature families
+      permanent: true
+    - module_id: M4_target_authority
+      role: target and label families with honesty registry
+      permanent: true
+    - module_id: M5_signal_authority
+      role: cleaned signals, strategy surfaces, runtime gates
+      permanent: true
+    - module_id: M6_execution_authority
+      role: orders, trades, logs, stops, portfolio/value/exposure truth
+      permanent: true
+    - module_id: M7_evaluation_authority
+      role: review bundles, benchmark-relative metrics, bias checks, dashboard exports
+      permanent: true
+    - module_id: M8_search_authority
+      role: split-aware CV shell, parameter search, ranking, model selection
+      permanent: true
+    - module_id: M9_parity_and_promotion
+      role: artifact parity, truth-risk gates, migration/promotion decisions
+      permanent: true
+
+rollout_phases:
+  phase_0_contracts_and_scaffold:
+    goal: freeze contracts, build scaffold, make retrieval exact
+    temporary_modes:
+      - note_only
+      - scaffold_only
+    modules_activated:
+      - M0_machine_library
+      - M9_parity_and_promotion
+  phase_1_truth_sidecars:
+    goal: prove split, feature, target, and execution truth without replacing live authority
+    temporary_modes:
+      - sidecar_first
+      - parity_first
+    modules_activated:
+      - M2_split_authority
+      - M3_feature_authority
+      - M4_target_authority
+      - M6_execution_authority
+      - M7_evaluation_authority
+  phase_2_shadow_shell:
+    goal: connect proven modules into a full hybrid shadow pipeline
+    temporary_modes:
+      - shadow_first
+    modules_activated:
+      - M1_data_authority
+      - M2_split_authority
+      - M3_feature_authority
+      - M4_target_authority
+      - M5_signal_authority
+      - M6_execution_authority
+      - M7_evaluation_authority
+      - M8_search_authority
+      - M9_parity_and_promotion
+  phase_3_new_authority_cutover:
+    goal: make the new repo authoritative for modules that passed promotion gates
+    temporary_modes: []
+    modules_activated:
+      - M0_machine_library
+      - M1_data_authority
+      - M2_split_authority
+      - M3_feature_authority
+      - M4_target_authority
+      - M5_signal_authority
+      - M6_execution_authority
+      - M7_evaluation_authority
+      - M8_search_authority
+      - M9_parity_and_promotion
+
+component_fit_resolution:
+  initially_sidecar_then_end_state:
+    - VBT feature families
+    - auxiliary targets and labels
+    - reporting and tearsheets
+    - benchmark-relative review bundles
+    - bias metrics and drawdown/trade diagnostics
+  initially_shadow_then_end_state:
+    - splitter adapters
+    - full VBT search and CV shell
+    - full VBT evaluation shell
+    - end-to-end hybrid orchestration
+  remains_external_only_if_explicitly_decided:
+    - ad hoc one-off notebooks without contract value
+    - external public-doc mining helpers not needed in runtime or validation
+
+resolution_rules:
+  - every rollout-only component must declare its intended permanent destination module
+  - no component may remain indefinite_sidecar without a keep_external justification
+  - no full shadow stage may be promoted without truth-risk satisfaction
+  - final repo authority is defined by contracts and outputs, not by historical rollout mode
+
+module_contract_summary:
+  M1_data_authority:
+    derived_from_stage: S0_data_ingestion_and_canonicalization
+    must_absorb:
+      - adapterized data/update/store surfaces
+      - schema manifests
+      - benchmark alignment checks
+  M2_split_authority:
+    derived_from_stage: S1_split_planning_and_membership_truth
+    must_absorb:
+      - VBT splitters
+      - purge/embargo logic
+      - fold lineage
+      - split truth registries
+  M3_feature_authority:
+    derived_from_stage: S2_feature_family_build
+    must_absorb:
+      - VBT feature families
+      - pattern/regime features
+      - provenance registry
+      - honesty-safe transforms
+  M4_target_authority:
+    derived_from_stage: S3_label_and_target_build
+    must_absorb:
+      - target and label families
+      - target honesty registry
+      - wait/window semantics contracts
+  M5_signal_authority:
+    derived_from_stage: S4_signal_and_strategy_surface_build
+    must_absorb:
+      - signal cleaning
+      - strategy manifests
+      - runtime-safe gates
+  M6_execution_authority:
+    derived_from_stage: S5_simulation_and_execution_mirror
+    must_absorb:
+      - portfolio simulation
+      - order/trade/log reconstruction
+      - stop truth surfaces
+  M7_evaluation_authority:
+    derived_from_stage: S6_evaluation_review_and_bias_audit
+    must_absorb:
+      - review bundles
+      - benchmark-relative metrics
+      - bias checks
+      - dashboard/export surfaces
+  M8_search_authority:
+    derived_from_stage: S7_search_optimization_and_model_selection
+    must_absorb:
+      - split-aware CV
+      - parameter search
+      - ranking and model selection
+  M9_parity_and_promotion:
+    derived_from_stage: S8_shadow_parity_and_promotion_gate
+    must_absorb:
+      - exact artifact parity
+      - truth-risk matrix enforcement
+      - promotion decisions
+
+acceptance_rule_for_new_repo:
+  statement: >
+    The new repo becomes a real authority only when its end-state modules satisfy the
+    defined truth-risk matrix and artifact parity gates. Until then, it is a staged
+    shadow-to-authority build, not a casual fork.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml

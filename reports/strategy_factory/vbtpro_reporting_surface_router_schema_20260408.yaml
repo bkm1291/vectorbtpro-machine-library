@@ -1,0 +1,180 @@
+artifact_id: vbtpro_reporting_surface_router_schema_20260408
+artifact_version: 1
+artifact_type: schema_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Dedicated machine-first schema for review surfaces, notebooks, scripts, dashboards,
+  knowledge indexes, and implementation playbooks built around VBT PRO findings.
+
+design_goal:
+  statement: >
+    Make reporting and implementation surfaces queryable by touch mode, data shape, risk
+    addressed, output format, and repo insertion point.
+
+themes:
+  - review_surface
+  - notebook_surface
+  - script_surface
+  - dashboard_surface
+  - knowledge_index_surface
+  - implementation_playbook_surface
+
+record_contract:
+  required_fields:
+    - record_id
+    - theme
+    - title
+    - status
+    - priority
+    - maturity
+    - repo_surface
+    - vbt_surface
+    - purpose
+    - addresses_risks
+    - recommended_first_touchpoints
+    - source_refs
+    - outputs
+    - validation_hooks
+  optional_fields:
+    - inputs
+    - table_surfaces
+    - plot_surfaces
+    - export_surfaces
+    - notebook_cells
+    - implementation_notes
+    - anti_patterns
+    - dependencies
+    - non_goals
+    - related_records
+    - tags
+    - touch_mode
+    - output_format
+    - core_safety
+    - visibility_goal
+    - contract_anchor_refs
+    - data_shape
+    - operator_audience
+    - drift_signal_type
+    - evidence_granularity
+    - comparison_axis
+    - sidecar_path_pattern
+    - cacheability
+    - reproducibility_requirements
+
+field_enums:
+  status:
+    - candidate
+    - recommended
+    - staged
+    - implemented
+    - deferred
+  priority:
+    - p0
+    - p1
+    - p2
+    - p3
+  maturity:
+    - near_term
+    - medium_term
+    - long_term
+  touch_mode:
+    - inline_extension
+    - sidecar_extension
+    - notebook_only
+    - helper_only
+    - script_only
+  core_safety:
+    - safe_outside_core
+    - safe_sidecar_only
+    - avoid_core_runtime
+  data_shape:
+    - scalar_summary
+    - series
+    - dataframe
+    - matrix
+    - record_table
+    - html_report
+  evidence_granularity:
+    - summary_only
+    - grouped_table
+    - row_level
+    - mixed
+  cacheability:
+    - cacheable
+    - cacheable_with_source_fingerprint
+    - non_cacheable
+
+router_indexes:
+  required:
+    - by_theme
+    - by_repo_file
+    - by_repo_function
+    - by_vbt_family
+    - by_risk_type
+    - by_stage
+    - by_status
+    - by_priority
+    - by_artifact_mode
+  recommended:
+    - by_touch_mode
+    - by_output_format
+    - by_core_safety
+    - by_visibility_goal
+    - by_contract_anchor
+    - by_data_shape
+    - by_operator_audience
+
+record_template:
+  record_id: ""
+  theme: review_surface
+  title: ""
+  status: recommended
+  priority: p1
+  maturity: near_term
+  repo_surface:
+    file_path: ""
+    function_names: []
+    touch_mode: sidecar_extension
+  vbt_surface:
+    family: ""
+    source_paths: []
+    api_entries: []
+  purpose: ""
+  addresses_risks: []
+  recommended_first_touchpoints: []
+  source_refs:
+    repo_paths: []
+    vbt_paths: []
+  inputs: []
+  outputs: []
+  table_surfaces: []
+  plot_surfaces: []
+  export_surfaces: []
+  notebook_cells: []
+  implementation_notes: []
+  anti_patterns: []
+  dependencies: []
+  non_goals: []
+  validation_hooks: []
+  related_records: []
+  tags: []
+  touch_mode: sidecar_extension
+  output_format: []
+  core_safety: safe_sidecar_only
+  visibility_goal: []
+  contract_anchor_refs: []
+  data_shape: dataframe
+  operator_audience: []
+  drift_signal_type: []
+  evidence_granularity: mixed
+  comparison_axis: []
+  sidecar_path_pattern: ""
+  cacheability: cacheable_with_source_fingerprint
+  reproducibility_requirements: []
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_atomic_record_schema_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_retrieval_specs_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml

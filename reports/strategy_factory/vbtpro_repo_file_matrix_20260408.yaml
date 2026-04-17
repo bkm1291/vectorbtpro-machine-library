@@ -1,0 +1,510 @@
+artifact_id: vbtpro_repo_file_matrix_20260408
+artifact_version: 1
+artifact_type: research_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  High-confidence file-by-file map of where VectorBT PRO already exists in the repo,
+  where it should be added first, where it should stay adapter-only, and where the
+  current custom or GPU path should remain authoritative.
+
+labels:
+  already_vbt:
+    meaning: VBT PRO is already materially present and should be extended carefully rather than introduced from scratch.
+  vbt_adapter_first:
+    meaning: Best fit is an adapter over current repo authority, not a replacement authority.
+  vbt_overlay_research:
+    meaning: Best fit is a research-only overlay, notebook surface, or side-by-side artifact.
+  vbt_feature_block:
+    meaning: Best fit is additive feature/label generation from VBT PRO indicators, patterns, or labels.
+  keep_custom_or_gpu:
+    meaning: Current repo-specific or GPU-native implementation should remain authoritative for now.
+  greenfield_vbt_shadow_pipeline_candidate:
+    meaning: Strong candidate for a future VBT-native shadow pipeline or downstream research lane.
+
+files:
+  - path: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+    current_role: history loading, VBT runtime discovery, OHLCV resampling and validation
+    label: already_vbt
+    first_vbt_tool_family:
+      - Data
+      - OHLCV accessors
+      - resample/realign helpers
+    first_move:
+      - keep current import/resample/validate surface
+      - expose capability metadata for downstream stages
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/data/base.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+    current_role: store validation and external validation orchestration
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - Data alignment
+      - CustomData
+    first_move:
+      - derive optional aligned validation views from VBT Data helpers without changing store authority
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/data/base.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/features.py
+    current_role: feature preparation in equities llm lab
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - generic accessors
+      - custom indicators
+      - rolling stats
+    first_move:
+      - add additive feature families, not replacements
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/features.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/generic/accessors.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+    current_role: research and review viewer surface
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - plots builder
+      - px accessor
+      - OHLCV accessor
+    first_move:
+      - add VBT-backed review panels and plots
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/px/accessors.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+    current_role: VBT-backed strategy execution and feature frame access
+    label: already_vbt
+    first_vbt_tool_family:
+      - Portfolio
+      - parameterized
+      - chunked
+    first_move:
+      - bounded CPU-side parameter sweeps and cacheable repeated computations
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/chunking.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+    current_role: native VBT runtime bridge for signal and order-func portfolios
+    label: already_vbt
+    first_vbt_tool_family:
+      - Portfolio.from_signals
+      - Portfolio.from_order_func
+      - trades/orders/logs
+    first_move:
+      - add research-only reporting enrichments and Blackwell mirror entrypoints
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/base.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+    current_role: metadata adapter layer
+    label: already_vbt
+    first_vbt_tool_family:
+      - CustomData
+    first_move:
+      - extend metadata side channels for feature enrichment
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/data/custom/custom.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+    current_role: meta-model fitting and chrono train/valid masking
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - Splitter
+      - SplitterCV
+      - purged CV
+    first_move:
+      - add adapter backend around _train_valid_mask without changing artifact semantics
+    risk: high
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/sklearn_.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+    current_role: walkforward baseline evaluation and fold generation
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - Splitter.from_rolling
+      - Splitter.from_expanding
+      - overlap diagnostics
+    first_move:
+      - adapterize fold generation only after exact membership parity tests exist
+    risk: high
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+    current_role: strategy-factory validation window authority
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - Splitter.from_ranges
+      - splitter overlap/coverage utilities
+    first_move:
+      - build repo-to-vbt splitter translator
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+    current_role: meta-loop orchestration
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - split backend routing
+      - parameterized research routing
+    first_move:
+      - add opt-in split backend selection and research-only VBT hooks
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/pipeline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+    current_role: candidate dataset construction
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - pattern features
+      - labels generators
+    first_move:
+      - optional side-by-side derived features and auxiliary labels
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/ranges.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+    current_role: realized label generation
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - TRENDLB
+      - PIVOTLB
+      - MEANLB
+    first_move:
+      - add auxiliary labels without replacing current realized label contract
+    risk: high
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/labels/generators
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+    current_role: Lane 2 feature discovery and expanded feature derivation
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - rolling_pattern_similarity
+      - PATSIM
+      - OLS
+      - HURST
+      - PIVOTINFO
+    first_move:
+      - add additive pattern/regime feature families and explanatory diagnostics
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/indicators/custom/patsim.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/indicators/custom/ols.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_runtime_filters.py
+    current_role: Lane 2 filter/runtime feature logic
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - custom indicators
+      - generic rolling accessors
+    first_move:
+      - add explanatory feature/filter blocks around regime and momentum descriptors
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_runtime_filters.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/generic/accessors.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+    current_role: report and leaderboard writing
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - stats builder
+      - plots builder
+      - returns accessors
+    first_move:
+      - add optional VBT-backed report appendix artifacts
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/generic/stats_builder.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+    current_role: final holdout audit
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - returns
+      - drawdowns
+      - trades
+    first_move:
+      - side-by-side holdout diagnostics on the same return path
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/returns/accessors.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/equivalence_reports.py
+    current_role: equivalence and parity reporting
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - returns stats
+      - drawdown/trade summaries
+    first_move:
+      - add richer review sections without changing existing parity rules
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/equivalence_reports.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/generic/drawdowns.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    current_role: Blackwell split plan authority
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - Splitter
+      - SplitterCV
+      - purged CV audit
+    first_move:
+      - exporter/adapter only; keep split_plan as authority
+    risk: high
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/purged.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+    current_role: panel loading and feature panel chunk iteration
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - Data alignment
+      - CustomData
+      - pattern feature staging
+    first_move:
+      - inject optional additive VBT-derived feature blocks before GPU fit
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/data/base.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+    current_role: main feature engineering for Blackwell
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - PATSIM
+      - PatternRanges
+      - custom indicators
+      - IndicatorFactory
+    first_move:
+      - add CPU-staged optional pattern/indicator blocks feeding the GPU feature panel
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/indicators/custom/patsim.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/ranges.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+    current_role: GPU training and prediction executor
+    label: keep_custom_or_gpu
+    first_vbt_tool_family:
+      - none_first
+    first_move:
+      - keep GPU ownership here; only pass precomputed masks or CPU-side research results into it
+    risk: high
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      - /home/benji/trade_scanner2/configs/strategy_factory/research/blackwell_ensemble_v1.yaml
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+    current_role: candidate model and hyperparameter surface construction
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - Param
+      - parameterized
+      - bounded chunked sweeps
+    first_move:
+      - use VBT parameterization for research-only bounded ranking/eval grids, not GPU fitting replacement
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/utils/params.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+    current_role: ranking predictions and building portfolio view
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - Portfolio
+      - PortfolioOptimizer
+      - returns/trades
+    first_move:
+      - create research-only VBT portfolio mirror from ranked selections and weights
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/base.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/pfopt/base.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+    current_role: current Blackwell evaluation metrics and portfolio metrics
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - returns accessors
+      - drawdowns
+      - trades
+      - logs
+    first_move:
+      - add richer VBT-backed diagnostics alongside current proxy metrics
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/returns/accessors.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/trades.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+    current_role: stage orchestration for the full Blackwell lane
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - adapter routing
+      - research artifact wiring
+    first_move:
+      - route optional splitter adapters and research-only VBT outputs without changing stage order
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/contracts.py
+
+  - path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/stacker.py
+    current_role: CPU stacker fit and predict
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - SplitterCV
+      - sklearn bridge
+    first_move:
+      - research-only fold inspection and inner-fold parity helpers
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/stacker.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/sklearn_.py
+
+  - path: /home/benji/trade_scanner2/scripts/run_blackwell_ensemble_practice.py
+    current_role: easiest Blackwell practice/demo entrypoint
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - notebook/demo artifact emission
+      - VBT mirror outputs
+    first_move:
+      - emit optional VBT mirror artifacts next to practice-run outputs
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/scripts/run_blackwell_ensemble_practice.py
+
+  - path: /home/benji/trade_scanner2/scripts/run_lane_2_coarse_medium_regime_feature_discovery.py
+    current_role: Lane 2 feature discovery driver
+    label: vbt_feature_block
+    first_vbt_tool_family:
+      - pattern features
+      - custom indicators
+    first_move:
+      - optional CLI flags for VBT feature block injection
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/scripts/run_lane_2_coarse_medium_regime_feature_discovery.py
+
+  - path: /home/benji/trade_scanner2/scripts/render_loop_runs_dashboard.py
+    current_role: dashboard/report rendering
+    label: vbt_overlay_research
+    first_vbt_tool_family:
+      - stats builder
+      - plots builder
+      - px accessor
+    first_move:
+      - enrich dashboards with VBT-derived research panels
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/scripts/render_loop_runs_dashboard.py
+      - /home/benji/miniconda3/envs/vectorbtpro/lib/python3.12/site-packages/vectorbtpro/generic/plots_builder.py
+
+  - path: /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime.py
+    current_role: runtime parity and semantics tests
+    label: already_vbt
+    first_vbt_tool_family:
+      - parity tests
+      - research mirror smoke tests
+    first_move:
+      - extend with Blackwell-shaped fixtures and serial/chunked parity
+    risk: low
+    source_refs:
+      - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime.py
+
+  - path: /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+    current_role: end-to-end Blackwell validation
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - artifact parity
+      - VBT mirror artifact smoke tests
+    first_move:
+      - add research-only mirror assertions without changing authority outputs
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+
+  - path: /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+    current_role: split plan validation
+    label: vbt_adapter_first
+    first_vbt_tool_family:
+      - Splitter parity tests
+      - overlap/coverage assertions
+    first_move:
+      - assert exact membership parity between repo split plan and VBT adapter
+    risk: medium
+    source_refs:
+      - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+
+  - path: /home/benji/trade_scanner2/reports/strategy_factory
+    current_role: note spine and strategy-factory contracts
+    label: greenfield_vbt_shadow_pipeline_candidate
+    first_vbt_tool_family:
+      - knowledge tooling
+      - document ranking
+      - text splitting
+    first_move:
+      - build internal note/code retrieval index for developer workflows
+    risk: low
+    source_refs:
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/knowledge/doc_ranking.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/knowledge/text_splitting.py
+
+summary:
+  best_first_moves:
+    - build repo_to_vbt_splitter adapter over validation_segments and blackwell split_plan
+    - add additive VBT pattern feature blocks to Blackwell and Lane 2 feature discovery
+    - build research-only VBT portfolio mirror for Blackwell ranking/evaluation
+    - extend runtime/report notebooks and tests before touching authority paths
+  strongest_keep_custom_or_gpu:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+  strongest_greenfield_shadow_candidates:
+    - split inspection/review notebooks
+    - downstream portfolio/returns/drawdown analysis
+    - internal repo knowledge index over notes and code
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml

@@ -1,0 +1,321 @@
+artifact_id: vbtpro_split_truth_record_schema_20260408
+artifact_version: 1
+artifact_type: schema_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Dedicated machine-first schema for split membership, chronology, overlap, lineage, and
+  artifact parity truth records. This exists so split/leakage findings can be routed and
+  queried without rereading long-form notes.
+
+design_goal:
+  statement: >
+    Represent each split-truth assertion as an atomic, comparable record with explicit
+    membership basis, artifact stage, boundary semantics, and failure consequence.
+
+required_fields:
+  identity_and_claim:
+    - record_id
+    - theme
+    - canonical_subject
+    - canonical_assertion
+    - record_scope
+    - identity_key
+    - comparison_mode
+    - failure_consequence
+  repo_surface:
+    - repo_area
+    - repo_object_type
+    - file_path
+    - function_name
+  vbt_surface:
+    - vbt_area
+    - vbt_object_type
+    - tool_name
+    - source_path
+  validation:
+    - assertion_kind
+    - assertion_level
+    - validation_owner
+    - artifact_writer_stage
+  routing:
+    - router_version
+    - canonical_route
+    - priority
+    - contamination_boundary
+    - output_schema_truth
+    - index_granularity
+
+field_enums:
+  theme:
+    - split_membership_truth
+    - fold_lineage_truth
+    - chronology_honesty
+    - overlap_leakage
+    - schema_artifact_truth
+  canonical_subject:
+    - split_definition
+    - split_membership
+    - set_membership
+    - fold_lineage
+    - row_identity
+    - output_schema
+    - chronology_boundary
+    - overlap_boundary
+    - purge_embargo_boundary
+    - label_preservation
+  canonical_assertion:
+    - exact_membership_equality
+    - exact_label_equality
+    - exact_boundary_equality
+    - exact_fold_parentage
+    - exact_row_identity_equality
+    - no_overlap
+    - strict_containment
+    - chronology_ordering
+    - no_holdout_contamination
+    - no_inner_fold_leakage
+    - output_column_truth
+    - remap_consistency
+    - fragmentation_absent
+  record_scope:
+    - single_function
+    - single_artifact
+    - split_plan_level
+    - fold_level
+    - row_level
+    - notebook_audit_level
+    - cross_artifact
+  comparison_mode:
+    - repo_vs_vbt
+    - repo_vs_repo
+    - vbt_vs_output_artifact
+    - repo_contract_vs_output_artifact
+    - repo_contract_vs_vbt_vs_output_artifact
+  failure_consequence:
+    - misleading_metrics
+    - silent_leakage
+    - mislabeled_output
+    - invalid_holdout
+    - invalid_hyperparameter_search
+    - invalid_stacker_input
+    - notebook_only_confusion
+  repo_object_type:
+    - function
+    - module
+    - artifact_writer
+    - validator
+    - test
+    - notebook_target
+  vbt_object_type:
+    - splitter_factory
+    - splitter_method
+    - sklearn_bridge
+    - purged_cv
+    - nb_kernel
+    - visualization
+    - grouping_helper
+    - remap_helper
+  assertion_kind:
+    - equality
+    - containment
+    - exclusion
+    - ordering
+    - schema_presence
+    - uniqueness
+    - continuity
+    - remap_equivalence
+  assertion_level:
+    - labels_only
+    - counts_only
+    - bounds_only
+    - masks
+    - row_ids
+    - full_artifact_truth
+  semantic_label_preservation:
+    - exact
+    - partial
+    - absent
+    - not_applicable
+  fold_fragmentation_state:
+    - contiguous
+    - fragmented
+    - unknown
+    - not_checked
+  remap_required:
+    - yes
+    - no
+    - conditional
+  index_granularity:
+    - date
+    - timestamp
+    - event
+    - candidate
+    - mixed
+  output_schema_truth:
+    - tags_match_membership
+    - tags_unchecked
+    - tags_misaligned
+    - no_tags_present
+  contamination_boundary:
+    - train_valid
+    - valid_holdout
+    - train_holdout
+    - inner_outer
+    - development_holdout
+    - split_set_internal
+    - none
+  validation_owner:
+    - validation_segments
+    - models
+    - walk_forward
+    - blackwell_splits
+    - gpu_executor
+    - oos_cache
+    - tests
+    - notebook
+  artifact_writer_stage:
+    - models_validation_predictions
+    - walk_forward_fold_metrics
+    - blackwell_development_oos
+    - blackwell_holdout_predictions
+    - oos_cache
+    - notebook_only
+
+nested_blocks:
+  membership_truth:
+    required_fields:
+      - membership_basis
+      - repo_membership_source
+      - vbt_membership_source
+      - output_membership_source
+      - equality_unit
+      - equality_key_columns
+  lineage_truth:
+    required_fields:
+      - parent_identity
+      - child_identity
+      - allowed_parent_child_relation
+      - lineage_labels_expected
+      - lineage_labels_observed
+      - lineage_drift_detected
+  schema_truth:
+    required_fields:
+      - required_output_columns
+      - semantic_tag_columns
+      - uniqueness_constraint
+      - schema_guard_function
+  chronology_truth:
+    required_fields:
+      - start_boundary_field
+      - end_boundary_field
+      - order_constraint
+      - inclusive_exclusive_truth
+      - derived_from_field
+  leakage_truth:
+    required_fields:
+      - leakage_detector
+      - detector_level
+      - overlap_unit
+      - purge_or_embargo_applied
+      - contamination_rows_possible
+
+recommended_router_indexes:
+  primary:
+    - theme
+    - canonical_subject
+    - canonical_assertion
+    - validation_owner
+    - failure_consequence
+    - comparison_mode
+    - priority
+  secondary:
+    - identity_key
+    - artifact_writer_stage
+    - semantic_label_preservation
+    - fold_fragmentation_state
+    - remap_required
+    - contamination_boundary
+    - output_schema_truth
+    - index_granularity
+    - schema_guard_function
+
+detection_rules:
+  priority_p0_if:
+    - canonical_assertion in [exact_membership_equality, no_holdout_contamination, exact_fold_parentage]
+    - failure_consequence in [silent_leakage, invalid_holdout, invalid_hyperparameter_search, invalid_stacker_input]
+  priority_p1_if:
+    - assertion_level in [masks, row_ids, full_artifact_truth]
+    - output_schema_truth in [tags_misaligned, tags_unchecked]
+
+record_template:
+  record_id: ""
+  theme: split_membership_truth
+  canonical_subject: split_membership
+  canonical_assertion: exact_membership_equality
+  record_scope: fold_level
+  identity_key: ""
+  comparison_mode: repo_contract_vs_vbt_vs_output_artifact
+  failure_consequence: invalid_holdout
+  repo_surface:
+    repo_area: ""
+    repo_object_type: function
+    file_path: ""
+    function_name: ""
+  vbt_surface:
+    vbt_area: generic.splitting
+    vbt_object_type: splitter_method
+    tool_name: ""
+    source_path: ""
+  membership_truth:
+    membership_basis: ""
+    repo_membership_source: ""
+    vbt_membership_source: ""
+    output_membership_source: ""
+    equality_unit: ""
+    equality_key_columns: []
+  lineage_truth:
+    parent_identity: ""
+    child_identity: ""
+    allowed_parent_child_relation: ""
+    lineage_labels_expected: []
+    lineage_labels_observed: []
+    lineage_drift_detected: false
+  schema_truth:
+    required_output_columns: []
+    semantic_tag_columns: []
+    uniqueness_constraint: ""
+    schema_guard_function: ""
+  chronology_truth:
+    start_boundary_field: ""
+    end_boundary_field: ""
+    order_constraint: ""
+    inclusive_exclusive_truth: ""
+    derived_from_field: ""
+  leakage_truth:
+    leakage_detector: ""
+    detector_level: ""
+    overlap_unit: ""
+    purge_or_embargo_applied: ""
+    contamination_rows_possible: ""
+  validation:
+    assertion_kind: equality
+    assertion_level: row_ids
+    validation_owner: ""
+    artifact_writer_stage: ""
+  routing:
+    router_version: split_truth_router_v1
+    canonical_route: ""
+    priority: p1
+    semantic_label_preservation: exact
+    fold_fragmentation_state: not_checked
+    remap_required: no
+    contamination_boundary: none
+    output_schema_truth: tags_unchecked
+    index_granularity: date
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_machine_specs_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml

@@ -1,0 +1,88 @@
+artifact_id: vbtpro_library_completion_contract_20260409_v2
+artifact_version: 2
+artifact_type: completion_contract
+status: frozen
+created_on: 2026-04-09
+owner: codex
+supersedes:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_completion_contract_20260409.yaml
+purpose: >
+  Final definition of what counts as library complete under two bars: minimum_complete
+  for safe frozen authority use, and gold_complete for the preferred near-exhaustive
+  machine library target. Completion is content-complete enough for authority use, not
+  a statement that research can never add more data.
+
+completion_profiles:
+  minimum_complete:
+    role: immutable minimum viability gate for frozen authority operation
+    thresholds:
+      vbt_family_coverage_threshold:
+        target: 0.9
+        meaning: at least 90 percent of repo-relevant VBT family groups are mapped into canonical notes or reservoir
+      repo_mapping_threshold:
+        target: 0.9
+        meaning: at least 90 percent of repo-path router entries have canonical stage or replacement mapping
+      normalization_threshold:
+        target: 0.8
+        meaning: at least 80 percent of stable reused records live in canonical registries rather than batch-only intake
+      alias_coverage_threshold:
+        target: 0.9
+        meaning: at least 90 percent of repeated query patterns have stable aliases
+      truth_risk_coverage_threshold:
+        target: 1.0
+        meaning: all known blocking or high truth risks are recorded in the truth-risk matrix
+  gold_complete:
+    role: preferred high-confidence finish line before major new-repo build acceleration
+    thresholds:
+      vbt_family_coverage_threshold:
+        target: 0.98
+        meaning: near-exhaustive coverage of repo-relevant VBT family groups in canonical notes or reservoir
+      repo_mapping_threshold:
+        target: 0.97
+        meaning: at least 97 percent of repo-path router entries have canonical stage or replacement mapping
+      normalization_threshold:
+        target: 0.95
+        meaning: at least 95 percent of stable reused records live in canonical registries rather than batch-only intake
+      alias_coverage_threshold:
+        target: 0.97
+        meaning: at least 97 percent of repeated query patterns have stable aliases
+      truth_risk_coverage_threshold:
+        target: 1.0
+        meaning: all known blocking or high truth risks are recorded in the truth-risk matrix
+
+completion_requires:
+  - constitution_frozen
+  - normalization_boundary_frozen
+  - retrieval_contract_frozen
+  - agent_output_protocol_frozen
+  - coverage_dashboard_generated
+  - compiled_lookup_validate_only_passes
+
+measurement_contract:
+  directly_measured_now:
+    - repo_mapping_threshold
+    - normalization_threshold_proxy
+    - truth_risk_count_surface
+    - alias_count_surface
+  not_yet_directly_measured:
+    - vbt_family_coverage_threshold
+    - alias_coverage_threshold
+    - truth_risk_coverage_threshold
+  rule: >
+    A threshold can exist in the frozen contract before the coverage dashboard has a direct
+    quantitative measurement for it. Unmeasured thresholds remain active targets and should
+    be instrumented rather than ignored.
+
+ongoing_growth_after_completion:
+  allowed:
+    - add_new_content_records_that_follow_frozen_contracts
+    - add_new_alias_entries_that_follow_frozen_contracts
+    - add_new_repo_mappings_that_follow_frozen_contracts
+  forbidden:
+    - mutate_threshold_definitions_without_version_bump
+    - claim_gold_complete_if_truth_risk_coverage_is_below_threshold
+    - silently_treat_minimum_complete_as_the_preferred_end_state
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml

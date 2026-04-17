@@ -1,0 +1,189 @@
+artifact_id: vbtpro_repo_brainstorm_ideas_20260408
+artifact_version: 1
+artifact_type: brainstorm_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Speculative but repo-fit idea bank for VBT PRO adoption, Blackwell usage, and possible
+  future VBT-native research lanes. This note is intentionally broader and less conservative
+  than the encyclopedia note.
+
+guardrails:
+  - ideas here are not authoritative implementation commitments
+  - current repo no-leak, walkforward, and holdout contracts remain authoritative unless explicitly replaced
+  - ideas may be explored in research-only or shadow-pipeline form first
+
+high_potential_ideas:
+  - idea_id: split_contract_adapter_layer
+    category: validation_and_cv
+    summary: >
+      Build one adapter that turns repo validation segments and Blackwell split plans into
+      VBT Splitter objects everywhere. This would create one reusable fold surface for
+      meta-models, walkforward baselines, Blackwell diagnostics, and notebook analysis.
+    likely_value:
+      - less duplicated split logic
+      - easier parity testing
+      - easier chrono-safe CV experiments
+
+  - idea_id: blackwell_pattern_feature_bank
+    category: features
+    summary: >
+      Add a bank of VBT-derived pattern and similarity features to the Blackwell daily panel:
+      template similarity, pattern hit counts, time-since-pattern, pivot states, and OLS/z-score style structure metrics.
+    likely_value:
+      - richer structural features
+      - improved model signal quality
+      - more interpretable failure/regime features
+
+  - idea_id: lane2_regime_pattern_augmentation
+    category: lane2_features
+    summary: >
+      Add pattern-hit and regime-shape features to Lane 2 coarse/medium discovery so the LLM
+      and candidate probes can reason over richer regime surfaces than broad volatility/trend buckets alone.
+    likely_value:
+      - better candidate discovery inputs
+      - more interpretable regime explanations
+
+  - idea_id: vbt_holdout_portfolio_mirror
+    category: evaluation
+    summary: >
+      Build a research-only VBT portfolio mirror over Blackwell holdout scores and per-family
+      validation outputs to get richer turnover, exposure, trade path, and drawdown analytics.
+    likely_value:
+      - stronger evaluation depth
+      - more realistic post-score simulation
+      - reusable notebook and dashboard artifacts
+
+  - idea_id: parameterized_cpu_research_grid
+    category: optimization
+    summary: >
+      Use VBT Param/parameterized/chunked execution for bounded CPU-side sweeps over ranking,
+      allocation, threshold, and validation-policy knobs rather than bespoke nested loops.
+    likely_value:
+      - faster research iteration
+      - clearer hyperparameter accounting
+      - less duplicated orchestration code
+
+  - idea_id: trade_and_drawdown_diagnostics_upgrade
+    category: reporting
+    summary: >
+      Use VBT trades, returns, and drawdown objects to enrich strategy and Blackwell reports
+      with MFE/MAE, path-aware drawdown states, capture ratios, and richer trade-level plots.
+    likely_value:
+      - better operator review
+      - clearer failure analysis
+
+  - idea_id: vbt_shadow_ml_pipeline
+    category: shadow_pipeline
+    summary: >
+      If adapter-first adoption tops out, build a second VBT-native shadow pipeline using the
+      old pipeline as a semantic map. Keep it separate until split and holdout parity are proven.
+    likely_value:
+      - cleaner long-term architecture if current pipeline proves too fragmented
+      - easier future optimization once contracts are re-established
+    caution:
+      - this is a separate research lane, not a mainline replacement plan
+
+  - idea_id: custom_indicator_factory_repo_layer
+    category: features
+    summary: >
+      Build repo-local VBT SignalFactory/IndicatorFactory wrappers so new feature or signal
+      families can be defined once and reused across notebooks, strategy research, and Blackwell experiments.
+    likely_value:
+      - less hand-coded feature duplication
+      - more repeatable research tooling
+
+  - idea_id: notebook_first_research_surface
+    category: workflow
+    summary: >
+      Use the capability dump notebook and optimization notebook as living review surfaces for
+      trying splitters, pattern features, portfolio mirrors, and parameter sweeps before code changes land.
+    likely_value:
+      - lower implementation risk
+      - faster human review
+      - fewer blind refactors
+
+  - idea_id: dashboard_upgrade_from_vbt_stats
+    category: dashboards
+    summary: >
+      Upgrade internal dashboards and reports with VBT stats/plots builders so reports become
+      more standardized across strategy, walkforward, Blackwell, and Lane 2 evaluation surfaces.
+    likely_value:
+      - better cross-lane consistency
+      - faster review cycles
+
+  - idea_id: ols_residual_feature_family
+    category: features
+    summary: >
+      Use VBT OLS indicator outputs such as slope, z-score, error, and angle to build stronger
+      trend-quality, residual, and mean-reversion feature families instead of hand-rolled regressions.
+    likely_value:
+      - richer structure-aware features
+      - cleaner residual diagnostics
+
+  - idea_id: pivot_structure_feature_family
+    category: features
+    summary: >
+      Use VBT PIVOTINFO for swing-state and pivot-structure encoding in Blackwell and Lane 2.
+      This can create higher-level structural features without bespoke zigzag logic.
+    likely_value:
+      - structural regime encoding
+      - interpretable swing-state features
+
+  - idea_id: anomaly_and_break_feature_family
+    category: features
+    summary: >
+      Use VBT SIGDET for anomaly, spike, and local break detection features or filters.
+      This could help detect unstable conditions or breakout-like events in a more robust way.
+    likely_value:
+      - better event detection
+      - improved filter precision
+
+  - idea_id: hurst_regime_family
+    category: regime_features
+    summary: >
+      Use VBT HURST to classify trend-vs-mean-revert conditions and feed that into
+      strategy research, Lane 2 regime surfaces, or Blackwell feature panels.
+    likely_value:
+      - clearer regime separation
+      - better context-aware modeling
+
+  - idea_id: ohlcv_review_upgrade
+    category: review_tooling
+    summary: >
+      Use VBT OHLCV accessors and figure helpers to build much better notebook review
+      surfaces for feature-store QC, signal overlays, and Blackwell panel sanity checks.
+    likely_value:
+      - faster human verification
+      - fewer silent data-shape mistakes
+
+  - idea_id: internal_repo_knowledge_index
+    category: developer_tooling
+    summary: >
+      Use VBT knowledge text splitters as an internal developer-tooling experiment to
+      chunk and index repo code, notes, and contracts for faster local exploration.
+    likely_value:
+      - faster code/note lookup
+      - less repeated context loading
+    caution:
+      - not part of runtime trading logic
+
+greenfield_tracks:
+  - track_id: vbt_native_shadow_strategy_lane
+    summary: >
+      Build a VBT-native shadow lane for strategy-family research using current config and holdout
+      contracts as a map, but re-expressing execution, split, and evaluation with VBT-native objects end to end.
+  - track_id: vbt_native_shadow_blackwell_evaluation_lane
+    summary: >
+      Keep Blackwell GPU training, but rebuild everything around it with VBT-native splitters,
+      portfolio mirrors, stats, reports, and parameterized evaluation.
+  - track_id: vbt_native_shadow_lane2_regime_research
+    summary: >
+      Build a VBT-backed regime feature discovery/research lane with strong pattern and rolling-stat
+      surfaces, keeping the current Lane 2 pipeline only as a semantic map and comparison point.
+
+source_refs:
+  encyclopedia: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+  capability_dump_notebook: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb
+  optimization_notebook: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_optimization_map_20260408.ipynb

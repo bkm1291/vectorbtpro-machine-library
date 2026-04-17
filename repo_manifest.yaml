@@ -1,0 +1,17 @@
+repo_id: vectorbtpro_machine_library
+repo_name: vectorbtpro-machine-library
+source_repo_path: /home/benji/vectorbtpro-machine-library
+export_date: 2026-04-16
+export_scope:
+  include_globs:
+    - external/vectorbt.pro/**
+    - reports/strategy_factory/**
+    - scripts/build_vbtpro_machine_library.py
+    - scripts/query_vbtpro_machine_library.py
+    - src/vbtpro_lab/machine_library/**
+  excluded_scopes:
+    - unrelated vbtpro-lab runtime code
+active_contract:
+  path: reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+compiled_lookup:
+  path: reports/strategy_factory/vbtpro_machine_library_20260409.sqlite

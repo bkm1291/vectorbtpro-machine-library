@@ -1,0 +1,147 @@
+artifact_id: vbtpro_lab_reset_rebuild_notes_plan_20260409
+artifact_version: 1
+artifact_type: build_notes_plan
+status: active_next
+created_on: 2026-04-09
+owner: codex
+purpose: 'Operational notes plan for the reset-and-rebuild phase. This note defines
+  exactly which repo-truth surfaces must be updated after each meaningful step so
+  build replay never depends on chat context.
+
+  '
+delivery_sequence_contract_ref: /home/benji/vectorbtpro-machine-library/contracts/build_rules_contract.yaml
+validation_ladder_contract_ref: /home/benji/vectorbtpro-machine-library/contracts/validation_contract.yaml
+logging_contract_ref: /home/benji/vectorbtpro-machine-library/contracts/build_event_logging_contract.yaml
+scope:
+  applies_to:
+  - all_real_module_slices
+  - blocker_discovery_and_resolution
+  - validation_runs
+  - runtime_fallback_decisions
+  - status_promotions_and_demotions
+authoritative_note_surfaces:
+  slice_plan_contract: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_codex_build_start_contract_20260409.yaml
+  reset_rebuild_program: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_reset_rebuild_program_20260409.yaml
+  build_event_log: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_events_20260409.yaml
+  build_event_active_summary: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_events_active_summary_20260415.yaml
+  build_registry: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+  implementation_gap_matrix: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_implementation_gap_matrix_20260409.yaml
+  active_surface_efficiency_cleanup_plan: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_active_surface_efficiency_cleanup_plan_20260415.yaml
+  regime_unified_control_plane: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_regime_unified_control_plane_20260415.yaml
+  regime_exec_only_build_plan: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_operator_cut_20260416.yaml
+  validation_receipt_policy_note: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_validation_receipt_promotion_policy_20260415.yaml
+  committed_validation_receipt_root: /home/benji/vectorbtpro-machine-library/artifacts/specs/validation_records
+required_updates_by_step_type:
+  blocker_scope_or_scope_confirmation:
+  - write_or_refresh_the_scope_note_before_plan_work
+  - append_or_update_build_event_log
+  - yaml_validate_changed_notes
+  plan_or_scope_change:
+  - update_the_target_slice_plan_or_start_contract_reference
+  - append_or_update_build_event_log
+  - yaml_validate_changed_notes
+  prebuild_validation:
+  - record_runtime_used
+  - append_prebuild_validation_started
+  - append_prebuild_validation_passed_or_failed
+  - yaml_validate_changed_notes
+  build_step:
+  - append_build_step_started
+  - append_build_step_completed_or_blocker_identified
+  - update_build_registry_if_active_next_or_blockers_changed
+  - yaml_validate_changed_notes
+  blocker_or_question:
+  - append_blocker_identified_or_question_raised
+  - update_build_registry_blockers
+  - append_resolution_or_answer_when_closed
+  - yaml_validate_changed_notes
+  post_build_validation:
+  - append_post_build_validation_started
+  - append_post_build_validation_passed_or_failed
+  - deduplicate_affected_notes_after_post_build_validation_passes
+  - update_build_registry_only_after_pass
+  - update_implementation_gap_matrix_if_material_progress_occurred
+  - yaml_validate_changed_notes
+  - promote_committed_validation_receipt_when_the_slice_is_release_critical
+required_event_detail_fields:
+  validation_events:
+  - runtime_id
+  - commands_run
+  - result
+  blocker_events:
+  - blocker_id
+  - affected_module_id
+  - required_resolution
+  question_events:
+  - question_id
+  - source_path
+  build_step_events:
+  - touched_paths
+  - intended_outputs
+strict_rules:
+- no_real_build_step_without_note_updates
+- no_registry_promotion_without_matching_event_log_evidence
+- no_plain_python_fallback_without_predeclared_decision_record
+- no_unvalidated_note_changes
+- no_finished_build_slice_without_post_validation_note_deduplication
+- build_log_and_build_registry_must_stay_synchronized
+- no_unscoped_broad_reads_on_large_materialized_parquet_outputs
+- run_sync_machine_library_surfaces_before_every_real_build_validation_or_note_surface_change
+- release_critical_slices_require_committed_validation_receipts_under_artifacts/specs/validation_records
+machine_library_surface_sync_default_command:
+  repo_root: /home/benji/vectorbtpro-machine-library
+  command:
+  - cd /home/benji/vectorbtpro-machine-library
+  - /home/benji/miniconda3/envs/vectorbtpro/bin/python scripts/sync_machine_library_surfaces.py
+    --note-path /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_machine_library_surface_sync_automation_plan_20260415.yaml
+    --artifact-path /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/timeframe_registry.yaml
+  doctrine:
+  - use_this_as_the_minimum_default_invocation_every_time
+  - if_the_current_slice_has_different_note_or_artifact_handoffs_swap_the_path_arguments_explicitly
+  - artifact_path_is_verification_only_and_should_not_persist_into_active_runtime_artifact_surfaces
+  - use_active_runtime_artifact_path_only_when_a_runtime_winner_should_be_added_to_active_runtime_artifact_surfaces
+  - do_not_edit_repo_truth_manually_when_the_helper_can_accept_the_path_handoff
+operational_safety:
+  large_output_access_policy:
+    applies_to:
+    - /home/benji/vectorbtpro-machine-library/artifacts/data
+    - /home/benji/vectorbtpro-machine-library/artifacts/runtime
+    - /home/benji/vectorbtpro-machine-library/artifacts/research
+    - /home/benji/vectorbtpro-machine-library/artifacts/evaluation
+    - /home/benji/vectorbtpro-machine-library/artifacts/parity
+    rules:
+    - treat_large_materialized_parquet_outputs_as_metadata_first_surfaces
+    - require_a_scope_manifest_before_any_sample_or_follow_on_derivation_step_reads_a_large_output_directly
+    - require_schema_and_row_group_metadata_inspection_before_any_row_materialization
+    - require_explicit_projection_and_bounded_sampling_for_any_follow_on_probe
+    - require_step_resource_smoke_when_a_probe_or_derivation_step_reads_a_large_output
+    - broad_unbounded_pandas_read_parquet_calls_on_large_materialized_outputs_are_forbidden
+source_refs:
+- /home/benji/vectorbtpro-machine-library/contracts/build_event_logging_contract.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/vbtpro_python_runtime_contract.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/build_rules_contract.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/validation_contract.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/large_output_access_contract.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_active_surface_efficiency_cleanup_plan_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_entry_canonical_v2_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_regime_filter_master_review_and_finishing_plan_master_v2_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_regime_unified_control_plane_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_current_universe_completion_codex_plan_20260416v3.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_validation_receipt_promotion_policy_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_operator_cut_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_20260416.yaml
+active_regime_control_plane_support_surfaces:
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+active_control_plane_surfaces:
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_operator_cut_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_active_slice_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_current_universe_completion_codex_plan_20260416v3.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_phase_control_plane_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_pre_s10_release_blocker_state_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_regime_unified_control_plane_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_trade_scanner2_reference_audit_20260416.yaml
+operator_control_plane_surfaces:
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml

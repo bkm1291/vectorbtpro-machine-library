@@ -1,0 +1,339 @@
+artifact_id: vbtpro_atomic_record_schema_20260408
+artifact_version: 1
+artifact_type: schema_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Machine-first schema for atomic encyclopedia records. These records are intended to become
+  the normalized unit for future capability, repo-fit, truth-risk, notebook, and playbook
+  indexing once broad discovery stabilizes.
+
+design_goal:
+  statement: >
+    Represent each durable finding as a small, explicit, queryable record that can be routed,
+    grouped, filtered, and expanded into implementation guidance without rereading entire notes.
+
+record_families:
+  capability_record:
+    stable_id_pattern: cap_<topic>_<short_name>
+    required_fields:
+      - stable_id
+      - record_family
+      - topic_family
+      - short_name
+      - summary
+      - vbt_source_paths
+      - repo_target_paths
+      - adoption_mode
+      - why_it_matters
+      - status
+    optional_fields:
+      - value_statement
+      - notebook_surface
+      - test_surface
+      - anti_patterns
+      - source_line_hints
+  repo_fit_record:
+    stable_id_pattern: fit_<repo_area>_<short_name>
+    required_fields:
+      - stable_id
+      - record_family
+      - repo_target_path
+      - repo_target_function_or_scope
+      - current_role
+      - recommended_vbt_family
+      - adoption_mode
+      - first_move
+      - validation_hook
+      - status
+    optional_fields:
+      - supporting_vbt_source_paths
+      - truth_risks
+      - notes
+  truth_risk_record:
+    stable_id_pattern: truth_<risk_family>_<short_name>
+    required_fields:
+      - stable_id
+      - record_family
+      - risk_family
+      - short_name
+      - risk_statement
+      - detection_surface
+      - repo_target_paths
+      - validation_hook
+      - severity
+      - status
+    optional_fields:
+      - vbt_source_paths
+      - anti_patterns
+      - notebook_surface
+      - test_surface
+  notebook_script_test_record:
+    stable_id_pattern: surf_<surface_family>_<short_name>
+    required_fields:
+      - stable_id
+      - record_family
+      - surface_family
+      - artifact_or_target
+      - goal
+      - supporting_note_paths
+      - repo_target_paths
+      - status
+    optional_fields:
+      - expected_outputs
+      - validation_scope
+      - linked_playbook
+  playbook_record:
+    stable_id_pattern: play_<domain>_<short_name>
+    required_fields:
+      - stable_id
+      - record_family
+      - domain
+      - short_name
+      - implementation_goal
+      - repo_target_paths
+      - supporting_capability_ids
+      - supporting_truth_risk_ids
+      - required_validation
+      - status
+    optional_fields:
+      - bounded_steps
+      - stop_conditions
+      - notebook_dependencies
+
+common_enums:
+  record_family:
+    - capability_record
+    - repo_fit_record
+    - truth_risk_record
+    - notebook_script_test_record
+    - playbook_record
+  adoption_mode:
+    - adapter_first
+    - overlay_research
+    - keep_custom_or_gpu
+    - greenfield_shadow_candidate
+  status:
+    - discovered
+    - indexed
+    - classified
+    - playbook_ready
+    - validated
+    - implementable
+  severity:
+    - low
+    - medium
+    - high
+    - critical
+  honesty_class:
+    - point_in_time_safe
+    - target_only_lookahead
+    - running_state_safe
+    - lookahead_state_forbidden
+    - split_truth_only
+    - schema_truth_only
+    - proxy_vs_simulation_risk
+  implementation_stage:
+    - discovery_only
+    - router_ready
+    - notebook_ready
+    - test_ready
+    - playbook_ready
+    - repo_fit_ready
+
+recommended_extended_fields:
+  shared_optional_fields:
+    - honesty_class
+    - point_in_time_safe
+    - split_audit_required
+    - overlap_audit_required
+    - row_alignment_required
+    - provenance_required
+    - implementation_stage
+    - preferred_prefix
+    - forbidden_downstream_consumers
+    - artifact_visibility
+    - canonical_subject
+    - canonical_assertion
+    - record_scope
+    - identity_key
+    - comparison_mode
+    - failure_consequence
+    - source_ref_hash
+  family_specific_extensions:
+    feature_and_pattern_records:
+      - allowed_in_features
+      - allowed_in_targets
+      - allowed_in_runtime_filters
+      - allowed_in_evidence_surface
+      - allowed_in_blackwell
+      - emits_running_state
+      - emits_lookahead_state
+    label_records:
+      - requires_wait_parameter
+      - predictor_forbidden
+      - recommended_target_prefix
+    signal_records:
+      - requires_reset_signal
+      - overlap_behavior
+      - reset_semantics
+    truth_risk_records:
+      - contamination_boundary
+      - mask_truth_basis
+      - output_schema_truth
+      - index_granularity
+      - boundary_semantics
+      - semantic_label_preservation
+      - fold_fragmentation_state
+      - remap_required
+      - validation_owner
+      - artifact_writer_stage
+      - assertion_kind
+      - assertion_level
+
+topic_families:
+  - splitters_and_cv
+  - data_alignment_resampling_and_custom_data
+  - schema_rows_columns_accuracy
+  - truth_bias_leakage_drift
+  - pattern_features_and_labels
+  - signals_and_signal_generation
+  - custom_indicators_and_generic_accessors
+  - execution_engines_and_settings
+  - parameterization_and_search
+  - chunking_caching_parallelism
+  - portfolio_simulation_and_optimizer
+  - returns_drawdowns_trades_records_and_reporting
+  - stats_plots_and_analysis_builders
+  - knowledge_and_ai_dev_tooling
+  - blackwell_integration
+  - dashboards_and_review
+
+recommended_storage_shapes:
+  preferred_future_artifacts:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_records_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_fit_records_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_records_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_surface_records_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_playbook_records_20260408.yaml
+  storage_rule:
+    - each future record file should store one record family only
+    - routers should point to record files once coverage is mature
+    - long-form notes remain the backing explanation layer
+
+recommended_router_keys:
+  primary:
+    - topic_family
+    - repo_target_paths
+    - adoption_mode
+    - honesty_class
+    - implementation_stage
+    - status
+  secondary:
+    - contract_scope
+    - row_column_effect
+    - leakage_profile
+    - validation_hook
+    - notebook_surface
+    - test_surface
+  feature_signal_label_specific:
+    - allowed_in_features
+    - allowed_in_targets
+    - allowed_in_runtime_filters
+    - allowed_in_evidence_surface
+    - allowed_in_blackwell
+    - requires_wait_parameter
+    - emits_running_state
+    - emits_lookahead_state
+    - preferred_prefix
+  truth_specific:
+    - split_audit_required
+    - overlap_audit_required
+    - row_alignment_required
+    - contamination_boundary
+    - mask_truth_basis
+    - output_schema_truth
+    - index_granularity
+    - boundary_semantics
+    - canonical_subject
+    - canonical_assertion
+    - comparison_mode
+    - failure_consequence
+    - semantic_label_preservation
+    - fold_fragmentation_state
+    - remap_required
+    - validation_owner
+    - artifact_writer_stage
+    - assertion_kind
+    - assertion_level
+
+normalization_rules:
+  - every atomic record should cite exact absolute paths
+  - record ids should be stable once created
+  - one record should represent one durable finding only
+  - a record may point to many repo targets, but only when the same capability applies cleanly to all of them
+  - truth risk records should be separate from capability records even if they share source paths
+
+relationship_model:
+  capability_to_repo_fit:
+    statement: capability records describe what exists; repo fit records describe where it should go
+  capability_to_truth_risk:
+    statement: truth risk records describe how the same capability can go wrong or what it can detect
+  playbook_to_records:
+    statement: playbook records should reference capability ids, repo fit ids, and truth risk ids rather than restating them
+  surface_to_records:
+    statement: notebook/script/test records should point to capability, repo fit, and truth risk records rather than duplicating their content
+
+proposed_split_truth_extensions:
+  source_of_truth:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+  fields_to_adopt_later:
+    - canonical_subject
+    - canonical_assertion
+    - record_scope
+    - identity_key
+    - comparison_mode
+    - failure_consequence
+    - source_ref_hash
+    - assertion_kind
+    - assertion_level
+    - semantic_label_preservation
+    - fold_fragmentation_state
+    - remap_required
+    - validation_owner
+    - artifact_writer_stage
+  nested_blocks_to_adopt_later:
+    - membership_truth
+    - lineage_truth
+    - schema_truth
+    - chronology_truth
+    - leakage_truth
+
+proposed_reporting_surface_extensions:
+  source_of_truth:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml
+  fields_to_adopt_later:
+    - touch_mode
+    - output_format
+    - core_safety
+    - visibility_goal
+    - contract_anchor_refs
+    - data_shape
+    - operator_audience
+    - drift_signal_type
+    - evidence_granularity
+    - comparison_axis
+    - sidecar_path_pattern
+    - cacheability
+    - reproducibility_requirements
+
+current_status:
+  statement: >
+    This schema note is preparatory. It defines the normalization target for phase 2 of the
+    encyclopedia project once discovery breadth is sufficiently mature.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_encyclopedia_program_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_family_contract_schema_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml

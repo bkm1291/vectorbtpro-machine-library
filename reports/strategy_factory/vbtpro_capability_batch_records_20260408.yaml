@@ -1,0 +1,16 @@
+artifact_id: vbtpro_capability_batch_records_20260408
+artifact_version: 1
+artifact_type: batch_record_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Zero-loss landing zone for mined VBT PRO capability batches before or alongside
+  condensation into the canonical encyclopedia.
+
+batches: {}
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_normalization_boundary_contract_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_agent_output_protocol_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml

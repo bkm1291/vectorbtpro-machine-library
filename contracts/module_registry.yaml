@@ -1,0 +1,94 @@
+artifact_id: vbtpro_lab_module_registry_20260409
+artifact_version: 1
+artifact_type: module_registry
+status: bootstrap
+created_on: 2026-04-09
+owner: codex
+modules:
+  - module_id: machine_library
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/machine_library
+    package_import: vbtpro_lab.machine_library
+    build_status: built_validated
+    rollout_phase: phase_1_machine_library_localization
+    primary_stage_ids:
+      - S8_shadow_parity_and_promotion_gate
+  - module_id: data_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/data_authority
+    package_import: vbtpro_lab.data_authority
+    build_status: active_next
+    rollout_phase: phase_2_truth_inputs
+    primary_stage_ids:
+      - S0_data_ingestion_and_canonicalization
+  - module_id: split_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/split_authority
+    package_import: vbtpro_lab.split_authority
+    build_status: rebuild_required
+    rollout_phase: phase_2_truth_inputs
+    primary_stage_ids:
+      - S1_split_planning_and_membership_truth
+  - module_id: feature_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/feature_authority
+    package_import: vbtpro_lab.feature_authority
+    build_status: built_validated
+    rollout_phase: phase_3_research_families
+    primary_stage_ids:
+      - S2_feature_family_build
+  - module_id: target_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/target_authority
+    package_import: vbtpro_lab.target_authority
+    build_status: pending_foundation
+    rollout_phase: phase_3_research_families
+    primary_stage_ids:
+      - S3_label_and_target_build
+  - module_id: signal_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/signal_authority
+    package_import: vbtpro_lab.signal_authority
+    build_status: pending_after_truth_modules
+    rollout_phase: phase_4_runtime_and_review
+    primary_stage_ids:
+      - S4_signal_and_strategy_surface_build
+  - module_id: execution_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/execution_authority
+    package_import: vbtpro_lab.execution_authority
+    build_status: built_validated
+    rollout_phase: phase_4_runtime_and_review
+    primary_stage_ids:
+      - S5_simulation_and_execution_mirror
+  - module_id: evaluation_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/evaluation_authority
+    package_import: vbtpro_lab.evaluation_authority
+    build_status: built_validated_first_wave
+    rollout_phase: phase_4_runtime_and_review
+    primary_stage_ids:
+      - S6_evaluation_review_and_bias_audit
+  - module_id: search_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/search_authority
+    package_import: vbtpro_lab.search_authority
+    build_status: pending_after_runtime_parity
+    rollout_phase: phase_5_search_and_promotion
+    primary_stage_ids:
+      - S7_search_optimization_and_model_selection
+  - module_id: parity_authority
+    module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/parity_authority
+    package_import: vbtpro_lab.parity_authority
+    build_status: rebuild_required
+    rollout_phase: phase_2_truth_inputs
+    primary_stage_ids:
+      - S8_shadow_parity_and_promotion_gate
+
+build_order:
+  - machine_library
+  - data_authority
+  - split_authority
+  - parity_authority
+  - feature_authority
+  - target_authority
+  - signal_authority
+  - execution_authority
+  - evaluation_authority
+  - search_authority
+
+source_refs:
+  - /home/benji/vectorbtpro-machine-library/contracts/stage_registry.yaml
+  - /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+  - /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_unified_end_state_build_plan_20260409.yaml

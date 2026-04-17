@@ -1,0 +1,487 @@
+artifact_id: vbtpro_lab_build_registry_20260409
+artifact_version: 1
+artifact_type: build_registry
+status: active_next
+created_on: 2026-04-09
+owner: codex
+purpose: 'Local vbtpro-lab build registry after the gold-standard reset. This file
+  tracks the clean baseline state for the new repo, not the earlier first-slice scaffold.
+
+  '
+logging_surfaces:
+  build_event_log: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_events_20260409.yaml
+  build_event_active_summary: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_events_active_summary_20260415.yaml
+  notes_plan: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_reset_rebuild_notes_plan_20260409.yaml
+  committed_validation_receipt_root: /home/benji/vectorbtpro-machine-library/artifacts/specs/validation_records
+note_hygiene:
+  active_live_note_surfaces:
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_reset_rebuild_notes_plan_20260409.yaml
+  archived_note_index: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_notes_archive_index_20260413.yaml
+  on_disk_archive_root: /home/benji/vectorbtpro-machine-library/artifacts/specs/archive
+  doctrine:
+  - keep_repo_manifest_direct_links_short_and_active_only
+  - use_notes_archive_index_for_closed_slice_retrieval
+  - keep_compatibility_symlink_aliases_for_historical_note_paths_after_relocation
+  - artifact_registry_remains_exhaustive
+  - closed_slice_build_plans_should_not_remain_in_active_live_note_surfaces_once_their_outputs_are_captured_by_current_authority_notes
+  - control_plane_surfaces_auto_discover_from_disk_during_machine_library_sync
+  - active_live_note_surfaces_are_curated_and_only_expand_via_explicit_helper_handoffs
+  - run_sync_machine_library_surfaces_before_every_real_build_validation_or_note_surface_change
+  - build_event_log_remains_append_only_and_operator_reads_should_prefer_build_event_active_summary
+  - artifact_path_helper_handoffs_are_verification_only_unless_the_runtime_artifact_flag_is_used
+  - active_runtime_artifact_surfaces_should_hold_current_stage_winners_only
+  - raw_resource_smoke_logs_remain_ignored_and_release_critical_slices_commit_compact_validation_receipts_under_artifacts/specs/validation_records
+  - auto_discovered_control_plane_inventory_may_remain_broad_for_retrieval
+  - operator_control_plane_surfaces_should_be_curated_separately_for_live_decision_reads
+  active_control_plane_surfaces:
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+  operator_control_plane_surfaces:
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_operator_cut_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_phase_control_plane_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_pre_s10_release_blocker_state_20260415.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_regime_unified_control_plane_20260415.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_trade_scanner2_reference_audit_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_blackwell_ml_master_note_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_gptpro_total_research_implementation_master_plan_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+  active_runtime_artifact_surfaces: []
+  active_regime_control_plane_support_surfaces:
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_active_slice_20260416.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_machine_library_runtime_export_enrichment_active_project_20260416.yaml
+reset_state:
+  repo_reset_active: true
+  reason:
+  - prior_builds_did_not_consistently_follow_vbtpro_python_first
+  - prior_builds_did_not_consistently_follow_plan_validate_build_validate
+  prior_acceptance_claims_invalidated_until_rebuilt: true
+build_status_enum:
+- active_next
+- built_validated
+- built_validated_first_wave
+- pending_foundation
+- pending_after_truth_modules
+- pending_after_runtime_parity
+- rebuild_required
+- parked
+modules:
+- module_id: machine_library
+  build_status: built_validated
+  rollout_phase: phase_1_machine_library_localization
+  build_priority: highest
+  primary_stage_ids:
+  - S8_shadow_parity_and_promotion_gate
+  first_deliverable: local contract lookup, local compiled lookup wiring, and repo-integrated
+    library access
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/machine_library
+  blockers: []
+- module_id: data_authority
+  build_status: active_next
+  rollout_phase: phase_2_truth_inputs
+  build_priority: high
+  primary_stage_ids:
+  - S0_data_ingestion_and_canonicalization
+  first_deliverable: close_the_self_contained_data_authority_gap_with_repo_native_rest_stage_materialization_and_phase_2_lab_owned_canonical_snapshot_selection_then
+    extend the canonical window from the lab-owned chain
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/contracts/authority_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/data_authority
+  blockers:
+  - lab_owned_full_universe_stage_window_extension_pending
+  - flatfile_stage_materializer_pending
+- module_id: split_authority
+  build_status: rebuild_required
+  rollout_phase: phase_2_truth_inputs
+  build_priority: high
+  primary_stage_ids:
+  - S1_split_planning_and_membership_truth
+  first_deliverable: split policy contract, split plan materializer, and overlap audit
+    writer
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/contracts/stage_registry.yaml
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/split_authority
+  blockers:
+  - data_authority_rebuild_first
+  - rebuild_required_under_vbtpro_python_first_rules
+- module_id: parity_authority
+  build_status: rebuild_required
+  rollout_phase: phase_2_truth_inputs
+  build_priority: high
+  primary_stage_ids:
+  - S8_shadow_parity_and_promotion_gate
+  first_deliverable: artifact parity and truth-gate models
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/contracts/promotion_gates.yaml
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/parity_authority
+  - /home/benji/vectorbtpro-machine-library/contracts/input_output_tree_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/runtime_parity_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/archive/closed_runtime_and_decoupling_slices/vbtpro_lab_parity_authority_optional_blackwell_boundary_plan_20260413.yaml
+  blockers:
+  - split_authority_rebuild_first
+  - rebuild_required_under_vbtpro_python_first_rules
+- module_id: feature_authority
+  build_status: built_validated
+  rollout_phase: phase_3_research_families
+  build_priority: medium
+  primary_stage_ids:
+  - S2_feature_family_build
+  first_deliverable: additive feature-family registry and provenance contracts
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/feature_authority
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/regime_layer_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_three_layer_regime_runtime_slice_20260410.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_regime_layer_promoted_overlay_default_wiring_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_layers/regime_layer_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/regime_layer_promoted_overlay_default_wiring_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/regime_layer_promoted_overlay_default_wiring_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/regime_layer_promoted_overlay_default_wiring_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/archive/closed_runtime_and_decoupling_slices/vbtpro_lab_test_harness_local_only_decoupling_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/archive/closed_runtime_and_decoupling_slices/vbtpro_lab_feature_authority_intraday_legacy_parity_investigation_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/archive/closed_runtime_and_decoupling_slices/vbtpro_lab_feature_authority_intraday_resample_legacy_parity_fix_plan_20260413.yaml
+  blockers: []
+- module_id: target_authority
+  build_status: pending_foundation
+  rollout_phase: phase_3_research_families
+  build_priority: medium
+  primary_stage_ids:
+  - S3_label_and_target_build
+  first_deliverable: target-family registry and honesty-tag contracts
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/target_authority
+  blockers: []
+- module_id: signal_authority
+  build_status: pending_after_truth_modules
+  rollout_phase: phase_4_runtime_and_review
+  build_priority: medium
+  primary_stage_ids:
+  - S4_signal_and_strategy_surface_build
+  first_deliverable: runtime-binding contract bundle, binding-manifest compiler, and
+    explicit long/short signal array contracts
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/signal_authority
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_signal_authority_runtime_binding_rebuild_plan_20260409.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/archive/closed_runtime_and_decoupling_slices/vbtpro_lab_signal_authority_parity_registry_decoupling_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/strategy_family_registry/imported_equities_strategy_runtime_parity_overlay_40_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/regime_strategy_contract.yaml
+  blockers:
+  - target_authority_should_land_first
+  - signal_materialization_requires_frozen_feature_and_target_manifests
+- module_id: execution_authority
+  build_status: built_validated
+  rollout_phase: phase_4_runtime_and_review
+  build_priority: medium
+  primary_stage_ids:
+  - S5_simulation_and_execution_mirror
+  first_deliverable: one-path native VBT baseline reference runtime with configurable
+    entry gate profiles, frozen baseline exit profiles, explicit resource-runtime
+    config consumption, processpool symbol-timeframe bundle execution, worker-local
+    shard writes with parent merge, 1h/1d execution authority, and 1w/1month declared
+    as pipeline-available derived higher-timeframe inputs without native execution-family
+    promotion
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/execution_authority
+  - /home/benji/vectorbtpro-machine-library/contracts/regime_strategy_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/input_output_tree_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/baseline_entry_gate_profile_registry_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_reference_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_reference_runtime_stage_b_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_entry_gate_profile_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_family_timeframe_registry.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/timeframe_selection_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_reference_runtime_full_scope_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/resource_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_baseline_reference_runtime_build_plan_20260411.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_symbol_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_reference_runtime_stage_c_config.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/overlay_replay_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/overlay_replay_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/family_liquidity_policy_registry_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/masking_score_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/family_liquidity_policy_registry.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/masking_score_materialization_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/overlay_replay_masked_only_bounded_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/overlay_replay_runtime_configs
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/overlay_replay_runtime_configs/overlay_replay_threshold_sweep_config_bundle_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/overlay_replay_runtime_configs/overlay_replay_event_or_liquidity_ge_0p75_promoted_next_discovery.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_masked_only_overlay_replay_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_phase_m3_threshold_sweep_overlay_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_phase_m3_overlay_promotion_decision_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/overlay_replay_full_build_schemafix_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/overlay_replay_full_postbuild_schemafix_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/phase_m3_threshold_sweep_bounded_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/phase_m3_threshold_sweep_overlay_summary_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/baseline_reference_stage_c_timestampfix_build_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/baseline_reference_stage_c_timestampfix_trade_scope_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/baseline_reference_stage_c_timestampfix_order_scope_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/large_output_access_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/scripts/safe_parquet_probe.py
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/large_output_scope_manifest_stage_c_trade_rows_20260412.yaml
+  blockers: []
+- module_id: evaluation_authority
+  build_status: built_validated_first_wave
+  rollout_phase: phase_4_runtime_and_review
+  build_priority: medium
+  primary_stage_ids:
+  - S04_fine_layer_discovery
+  - S05_middle_layer_discovery
+  - S06_evaluation_review_and_bias_audit
+  - S07_cascade_compilation
+  - S08_top_down_replay_validation
+  - S09_hold_and_exit_profile_discovery
+  first_deliverable: first-wave S02 outcome measurement plus balanced and strict-capital-preservation
+    S03 failure-and-survival labeling, M3 scored-overlay analysis, S04 local-permission
+    discovery, S05 family_suitability discovery, S06 coarse_market_state discovery,
+    S07 monotonic cascade compilation, and S08 top-down replay validation over the
+    raw-math-only Stage C control under scope-first large-output handling, with runtime
+    slices expected to mirror the host-resource architecture of comparable earlier
+    runtimes when that architecture is necessary for the module, and S09 explicitly
+    frozen to the worker-backed path rather than a serial-only runtime shape
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/evaluation_authority
+  - /home/benji/vectorbtpro-machine-library/contracts/outcome_measurement_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/failure_and_survival_labeling_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/failure_and_survival_labeling_profile_registry_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/label_profile_comparison_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/m3_overlay_analysis_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/regime_discovery_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/family_suitability_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/coarse_market_state_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/regime_cascade_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/top_down_replay_validation_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/hold_exit_profile_discovery_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/hold_exit_execution_compile_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/cross_universe_forward_validation_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/hold_exit_evidence_policy_registry_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/hold_exit_indicator_input_registry_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/evaluation_authority/hold_exit_evidence_runtime.py
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/evaluation_authority/hold_exit_execution_compile_runtime.py
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/evaluation_authority/cross_universe_forward_validation_runtime.py
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/evaluation_authority/entry_authority_freeze_runtime.py
+  - /home/benji/vectorbtpro-machine-library/scripts/build_hold_exit_profile_discovery.py
+  - /home/benji/vectorbtpro-machine-library/scripts/build_hold_exit_evidence.py
+  - /home/benji/vectorbtpro-machine-library/scripts/build_hold_exit_execution_compile.py
+  - /home/benji/vectorbtpro-machine-library/scripts/build_cross_universe_forward_validation.py
+  - /home/benji/vectorbtpro-machine-library/scripts/build_entry_authority_freeze.py
+  - /home/benji/vectorbtpro-machine-library/scripts/analyze_s09a_replay_engine.py
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/baseline_outcome_measurement_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/failure_and_survival_labeling_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/failure_and_survival_labeling_strict_capital_preservation_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/s03_label_profile_comparison_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/m3_overlay_analysis_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/regime_discovery_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/family_suitability_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/coarse_market_state_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/regime_cascade_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/top_down_replay_validation_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/entry_authority_freeze_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_profile_discovery_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_execution_compile_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/cross_universe_forward_validation_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_evidence_config_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_evidence_default.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_indicator_input_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_config_architecture_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_config_architecture_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_futureproof_config_shape_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_futureproof_config_shape_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_evidence_configs/hold_exit_evidence_balanced.yaml
+  - /home/benji/vectorbtpro-machine-library/tests/test_evaluation_authority_hold_exit_evidence.py
+  - /home/benji/vectorbtpro-machine-library/tests/test_evaluation_authority_hold_exit_execution_compile.py
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s02_outcome_measurement_build_plan_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s03_failure_and_survival_labeling_build_plan_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s03_label_profile_comparison_build_plan_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_m3_overlay_analysis_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s04_regime_discovery_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s05_family_suitability_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s06_coarse_market_state_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s07_cascade_compilation_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s08_top_down_replay_validation_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_px08_entry_authority_freeze_plan_20260415.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s09_hold_exit_profile_discovery_build_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s09d_hold_exit_execution_compile_build_plan_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s10_cross_universe_forward_validation_build_plan_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_higher_timeframe_pipeline_extension_plan_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s09b_indicator_augmented_input_surface_plan_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s09b_indicator_augmented_follow_on_plan_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/entry_authority_freeze_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_augmented_manifest_extension_prebuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s10_phase2_indicator_input_surfaces_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s10_phase2_indicator_input_surfaces_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_augmented_manifest_extension_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_augmented_manifest_extension_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_augmented_manifest_extension_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s09a_replay_engine_optimization_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s06_coarse_market_state_diagnosis_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s06_coarse_market_state_threshold_tune_plan_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/coarse_market_state_threshold_tune_summary_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/regime_discovery_stage_c_raw_math_only_20260413T195643Z/discovery_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/family_suitability_stage_c_raw_math_only_20260413T203102Z/family_suitability_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/coarse_market_state_stage_c_raw_math_only_20260413T210130Z/coarse_market_state_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/regime_cascade_stage_c_raw_math_only_20260413T214203Z/regime_cascade_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/top_down_replay_validation_stage_c_raw_math_only_20260413T220336Z/top_down_replay_validation_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_execution_compile_stage_c_path_metrics_v1_20260414T024900Z/hold_exit_execution_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/cross_universe_forward_validation_forward_holdout_bounded_20260414T031245Z/cross_universe_forward_validation_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/cross_universe_forward_validation_forward_holdout_bounded_20260414T031245Z/cross_universe_forward_validation_recommendation.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s10_cross_universe_forward_validation_prebuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s10_cross_universe_forward_validation_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s10_cross_universe_forward_validation_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s10_cross_universe_forward_validation_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_profile_discovery_bounded_cvna_1d_probe_20260413/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_profile_discovery_bounded_cvna_1d_direct_kernel_probe_20260413_v3/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_replay_engine_benchmark_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_direct_kernel_bounded_parity_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_bounded_truth_rebaseline_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_profile_discovery_medium_scale_probe_config_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_profile_discovery_bounded_cvna_1d_processpool_probe_20260413_v1/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_processpool_bounded_probe_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_profile_discovery_medium_scale_processpool_probe_20260413_v1/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_processpool_medium_scale_probe_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_full_stage_c_blocker_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_profile_discovery_stage_c_raw_math_only_20260414T_processpool_retry/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_processpool_full_stage_c_retry_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_evidence_stage_c_path_metrics_v1_balanced_20260414T013312Z/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_balanced_reference_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_balanced_reference_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_balanced_reference_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_evidence_configs/hold_exit_evidence_conservative.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_evidence_configs/hold_exit_evidence_aggressive.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_evidence_stage_c_path_metrics_v1_conservative_20260414T014840Z/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_evidence_stage_c_path_metrics_v1_aggressive_20260414T014908Z/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_conservative_aggressive_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_conservative_aggressive_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_conservative_aggressive_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_remaining_variant_threshold_freeze_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_remaining_variant_threshold_freeze_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_remaining_variant_threshold_freeze_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_evidence_stage_c_path_metrics_v1_giveback_sensitive_20260414T020327Z/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_evidence_stage_c_path_metrics_v1_fast_failure_sensitive_20260414T020349Z/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_evidence_stage_c_path_metrics_v1_profit_protection_sensitive_20260414T020410Z/hold_exit_profile_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_remaining_three_variants_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_remaining_three_variants_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_remaining_three_variants_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/contracts/hold_exit_candidate_narrowing_output_schema_contract.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_candidate_narrowing_runtime_config.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s09c_hold_exit_candidate_narrowing_build_plan_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_candidate_narrowing_stage_c_path_metrics_v1_20260414T022038Z/hold_exit_candidate_selection_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/hold_exit_candidate_narrowing_stage_c_path_metrics_v1_20260414T022038Z/hold_exit_candidate_recommendation.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09c_hold_exit_candidate_narrowing_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09c_hold_exit_candidate_narrowing_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09c_hold_exit_candidate_narrowing_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09d_hold_exit_execution_compile_prebuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09d_hold_exit_execution_compile_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09d_hold_exit_execution_compile_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_processpool_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_processpool_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/coarse_market_state_stage_c_raw_math_only_20260413T210130Z/s06_coarse_market_state_diagnosis_recommendation.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/regime_discovery/coarse_market_state_stage_c_raw_math_only_min_total_3_20260413T213600Z/coarse_market_state_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/trade_truth_tape/m3_overlay_analysis_stage_c_raw_math_only_20260413T100500Z/m3_overlay_analysis_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s04_regime_discovery_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s04_regime_discovery_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s04_regime_discovery_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s04_regime_discovery_local_permission_scope_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s04_regime_discovery_replay_metrics_scope_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s05_family_suitability_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s05_family_suitability_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s05_family_suitability_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_diagnosis_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_threshold_tune_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_threshold_tune_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_threshold_tune_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s06_coarse_market_state_threshold_tune_repo_truth_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s07_cascade_compilation_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s07_cascade_compilation_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s07_cascade_compilation_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s07_cascade_compilation_repo_truth_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s08_top_down_replay_validation_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s08_top_down_replay_validation_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s08_top_down_replay_validation_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s08_top_down_replay_validation_repo_truth_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_hold_exit_profile_discovery_prebuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_hold_exit_profile_discovery_bounded_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_hold_exit_profile_discovery_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09a_hold_exit_profile_discovery_repo_truth_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s05_family_suitability_rows_scope_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s05_family_suitability_replay_metrics_scope_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/m3_overlay_analysis_build_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/m3_overlay_analysis_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/trade_truth_tape/baseline_outcome_measurement_stage_c_20260412T223500Z/outcome_measurement_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/trade_truth_tape/failure_and_survival_labeling_stage_c_20260412T231500Z/labeling_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/trade_truth_tape/failure_and_survival_labeling_stage_c_strict_capital_20260412T234500Z/labeling_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/research/trade_truth_tape/s03_label_profile_comparison_stage_c_20260413T000500Z/label_profile_comparison_manifest.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/baseline_outcome_measurement_build_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/baseline_outcome_measurement_trade_scope_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/baseline_outcome_measurement_entry_scope_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s03_failure_and_survival_labeling_build_retry_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s03_failure_and_survival_labeling_postbuild_validation_retry_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/failure_and_survival_labeling_stage_c_20260412T231500Z_trade_label_scope.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s03_strict_capital_build_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s03_strict_capital_postbuild_validation_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/failure_and_survival_labeling_stage_c_strict_capital_20260412T234500Z_trade_label_scope.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s03_profile_compare_build_20260412.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s03_profile_compare_postbuild_validation_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s03_label_profile_comparison_family_scope_20260413.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_evidence_configs/hold_exit_evidence_balanced_indicator_augmented_v1.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/hold_exit_evidence_configs/hold_exit_evidence_fast_failure_sensitive_indicator_augmented_v1.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_augmented_runtime_support_prebuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_augmented_runtime_support_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_augmented_runtime_support_postbuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_s09b_indicator_gate_threshold_scout_plan_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_gate_threshold_scout_prebuild_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_gate_threshold_scout_build_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_gate_threshold_scout_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/logs/resource_smoke/s09b_indicator_gate_threshold_scout_repo_truth_validation_20260414.yaml
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_repo_hygiene_clean_pass_20260414.yaml
+  blockers: null
+- module_id: search_authority
+  build_status: pending_after_runtime_parity
+  rollout_phase: phase_5_search_and_promotion
+  build_priority: medium
+  primary_stage_ids:
+  - S7_search_optimization_and_model_selection
+  first_deliverable: split-aware search orchestration shell over frozen artifacts
+  validation_targets:
+  - /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/search_authority
+  blockers:
+  - execution_authority_and_evaluation_authority_should_land_first
+current_focus_order:
+- data_authority
+- split_authority
+- parity_authority
+- feature_authority
+- target_authority
+- signal_authority
+- execution_authority
+- evaluation_authority
+- search_authority
+- machine_library
+source_refs:
+- /home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/stage_registry.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/build_event_logging_contract.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/gold_baseline_bootstrap_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_reset_rebuild_notes_plan_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/scripts/build_data_masking_truth_staged.py
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_unified_end_state_build_plan_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_entry_canonical_v2_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_regime_filter_master_review_and_finishing_plan_master_v2_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_regime_unified_control_plane_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_regime_unified_control_plane_exec_only_20260415.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_20260416.yaml
+research_phase:
+  status: active
+  governing_note_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_phase_control_plane_20260416.yaml
+  priority_order:
+  - family_coverage_research
+  - benchmark_proof_buildout
+  - regime_experiment_matrix_execution

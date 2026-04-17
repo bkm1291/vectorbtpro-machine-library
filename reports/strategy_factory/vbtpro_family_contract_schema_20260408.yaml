@@ -1,0 +1,619 @@
+artifact_id: vbtpro_family_contract_schema_20260408
+artifact_version: 1
+artifact_type: schema_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Dedicated machine-first schema for feature, label, signal, pattern, audit-surface,
+  provenance, and contract-guard families. This preserves the richer organizer findings
+  around honesty class, use constraints, output roles, and downstream routing.
+
+design_goal:
+  statement: >
+    Split family definition from repo attachment so each output family can be routed by
+    honesty, allowed consumers, artifact surfaces, provenance requirements, and risk.
+
+new_atomic_family_kinds:
+  - feature_family
+  - label_family
+  - signal_family
+  - pattern_family
+  - state_family
+  - target_family
+  - audit_surface
+  - contract_guard
+  - provenance_fieldset
+
+family_kind_refinement:
+  feature_family:
+    subkinds:
+      - trailing_indicator_feature
+      - running_state_feature
+      - event_timing_feature
+      - density_feature
+      - persistence_feature
+      - benchmark_relative_feature
+  label_family:
+    subkinds:
+      - future_stat_target
+      - trend_target
+      - reversal_target
+      - stop_outcome_target
+      - horizon_return_target
+  signal_family:
+    subkinds:
+      - raw_signal_mask
+      - cleaned_signal_mask
+      - partitioned_signal_mask
+      - ranked_signal_mask
+      - paired_entry_exit_signal
+  pattern_family:
+    subkinds:
+      - similarity_pattern_feature
+      - pattern_hit_record
+      - pattern_density_feature
+      - pattern_recency_feature
+      - pattern_duration_feature
+
+router_keys:
+  required:
+    - family_kind
+    - family_subkind
+    - honesty_class
+    - use_constraint_class
+    - contract_granularity
+    - output_contract_kind
+    - routing_domain
+    - downstream_role
+    - temporal_alignment
+    - contamination_risk_class
+    - ambiguity_risk_class
+  recommended:
+    - upstream_dependency_kind
+    - provenance_class
+    - reset_dependency
+    - pairing_requirement
+    - aggregation_policy
+
+router_key_enums:
+  honesty_class:
+    - point_in_time_safe
+    - running_state_safe
+    - target_only_lookahead
+    - mixed_outputs_split_required
+    - forbidden_predictor_surface
+    - audit_only
+  use_constraint_class:
+    - feature_only
+    - target_only
+    - signal_only
+    - audit_only
+    - feature_or_state_only
+    - forbidden_in_runtime_gate
+    - forbidden_in_evidence_summary
+    - forbidden_in_model_input
+  contract_granularity:
+    - scalar_column
+    - multi_column_family
+    - record_array
+    - range_records
+    - partition_records
+    - paired_signal_records
+    - artifact_summary_only
+  output_contract_kind:
+    - deterministic_numeric_column
+    - boolean_mask_column
+    - categorical_state_column
+    - target_column
+    - audit_metric
+    - record_table
+    - range_table
+  routing_domain:
+    - lane2_runtime
+    - lane2_discovery
+    - lane2_evidence
+    - lane2_execution_integration
+    - candidate_dataset
+    - candidate_labels
+    - blackwell_panel
+    - blackwell_manifest
+    - split_audit
+    - tests_only
+  downstream_role:
+    - model_input
+    - runtime_gate_input
+    - evidence_summary_input
+    - evidence_card_input
+    - target_generation
+    - execution_audit_input
+    - manifest_only
+    - validation_only
+  upstream_dependency_kind:
+    - price_only
+    - ohlc_only
+    - ohlcv_only
+    - boolean_mask_only
+    - paired_signal_masks
+    - benchmark_series_required
+    - reset_signal_required
+    - split_mask_required
+  provenance_class:
+    - self_describing
+    - parameterized
+    - requires_explicit_metadata
+    - requires_source_generator_name
+    - requires_wait_and_window_metadata
+  temporal_alignment:
+    - same_row_trailing
+    - shifted_future_target
+    - reset_relative
+    - partition_relative
+    - paired_event_relative
+  reset_dependency:
+    - none
+    - optional_reset_signal
+    - required_reset_signal
+    - required_state_flip
+  pairing_requirement:
+    - none
+    - entry_exit_pair
+    - source_target_pair
+    - signal_to_target_pair
+    - pattern_to_similarity_pair
+  aggregation_policy:
+    - no_aggregation
+    - per_row_only
+    - per_partition_allowed
+    - per_range_allowed
+    - per_artifact_allowed
+  contamination_risk_class:
+    - none
+    - lookahead
+    - overlap
+    - stale_state
+    - split_overlap
+    - target_feature_mixing
+    - paired_signal_conflict
+  ambiguity_risk_class:
+    - none
+    - unlabeled_output_mode
+    - mixed_output_family
+    - missing_reset_semantics
+    - missing_wait_semantics
+    - missing_pairing_semantics
+    - missing_open_range_semantics
+
+required_extensions:
+  add_to_all_atomic_records:
+    - family_kind
+    - family_subkind
+    - honesty_class
+    - use_constraint_class
+    - output_contract_kind
+    - routing_domain
+    - temporal_alignment
+    - contamination_risk_class
+    - ambiguity_risk_class
+  add_to_records_with_outputs:
+    - output_field_names
+    - output_field_prefix
+    - output_field_role_map
+  add_to_records_with_parameters:
+    - required_parameters
+    - required_parameter_metadata
+  add_to_records_with_unsafe_modes:
+    - forbidden_outputs
+    - forbidden_consumers
+    - split_required_from_forbidden_outputs
+
+output_field_role_map_schema:
+  required_fields:
+    - field_name
+    - role
+    - honesty_class
+    - allowed_consumers
+    - forbidden_consumers
+  role_enum:
+    - feature
+    - target
+    - signal
+    - pattern
+    - state
+    - audit
+    - provenance
+
+use_constraint_fields:
+  - allowed_consumers
+  - forbidden_consumers
+  - allowed_artifact_surfaces
+  - forbidden_artifact_surfaces
+  - requires_manifest_registration
+  - requires_label_registry
+  - requires_evidence_provenance
+  - requires_split_audit
+  - requires_overlap_audit
+  - requires_pair_cleaning
+  - requires_wait_explicit
+  - requires_reset_explicit
+
+consumer_enum:
+  - semantic_lane2_runtime_filters
+  - semantic_lane2_indicator_evidence_surface
+  - semantic_lane2_execution_integration
+  - semantic_lane2_coarse_medium_feature_discovery
+  - datasets
+  - labels
+  - blackwell_feature_builders
+  - blackwell_manifest
+  - evidence_cards
+  - model_training
+  - validation_tests
+
+artifact_surface_enum:
+  - partition_rows
+  - signature_clusters
+  - indicator_partition_summary
+  - llm_safe_evidence_cards
+  - candidate_dataset
+  - labeled_dataset
+  - blackwell_panel
+  - feature_manifest
+  - split_audit_report
+  - execution_delta_rows
+
+linkage_fields:
+  - parent_family_id
+  - variant_group_id
+  - unsafe_variant_of
+  - safe_subset_of
+  - companion_audit_surface
+  - companion_provenance_fieldset
+  - required_cleaning_stage
+  - required_shift_stage
+
+provenance_fieldset_schema:
+  required_fields:
+    - provenance_fieldset_id
+    - required_fields
+    - applies_to_family_kinds
+    - must_travel_with_outputs
+  typical_required_fields:
+    - source_generator
+    - window
+    - wait
+    - reset_by
+    - overlap_policy
+    - similarity_threshold
+    - benchmark_name
+    - target_mode
+    - open_range_policy
+
+contract_guard_schema:
+  required_fields:
+    - guard_id
+    - guard_type
+    - applies_to
+    - trigger_condition
+    - enforcement_action
+  guard_type_enum:
+    - ban_output_field
+    - ban_consumer_route
+    - require_metadata
+    - require_shift_parameter
+    - require_split_audit
+    - require_pair_cleaning
+    - require_manifest_registration
+
+normalization_rules:
+  - split any mixed-output surface into separate atomic records when outputs differ in honesty_class
+  - require output_field_role_map whenever a family emits more than one field
+  - require provenance_fieldset linkage for any parameterized or target_only family
+  - require contract_guard linkage for any record with forbidden_outputs or forbidden_consumers
+  - route audit-only surfaces through audit_surface rather than feature_family or label_family
+
+recommended_indexes:
+  by_honesty:
+    - honesty_class
+    - use_constraint_class
+    - routing_domain
+  by_outputs:
+    - output_contract_kind
+    - output_field_prefix
+    - family_kind
+  by_risk:
+    - contamination_risk_class
+    - ambiguity_risk_class
+    - companion_audit_surface
+  by_repo_route:
+    - routing_domain
+    - allowed_consumers
+    - forbidden_consumers
+
+registry_layout:
+  collections:
+    - use_constraint_registry
+    - provenance_policy_registry
+    - contract_guard_registry
+    - consumer_route_registry
+    - output_contract_registry
+    - safety_rule_registry
+    - route_decision_registry
+    - contract_bundle_registry
+  resolution_order:
+    - safety_rule_registry
+    - contract_guard_registry
+    - use_constraint_registry
+    - consumer_route_registry
+    - output_contract_registry
+    - provenance_policy_registry
+    - route_decision_registry
+  resolution_inputs:
+    - family_kind
+    - honesty_class
+    - output_contract_kind
+    - prefix
+    - consumer_name
+    - artifact_surface
+
+registry_required_fields:
+  use_constraint_registry:
+    - use_constraint_id
+    - applies_to_family_kinds
+    - applies_to_record_ids
+    - consumer_allowlist
+    - consumer_denylist
+    - artifact_allowlist
+    - artifact_denylist
+    - prefix_allowlist
+    - prefix_denylist
+    - required_guards
+    - required_validation_hooks
+    - required_provenance_policies
+    - enforcement_mode
+    - violation_code
+  provenance_policy_registry:
+    - provenance_policy_id
+    - applies_to_family_kinds
+    - applies_to_record_ids
+    - required_metadata_fields
+    - optional_metadata_fields
+    - propagated_to_artifacts
+    - propagated_to_columns
+    - missing_metadata_policy
+    - metadata_validation_level
+    - field_alias_map
+  contract_guard_registry:
+    - contract_guard_id
+    - guard_scope
+    - applies_to_family_kinds
+    - applies_to_record_ids
+    - trigger_keys
+    - trigger_expression
+    - enforcement_action
+    - failure_code
+    - remediation_bundle
+    - blocking
+  consumer_route_registry:
+    - consumer_route_id
+    - consumer_name
+    - accepted_family_kinds
+    - rejected_family_kinds
+    - accepted_honesty_classes
+    - rejected_honesty_classes
+    - accepted_output_contract_kinds
+    - rejected_output_contract_kinds
+    - accepted_prefixes
+    - rejected_prefixes
+    - required_use_constraints
+    - required_contract_guards
+    - required_provenance_policies
+    - route_priority
+  output_contract_registry:
+    - output_contract_id
+    - applies_to_record_id
+    - output_contract_kind
+    - field_role_map
+    - required_prefix
+    - forbidden_prefixes
+    - row_index_policy
+    - row_alignment_policy
+    - nullability_policy
+    - open_state_policy
+    - artifact_visibility
+    - naming_tokens_required
+    - naming_tokens_forbidden
+  safety_rule_registry:
+    - safety_rule_id
+    - applies_to_family_kinds
+    - applies_to_record_ids
+    - unsafe_condition
+    - safe_alternative
+    - required_action
+    - severity
+    - auto_remediation_supported
+  route_decision_registry:
+    - route_decision_id
+    - record_id
+    - consumer_name
+    - resolved_consumer_route_id
+    - resolved_use_constraint_id
+    - resolved_output_contract_id
+    - resolved_provenance_policy_id
+    - resolved_guard_ids
+    - decision_status
+    - decision_trace_keys
+  contract_bundle_registry:
+    - contract_bundle_id
+    - bundle_name
+    - family_kind
+    - use_constraint_id
+    - provenance_policy_id
+    - default_output_contract_id
+    - default_guard_ids
+    - default_safety_rule_ids
+    - default_validation_hook_ids
+    - default_consumer_routes
+
+resolution_fail_states:
+  - no_valid_route
+  - prefix_violation
+  - honesty_violation
+  - missing_provenance
+  - mixed_output_violation
+  - split_audit_required
+  - overlap_audit_required
+
+auto_split_policies:
+  mixed_honesty_outputs:
+    split_into:
+      - safe_running_outputs
+      - lookahead_outputs
+  mixed_role_outputs:
+    split_into:
+      - feature_outputs
+      - target_outputs
+      - audit_outputs
+  mixed_alignment_outputs:
+    split_into:
+      - same_row_outputs
+      - shifted_outputs
+      - reset_relative_outputs
+
+prefix_contract_matrix:
+  fields:
+    - prefix
+    - allowed_family_kinds
+    - forbidden_family_kinds
+    - allowed_output_contract_kinds
+    - forbidden_consumers
+    - required_provenance_fields
+    - required_validation_hooks
+  example_prefixes:
+    - feat_
+    - lbl_
+    - sig_
+    - patt_
+    - state_
+    - audit_
+
+violation_tag_enum:
+  - prefix_contract_violation
+  - consumer_route_violation
+  - provenance_missing
+  - mixed_role_requires_split
+  - mixed_honesty_requires_split
+  - target_feature_mixing
+  - overlap_audit_missing
+  - split_audit_missing
+  - wait_semantics_missing
+  - reset_semantics_missing
+
+validation_hook_registry_shape:
+  required_fields:
+    - validation_hook_id
+    - applies_to_family_kinds
+    - applies_to_prefixes
+    - assertion_scope
+    - required_inputs
+    - fail_signal
+    - linked_truth_router_topics
+
+compiled_registry_layout:
+  compiled_family_registry:
+    required_fields:
+      - compiled_family_id
+      - family_kind
+      - honesty_class
+      - output_contract_kind
+      - canonical_prefix_set
+      - required_bundle_id
+      - autosplit_policy_id
+      - compile_signature
+      - active
+    indexes:
+      - by_family_kind_honesty_output_active
+      - by_compile_signature
+  compiled_route_registry:
+    required_fields:
+      - compiled_route_id
+      - consumer_name
+      - artifact_surface
+      - family_kind
+      - honesty_class
+      - prefix
+      - route_status
+      - selected_bundle_id
+      - selected_output_contract_id
+      - autosplit_decision
+      - compile_version
+    route_status_enum:
+      - allowed
+      - denied
+      - allowed_with_audit
+      - autosplit_required
+      - rerouted
+    autosplit_decision_enum:
+      - none
+      - split_by_honesty
+      - split_by_role
+      - split_by_prefix
+      - split_by_alignment
+      - split_by_consumer
+  compiled_resolution_plan_registry:
+    required_fields:
+      - compiled_resolution_plan_id
+      - family_kind
+      - honesty_class
+      - output_contract_kind
+      - prefix
+      - consumer_name
+      - artifact_surface
+      - resolution_steps
+      - guard_evaluation_order
+      - constraint_evaluation_order
+      - autosplit_evaluation_order
+      - cache_key_template
+      - active
+  compiled_violation_registry:
+    required_fields:
+      - compiled_violation_code
+      - violation_tag
+      - severity
+      - blocking
+      - autosplit_candidate
+      - default_remediation_action
+      - remediation_route
+      - active
+
+route_resolution_engine:
+  required_fields:
+    - resolution_signature
+    - route_lookup_key
+    - bundle_lookup_key
+    - guard_lookup_key
+    - autosplit_lookup_key
+    - violation_lookup_key
+    - compiled_snapshot_id
+  resolution_order:
+    - compiled_family_registry
+    - compiled_resolution_plan_registry
+    - compiled_bundle_registry
+    - compiled_constraint_registry
+    - compiled_output_contract_registry
+    - compiled_guard_registry
+    - compiled_provenance_registry
+    - compiled_autosplit_registry
+    - compiled_violation_registry
+    - compiled_route_registry
+  terminal_states:
+    - resolved_allow
+    - resolved_allow_with_audit
+    - resolved_reroute
+    - resolved_autosplit
+    - resolved_deny
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_atomic_record_schema_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml

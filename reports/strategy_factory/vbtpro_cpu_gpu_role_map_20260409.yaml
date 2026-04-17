@@ -1,0 +1,116 @@
+artifact_id: vbtpro_cpu_gpu_role_map_20260409
+artifact_version: 1
+artifact_type: role_map_note
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Machine-first CPU/GPU role map for an eventual VBT-native or hybrid-shadow pipeline,
+  optimized around Blackwell GPUs without moving truth-sensitive stages onto GPU too early.
+
+role_principles:
+  - chronology_and_truth_live_on_cpu_first
+  - gpu_consumes_frozen_inputs_not_raw_authority_state
+  - vbt_cpu_shell_can_orchestrate_gpu_inner_loops
+  - promotion_decisions_remain_cpu_truth_checked
+
+stage_roles:
+  S0_data_ingestion_and_canonicalization:
+    cpu_owner:
+      - file_and_provider_adapters
+      - refresh_and_persistence
+      - schema_alignment
+    gpu_owner: []
+    rationale: IO and schema truth dominate, not tensor throughput
+
+  S1_split_planning_and_membership_truth:
+    cpu_owner:
+      - split_generation
+      - purge_and_embargo_logic
+      - membership_parity
+      - lineage_audit
+    gpu_owner: []
+    rationale: leakage and chronology logic must stay deterministic and auditable
+
+  S2_feature_family_build:
+    cpu_owner:
+      - truth_safe_feature_families
+      - additive pattern and audit features
+      - provenance tagging
+    gpu_owner:
+      - heavy panelized feature expansion once semantics are frozen
+      - cross-sectional tensor transforms on frozen split-safe inputs
+    rationale: split-safe semantics first, throughput second
+
+  S3_label_and_target_build:
+    cpu_owner:
+      - target generation
+      - wait_window_semantics
+      - honesty tagging
+    gpu_owner:
+      - optional large-scale target materialization once contracts are fixed
+    rationale: target semantics are too easy to corrupt if moved early
+
+  S4_signal_and_strategy_surface_build:
+    cpu_owner:
+      - signal cleaning
+      - manifest and contract guards
+      - bounded parameter sweeps
+    gpu_owner:
+      - model scoring and ranking over frozen features
+      - large candidate matrix generation
+    rationale: signal truth and event cleaning remain CPU-governed
+
+  S5_simulation_and_execution_mirror:
+    cpu_owner:
+      - portfolio simulation
+      - order/trade/log reconstruction
+      - benchmark-relative execution mirror
+    gpu_owner: []
+    rationale: simulation correctness and auditability outweigh GPU upside
+
+  S6_evaluation_review_and_bias_audit:
+    cpu_owner:
+      - metrics
+      - tearsheets
+      - bias checks
+      - audit dashboards
+    gpu_owner:
+      - optional batch scoring for large review panels only
+    rationale: review surfaces are mostly CPU and reporting-oriented
+
+  S7_search_optimization_and_model_selection:
+    cpu_owner:
+      - split-aware search orchestration
+      - CV artifact writing
+      - search result audits
+    gpu_owner:
+      - model fitting
+      - heavy tensor inference
+      - large hyperparameter sweeps where trainer is GPU-native
+    rationale: this is the main Blackwell leverage point
+
+  S8_shadow_parity_and_promotion_gate:
+    cpu_owner:
+      - parity comparisons
+      - authority diffs
+      - promotion gate
+    gpu_owner: []
+    rationale: correctness gate must remain deterministic and inspectable
+
+blackwell_priority_use_cases:
+  - GPU-native model training on frozen feature/target panels
+  - large hyperparameter or architecture sweeps under fixed split plans
+  - heavy panel feature expansion that has already passed honesty classification
+  - large inference grids for signal ranking or ensemble scoring
+
+do_not_gpu_first:
+  - split generation
+  - purge_and_embargo truth
+  - label semantics
+  - artifact parity
+  - promotion decisions
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml

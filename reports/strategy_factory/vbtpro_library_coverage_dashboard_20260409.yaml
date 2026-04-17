@@ -1,0 +1,125 @@
+artifact_id: vbtpro_library_coverage_dashboard_20260409
+artifact_version: 1
+artifact_type: coverage_dashboard
+status: generated
+created_on: '2026-04-17T06:31:41.833660+00:00'
+owner: codex
+db_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_20260409.sqlite
+compiled_counts:
+  artifact_count: 324
+  search_document_count: 10804
+  stage_record_count: 9
+  truth_risk_count: 10
+  replacement_count: 10
+  code_map_count: 48
+  build_module_count: 10
+  query_alias_count: 74
+  repo_stage_link_count: 195
+  repo_truth_link_count: 20
+  repo_candidate_link_count: 1025
+  external_vectorbtpro_repo_route_count: 253
+  external_vectorbtpro_search_document_count: 9516
+  external_vectorbtpro_symbol_count: 6402
+  external_vectorbtpro_runtime_export_count: 2625
+coverage_metrics:
+  repo_path_router_count: 289
+  repo_stage_mapped_count: 33
+  repo_stage_mapping_pct: 0.1142
+  batch_record_intake_count: 0
+  normalized_record_count: 161
+  normalization_proxy_pct: 1.0
+  external_vectorbtpro_repo_route_count: 253
+  external_vectorbtpro_search_document_count: 9516
+  external_vectorbtpro_symbol_count: 6402
+  external_vectorbtpro_runtime_export_count: 2625
+completion_profiles:
+  minimum_complete:
+    thresholds:
+      vbt_family_coverage_threshold:
+        target: 0.9
+        meaning: at least 90 percent of repo-relevant VBT family groups are mapped
+          into canonical notes or reservoir
+      repo_mapping_threshold:
+        target: 0.9
+        meaning: at least 90 percent of repo-path router entries have canonical stage
+          or replacement mapping
+      normalization_threshold:
+        target: 0.8
+        meaning: at least 80 percent of stable reused records live in canonical registries
+          rather than batch-only intake
+      alias_coverage_threshold:
+        target: 0.9
+        meaning: at least 90 percent of repeated query patterns have stable aliases
+      truth_risk_coverage_threshold:
+        target: 1.0
+        meaning: all known blocking or high truth risks are recorded in the truth-risk
+          matrix
+    current_measurements: &id001
+      repo_mapping_threshold: 0.1142
+      normalization_threshold_proxy: 1.0
+      truth_risk_count_surface: 10
+      query_alias_count_surface: 74
+    measured_checks:
+      repo_mapping_threshold: false
+      normalization_threshold_proxy: true
+    remaining_gaps:
+      repo_mapping_threshold: 0.7858
+      normalization_threshold_proxy: 0.0
+    meets_all_currently_measured_thresholds: false
+  gold_complete:
+    thresholds:
+      vbt_family_coverage_threshold:
+        target: 0.98
+        meaning: near-exhaustive coverage of repo-relevant VBT family groups in canonical
+          notes or reservoir
+      repo_mapping_threshold:
+        target: 0.97
+        meaning: at least 97 percent of repo-path router entries have canonical stage
+          or replacement mapping
+      normalization_threshold:
+        target: 0.95
+        meaning: at least 95 percent of stable reused records live in canonical registries
+          rather than batch-only intake
+      alias_coverage_threshold:
+        target: 0.97
+        meaning: at least 97 percent of repeated query patterns have stable aliases
+      truth_risk_coverage_threshold:
+        target: 1.0
+        meaning: all known blocking or high truth risks are recorded in the truth-risk
+          matrix
+    current_measurements: *id001
+    measured_checks:
+      repo_mapping_threshold: false
+      normalization_threshold_proxy: true
+    remaining_gaps:
+      repo_mapping_threshold: 0.8558
+      normalization_threshold_proxy: 0.0
+    meets_all_currently_measured_thresholds: false
+measurement_status:
+  directly_measured_now:
+  - repo_mapping_threshold
+  - normalization_threshold_proxy
+  - truth_risk_count_surface
+  - alias_count_surface
+  not_yet_directly_measured:
+  - vbt_family_coverage_threshold
+  - alias_coverage_threshold
+  - truth_risk_coverage_threshold
+new_repo_build_status:
+  module_status_counts:
+    active_next: 1
+    built_validated: 3
+    built_validated_first_wave: 1
+    pending_after_runtime_parity: 1
+    pending_after_truth_modules: 1
+    pending_foundation: 1
+    rebuild_required: 2
+  active_next_modules:
+  - data_authority
+normalization_targets_remaining:
+- add_vbtpro_lab_module_validation_events_into_build_registry
+source_refs:
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/scripts/build_vbtpro_machine_library.py

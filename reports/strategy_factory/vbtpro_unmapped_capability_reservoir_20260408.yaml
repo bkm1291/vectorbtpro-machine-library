@@ -1,0 +1,126 @@
+artifact_id: vbtpro_unmapped_capability_reservoir_20260408
+artifact_version: 1
+artifact_type: reservoir_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Machine-first holding surface for VBT PRO capabilities, tool families, or design ideas
+  that are valuable enough to preserve even when they do not yet map cleanly onto the
+  current repo. This prevents repo-fit bias from causing useful general capabilities to be lost.
+
+design_rule:
+  statement: >
+    The encyclopedia must preserve both:
+    1. repo-mapped capabilities with exact insertion points
+    2. unmapped-but-promising capabilities that may matter later for greenfield builds,
+       shadow pipelines, operator tooling, or future redesigns
+
+reservoir_classes:
+  - class_id: future_greenfield_candidate
+    meaning: likely useful in a future VBT-native shadow or rebuilt pipeline
+  - class_id: useful_but_not_yet_placed
+    meaning: valuable tool family with no clean current repo insertion point yet
+  - class_id: research_only_general_capability
+    meaning: useful for notebooks, experimentation, or analysis even without repo coupling
+  - class_id: deferred_due_to_authority_constraints
+    meaning: useful but blocked from current repo adoption by contract or topology constraints
+  - class_id: waiting_for_atomic_recording
+    meaning: known to exist, not yet normalized into atomic records
+
+record_shape:
+  required_fields:
+    - stable_id
+    - reservoir_class
+    - short_name
+    - summary
+    - vbt_source_paths
+    - why_preserve
+    - future_use_modes
+    - current_repo_mapping_status
+    - status
+  optional_fields:
+    - possible_future_repo_targets
+    - anti_patterns
+    - blockers
+    - linked_brainstorm_ids
+    - notebook_surface
+
+current_repo_mapping_status_enum:
+  - unmapped
+  - partially_mapped
+  - blocked_by_authority
+  - blocked_by_topology
+  - greenfield_only
+
+seed_entries:
+  - stable_id: unmapped_knowledge_asset_pipeline_family
+    reservoir_class: useful_but_not_yet_placed
+    short_name: knowledge_asset_pipeline_family
+    summary: >
+      VBT PRO knowledge, asset-pipeline, and document-ranking surfaces look useful for
+      internal retrieval and machine indexing, but they are not yet fully mapped to a clean
+      current-repo implementation path.
+    vbt_source_paths:
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/knowledge/doc_ranking.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/knowledge/asset_pipelines.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/knowledge/custom_assets.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/knowledge/text_splitting.py
+    why_preserve:
+      - likely strong for future internal note/code indexing
+      - may support an agent-native retrieval layer later
+    future_use_modes:
+      - internal_machine_retrieval
+      - note_indexing
+      - code_example_search
+    current_repo_mapping_status: partially_mapped
+    status: discovered
+
+  - stable_id: unmapped_greenfield_full_vbt_shadow_pipeline
+    reservoir_class: future_greenfield_candidate
+    short_name: full_vbt_shadow_pipeline
+    summary: >
+      Full VBT-native shadow pipeline remains worth preserving as a future direction even
+      though the current encyclopedia is intentionally adapter-first for the live repo.
+    vbt_source_paths:
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/base.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/returns/accessors.py
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/indicators/factory.py
+    why_preserve:
+      - may become the best long-run architecture for a second pipeline
+      - not all relevant pieces map cleanly to the current repo today
+    future_use_modes:
+      - shadow_pipeline_design
+      - greenfield_runtime
+      - greenfield_research_lane
+    current_repo_mapping_status: greenfield_only
+    status: discovered
+
+  - stable_id: unmapped_pfopt_research_surface_expansion
+    reservoir_class: research_only_general_capability
+    short_name: pfopt_research_surface_expansion
+    summary: >
+      PortfolioOptimizer and related allocation research surfaces are useful beyond the
+      current repo’s direct portfolio mirror needs and may support later allocation research.
+    vbt_source_paths:
+      - /home/benji/Downloads/vectorbt.pro-main/vectorbtpro/portfolio/pfopt/base.py
+    why_preserve:
+      - supports future allocation and construction research outside current authority paths
+    future_use_modes:
+      - allocation_research
+      - optimizer_research
+      - post_prediction_construction
+    current_repo_mapping_status: partially_mapped
+    status: discovered
+
+usage_rule:
+  statement: >
+    If a capability is valuable but does not yet belong in the repo-fit matrix, store it
+    here instead of dropping it. This reservoir is the encyclopedia’s anti-loss buffer for
+    non-local but still important VBT PRO knowledge.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml

@@ -1,0 +1,205 @@
+artifact_id: vbtpro_public_ml_evidence_deltas_20260409
+artifact_version: 1
+artifact_type: external_evidence_note
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Canonicalized subset of useful public-doc and public-example ML-relevant VBT PRO
+  knowledge merged from an external machine-readable note. This note is supplemental
+  evidence only: it does not override local code-verified capability mapping or repo-fit
+  contracts.
+
+evidence_policy:
+  statement: >
+    Keep public-doc evidence separate from local-code-verified capability notes. Public
+    pages are useful for call shapes, conceptual framing, and discoverability, but local
+    repo integration decisions must still be governed by the local code-fit library.
+  evidence_status_legend:
+    confirmed_pro_doc: verified on public VectorBT PRO pages or public examples
+    confirmed_vectorbt_doc: verified on public open-source vectorbt docs; likely relevant but not treated as identical to PRO by default
+    inferred: useful workflow guidance, not treated as a guaranteed public contract
+
+selected_deltas:
+  public_ml_data_surfaces:
+    role: supplemental_public_evidence
+    records:
+      - capability_id: canonical_import_and_namespace_discovery
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - from vectorbtpro import *
+          - whats_imported()
+        why_keep: public canonical import and namespace discovery helper not yet preserved explicitly in the main machine notes
+        best_fit:
+          - developer_onboarding
+          - notebook_bootstrapping
+      - capability_id: data_from_data_feature_store
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - vbt.Data.from_data
+          - vbt.feature_dict
+        why_keep: public feature-oriented data-store pattern worth preserving as a future-build and sidecar data assembly option
+        best_fit:
+          - feature_store_sidecars
+          - portfolio_state_to_dataset_exports
+      - capability_id: synthetic_ohlc_for_leakage_tests
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - vbt.GBMOHLCData.pull
+        why_keep: explicit public synthetic OHLC surface for leakage detection and test fixture generation
+        best_fit:
+          - split_and_target_leakage_tests
+          - synthetic_fixture_generation
+      - capability_id: data_transform_udf_surface
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - data.transform
+        why_keep: public transform-on-data-object shape for schema-safe dataset transforms
+        best_fit:
+          - sidecar_feature_transforms
+          - calendar_masking_and_cleaning
+      - capability_id: data_run_indicator_resolution
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - data.run
+          - data.run(\"talib\", ...)
+        why_keep: strong public-doc feature-matrix story and indicator-resolution call shape
+        best_fit:
+          - additive_feature_block_generation
+          - bulk_indicator_experiments
+
+  public_ml_splitter_surfaces:
+    role: supplemental_public_evidence
+    records:
+      - capability_id: split_decorator_surface
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - "@vbt.split"
+        why_keep: public decorator-based split application pattern not yet preserved explicitly in canonical notes
+        best_fit:
+          - shadow_pipeline_split_sidecars
+          - split_bound function wrappers
+      - capability_id: cv_split_decorator_surface
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - "@vbt.cv_split"
+        why_keep: public combined parameterization plus splitting decorator for train-select-validate loops
+        best_fit:
+          - search_sidecars
+          - cv loop wrappers over frozen split plans
+      - capability_id: typed_takeable_and_merge_annotations
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - "data: vbt.Takeable"
+          - "-> vbt.MergeFunc(\"concat\")"
+          - vbt.Param(condition=...)
+        why_keep: public annotation-driven signatures that make split-aware parameterized functions less error-prone
+        best_fit:
+          - shadow search wrappers
+          - compact cv function shells
+      - capability_id: oss_generic_split_helpers
+        evidence_status: confirmed_vectorbt_doc
+        public_refs:
+          - GenericAccessor.split
+          - GenericAccessor.rolling_split
+          - GenericAccessor.expanding_split
+          - GenericAccessor.range_split
+        why_keep: public OSS surface worth preserving as lower-level fallback vocabulary for split conversion and audits
+        best_fit:
+          - split parity notebooks
+          - fallback split adapters
+
+  public_ml_search_and_performance_surfaces:
+    role: supplemental_public_evidence
+    records:
+      - capability_id: parameterized_random_subset_examples
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - "@vbt.parameterized"
+          - parameterized_kwargs=dict(random_subset=...)
+          - broadcast_kwargs=dict(random_subset=...)
+        why_keep: public evidence for very large sampled search spaces and bounded subset selection
+        best_fit:
+          - search_sidecars
+          - bounded parameter sweeps
+      - capability_id: chunked_execution_public_shapes
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - "@vbt.chunked"
+          - vbt.combine_params
+          - vbt.Chunked
+        why_keep: public execution-control shapes that complement the local chunking map
+        best_fit:
+          - cpu-side search shells
+          - large feature/run grids
+      - capability_id: cache_chunks_and_threadpool_examples
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - cache_chunks=True
+          - execute_kwargs=dict(engine=\"threadpool\")
+          - mono_chunk_len
+          - jitted=dict(parallel=True)
+        why_keep: public example vocabulary for restart-safe chunk caching and parallel execution
+        best_fit:
+          - search sidecars
+          - heavy CPU feature/evaluation shells
+
+  public_ml_model_output_to_backtest_surfaces:
+    role: supplemental_public_evidence
+    records:
+      - capability_id: model_output_to_signal_portfolio_path
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - vbt.PF.from_signals
+          - vbt.Portfolio.from_signals
+        why_keep: public-doc framing for the cleanest ML-output-to-backtest handoff
+        best_fit:
+          - prediction_to_signal shadow paths
+          - ranking-to-portfolio mirrors
+      - capability_id: callback_driven_simulation_path
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - from_order_func
+        why_keep: public reminder that ML outputs do not need to be forced into simple boolean signal-only flows
+        best_fit:
+          - execution mirrors
+          - complex decision-policy simulation
+
+  public_ml_intelligence_surfaces:
+    role: supplemental_public_evidence
+    records:
+      - capability_id: attach_knowledge_refactor_surface
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - attach_knowledge=True
+          - vbt.refactor_source(...)
+        why_keep: public intelligence surface not yet represented explicitly in the canonical library
+        best_fit:
+          - future self-service code/search workflows
+          - VBT-native source-aided experimentation
+      - capability_id: knowledge_search_and_chat_surfaces
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - quick_search
+          - chat
+          - interact
+        why_keep: useful as a future external helper layer for mining VBT knowledge faster
+        best_fit:
+          - doc navigation
+          - self-service capability search
+      - capability_id: self_aware_assets_and_find_assets
+        evidence_status: confirmed_pro_doc
+        public_refs:
+          - vbt.PortfolioOptimizer.find_assets()
+        why_keep: public entrypoint into downloadable/searchable knowledge assets worth preserving for future mining
+        best_fit:
+          - external knowledge ingestion
+          - automated capability harvesting
+
+how_to_use:
+  - use this note as supporting evidence, not as replacement for local-code-verified notes
+  - prefer local machine notes for repo-fit and adoption decisions
+  - use these public shapes to enrich call-shape examples, external evidence, and future-build ideas
+
+source_refs:
+  - /home/benji/Desktop/vectorbt_pro_machine_learning_knowledge.yaml

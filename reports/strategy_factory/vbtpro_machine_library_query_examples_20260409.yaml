@@ -1,0 +1,1373 @@
+artifact_id: vbtpro_machine_library_query_examples_20260409
+artifact_version: 1
+artifact_type: query_examples
+status: generated
+created_on: '2026-04-17T06:31:41.929844+00:00'
+owner: codex
+db_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_20260409.sqlite
+source_refs:
+- /home/benji/vectorbtpro-machine-library/scripts/query_vbtpro_machine_library.py
+- /home/benji/vectorbtpro-machine-library/scripts/build_vbtpro_machine_library.py
+examples:
+- name: alias_splitters
+  args:
+  - --alias
+  - splitters
+  result:
+    query_kind: alias
+    resolved:
+    - alias:
+        alias: splitters
+        alias_id: QA001
+        description: fast route to splitter and CV surfaces
+        target_kind: topic
+        target_value: splitters_cv_and_no_leak
+      result:
+        query_kind: topic
+        rows:
+        - line_hint: 1
+          section: ml_gpu_vectorbtpro_index
+          source_kind: primary_ref
+          target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+          topic: splitters_cv_and_no_leak
+        - line_hint: 18
+          section: splitters_and_cv
+          source_kind: primary_ref
+          target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+          topic: splitters_cv_and_no_leak
+        - line_hint: 99
+          section: splitters_and_cv
+          source_kind: primary_ref
+          target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+          topic: splitters_cv_and_no_leak
+        - line_hint: 207
+          section: splitter_outer_loop
+          source_kind: primary_ref
+          target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+          topic: splitters_cv_and_no_leak
+    rows:
+    - alias: splitters
+      alias_id: QA001
+      description: fast route to splitter and CV surfaces
+      target_kind: topic
+      target_value: splitters_cv_and_no_leak
+- name: topic_splitters
+  args:
+  - --topic
+  - splitters_cv_and_no_leak
+  result:
+    query_kind: topic
+    rows:
+    - line_hint: 1
+      section: ml_gpu_vectorbtpro_index
+      source_kind: primary_ref
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+      topic: splitters_cv_and_no_leak
+    - line_hint: 18
+      section: splitters_and_cv
+      source_kind: primary_ref
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      topic: splitters_cv_and_no_leak
+    - line_hint: 99
+      section: splitters_and_cv
+      source_kind: primary_ref
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      topic: splitters_cv_and_no_leak
+    - line_hint: 207
+      section: splitter_outer_loop
+      source_kind: primary_ref
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      topic: splitters_cv_and_no_leak
+- name: artifact_path_external_vectorbtpro_index
+  args:
+  - --artifact-path
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+  result:
+    query_kind: artifact_path
+    rows:
+    - artifact_kind: note_surface
+      artifact_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      priority: high
+      role: active_control_plane_note
+    - artifact_kind: registered_artifact
+      artifact_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      priority: high
+      role: external_vectorbtpro_library_index
+- name: repo_vbtpro_splitter
+  args:
+  - --repo-path
+  - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+  result:
+    candidate_links: []
+    query_kind: repo_path
+    risk_links: []
+    routes:
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      section: null
+      source_key: external_vectorbtpro_source_tree
+      source_kind: first_note
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      section: vectorbtpro/generic/splitting/base.py
+      source_key: vectorbtpro/generic/splitting/base.py
+      source_kind: external_repo_file
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      section: generic
+      source_key: external_vectorbtpro::generic
+      source_kind: external_repo_index
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      section: splitters_cv_and_no_leak
+      source_key: splitters_cv_and_no_leak
+      source_kind: topic
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      section: vectorbtpro_native_build_surfaces
+      source_key: vectorbtpro_native_build_surfaces
+      source_kind: topic
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      section: index_sections
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      section: what_ships_now
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+    stage_links: []
+- name: repo_vbtpro_from_signals
+  args:
+  - --repo-path
+  - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+  result:
+    candidate_links: []
+    query_kind: repo_path
+    risk_links: []
+    routes:
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: null
+      source_key: external_vectorbtpro_source_tree
+      source_kind: first_note
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: vectorbtpro/portfolio/nb/from_signals.py
+      source_key: vectorbtpro/portfolio/nb/from_signals.py
+      source_kind: external_repo_file
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: portfolio
+      source_key: external_vectorbtpro::portfolio
+      source_kind: external_repo_index
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: vectorbtpro_native_build_surfaces
+      source_key: vectorbtpro_native_build_surfaces
+      source_kind: topic
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: index_sections
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: what_ships_now
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+    stage_links: []
+- name: repo_vbtpro_polygon
+  args:
+  - --repo-path
+  - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+  result:
+    candidate_links: []
+    query_kind: repo_path
+    risk_links: []
+    routes:
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      section: null
+      source_key: external_vectorbtpro_source_tree
+      source_kind: first_note
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      section: vectorbtpro/data/custom/polygon.py
+      source_key: vectorbtpro/data/custom/polygon.py
+      source_kind: external_repo_file
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      section: data
+      source_key: external_vectorbtpro::data
+      source_kind: external_repo_index
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      section: vectorbtpro_native_build_surfaces
+      source_key: vectorbtpro_native_build_surfaces
+      source_kind: topic
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      section: index_sections
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      section: what_ships_now
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+    stage_links: []
+- name: repo_vbtpro_mcp_server
+  args:
+  - --repo-path
+  - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+  result:
+    candidate_links: []
+    query_kind: repo_path
+    risk_links: []
+    routes:
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      section: null
+      source_key: external_vectorbtpro_source_tree
+      source_kind: first_note
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 0
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      section: vectorbtpro/mcp_server.py
+      source_key: vectorbtpro/mcp_server.py
+      source_kind: external_repo_file
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      section: mcp_server.py
+      source_key: external_vectorbtpro::mcp_server.py
+      source_kind: external_repo_index
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 1
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      section: vectorbtpro_native_build_surfaces
+      source_key: vectorbtpro_native_build_surfaces
+      source_kind: topic
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      section: index_sections
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+    - line_hint: 1
+      priority_rank: 2
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      section: what_ships_now
+      source_key: external_vectorbtpro_source_tree
+      source_kind: support_section
+      target_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+    stage_links: []
+- name: symbol_splittercv
+  args:
+  - --symbol
+  - SplitterCV
+  result:
+    query_kind: symbol
+    rows:
+    - kind: class
+      line_number: 27
+      module_name: vectorbtpro.generic
+      priority_rank: 0
+      qualname: vectorbtpro.generic.SplitterCV
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      section: generic
+      source_kind: external_runtime_export
+      symbol_name: SplitterCV
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+    - kind: class
+      line_number: 27
+      module_name: vectorbtpro.generic.splitting
+      priority_rank: 0
+      qualname: vectorbtpro.generic.splitting.SplitterCV
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      section: generic
+      source_kind: external_runtime_export
+      symbol_name: SplitterCV
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+    - kind: class
+      line_number: 27
+      module_name: vectorbtpro.generic.splitting.sklearn_
+      priority_rank: 0
+      qualname: vectorbtpro.generic.splitting.sklearn_.SplitterCV
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      section: generic
+      source_kind: external_runtime_export
+      symbol_name: SplitterCV
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+    - kind: class
+      line_number: 27
+      module_name: vectorbtpro.generic.splitting.sklearn_
+      priority_rank: 0
+      qualname: vectorbtpro.generic.splitting.sklearn_.SplitterCV
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      section: generic
+      source_kind: external_repo_symbol
+      symbol_name: SplitterCV
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+- name: symbol_from_signals_nb
+  args:
+  - --symbol
+  - vectorbtpro.portfolio.nb.from_signals.from_signals_nb
+  result:
+    query_kind: symbol
+    rows:
+    - kind: callable
+      line_number: 1724
+      module_name: vectorbtpro.portfolio.nb.from_signals
+      priority_rank: 0
+      qualname: vectorbtpro.portfolio.nb.from_signals.from_signals_nb
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: portfolio
+      source_kind: external_runtime_export
+      symbol_name: from_signals_nb
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+    - kind: function
+      line_number: 1832
+      module_name: vectorbtpro.portfolio.nb.from_signals
+      priority_rank: 0
+      qualname: vectorbtpro.portfolio.nb.from_signals.from_signals_nb
+      repo_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      section: portfolio
+      source_kind: external_repo_symbol
+      symbol_name: from_signals_nb
+      target_path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+- name: text_splittercv
+  args:
+  - --text
+  - SplitterCV
+  result:
+    query_kind: text
+    rows:
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.SplitterCV
+      secondary_key: class
+      section: vectorbtpro.generic.SplitterCV
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.SplitterCV
+      secondary_key: class
+      section: vectorbtpro.generic.splitting.SplitterCV
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV
+      secondary_key: class
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV
+      secondary_key: class
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.__init__
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.__init__
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.splitter
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.splitter
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.splitter_cls
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.splitter_cls
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.splitter_kwargs
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.splitter_kwargs
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.split_group_by
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.split_group_by
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.set_group_by
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.set_group_by
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.template_context
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.template_context
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.get_splitter
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.get_splitter
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_masks
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_masks
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_train_masks
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_train_masks
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_test_masks
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_test_masks
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_indices
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_indices
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_train_indices
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_train_indices
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_test_indices
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV._iter_test_indices
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.get_n_splits
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.get_n_splits
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro.generic.splitting.sklearn_.SplitterCV.split
+      secondary_key: function
+      section: vectorbtpro.generic.splitting.sklearn_.SplitterCV.split
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/sklearn_.py
+      primary_key: vectorbtpro/generic/splitting/sklearn_.py
+      secondary_key: generic
+      section: vectorbtpro/generic/splitting/sklearn_.py
+      source_kind: external_repo_file
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+- name: text_from_signals
+  args:
+  - --text
+  - from_signals
+  result:
+    query_kind: text
+    rows:
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/_typing.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.tp
+      secondary_key: module
+      section: vectorbtpro.portfolio.nb.from_signals.tp
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/base/chunking.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.base_ch
+      secondary_key: module
+      section: vectorbtpro.portfolio.nb.from_signals.base_ch
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/chunking.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.ch
+      secondary_key: module
+      section: vectorbtpro.portfolio.nb.from_signals.ch
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/template.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.RepFunc
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.RepFunc
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.AccountState
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.AccountState
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.ExecState
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.ExecState
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FOFLastState
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FOFLastState
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FOInOutputs
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FOInOutputs
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FOLastState
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FOLastState
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSGroupContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSGroupContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSInOutputs
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSInOutputs
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSLastState
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSLastState
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSPostOrderContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSPostOrderContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSPreOrderSegmentContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSPreOrderSegmentContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSSegmentContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSSegmentContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSSignalContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSSignalContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FSSimulationContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FSSimulationContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.FlexOrderContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.FlexOrderContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.GroupContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.GroupContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.Order
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.Order
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.OrderContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.OrderContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.OrderResult
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.OrderResult
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.PostOrderContext
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.PostOrderContext
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.PriceArea
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.PriceArea
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/enums.py
+      primary_key: vectorbtpro.portfolio.nb.from_signals.RejectedOrderError
+      secondary_key: class
+      section: vectorbtpro.portfolio.nb.from_signals.RejectedOrderError
+      source_kind: external_runtime_export
+- name: stage_split_truth
+  args:
+  - --stage-id
+  - S1_split_planning_and_membership_truth
+  result:
+    linked_notes:
+    - line_hint: 1
+      section: split_authority
+      source_kind: lab_build_registry
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+    - line_hint: 1
+      section: S1_split_planning_and_membership_truth
+      source_kind: stage_contract
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+    - line_hint: 1
+      section: CL001_models_split_and_train_masks
+      source_kind: code_map
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+    - line_hint: 1
+      section: CL002_walk_forward_fold_authority
+      source_kind: code_map
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+    - line_hint: 1
+      section: CL003_validation_segment_contracts
+      source_kind: code_map
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+    - line_hint: 1
+      section: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+    - line_hint: 1
+      section: CL036_public_synthetic_ohlc_test_fixtures
+      source_kind: code_map
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+    - line_hint: 1
+      section: TR001_split_membership_drift
+      source_kind: truth_risk
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+    - line_hint: 1
+      section: TR002_chronology_and_overlap_leakage
+      source_kind: truth_risk
+      stage_id: S1_split_planning_and_membership_truth
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+    query_kind: stage_id
+    repo_paths:
+    - repo_path: /home/benji/trade_scanner2/tests/test_blackwell_ensemble_dataset.py
+      source_id: CL036_public_synthetic_ohlc_test_fixtures
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/tests/test_semantic_lane2_data_prep.py
+      source_id: CL036_public_synthetic_ohlc_test_fixtures
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      source_id: S1_split_planning_and_membership_truth
+      source_kind: stage_contract
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/stacker.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/targets.py
+      source_id: CL012_blackwell_split_dataset_train_eval_stack
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      source_id: S1_split_planning_and_membership_truth
+      source_kind: stage_contract
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      source_id: CL001_models_split_and_train_masks
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      source_id: S1_split_planning_and_membership_truth
+      source_kind: stage_contract
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      source_id: CL003_validation_segment_contracts
+      source_kind: code_map
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      source_id: S1_split_planning_and_membership_truth
+      source_kind: stage_contract
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      source_id: CL002_walk_forward_fold_authority
+      source_kind: code_map
+    stage_records:
+    - cpu_role: split planning, membership equality, lineage audits
+      gpu_role: consume already-frozen split masks only
+      payload_json: '{"allowed_vbt_families": ["Splitter", "SplitterCV", "split_decorators",
+        "purged_kfold", "purged_walkforward", "rolling_and_expanding_splitters"],
+        "cpu_gpu_role": {"cpu_role": "split planning, membership equality, lineage
+        audits", "gpu_role": "consume already-frozen split masks only"}, "forbidden_shortcuts":
+        ["split_membership_translation_without_parity_tests", "range_reconstruction_without_identity_key_preservation",
+        "future_data_visibility_in_train_or_valid_masks"], "primary_repo_targets":
+        ["/home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py", "/home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py",
+        "/home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py",
+        "/home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py"],
+        "purpose": "split generation, fold lineage, purge/embargo, and no-leak truth",
+        "required_inputs": ["canonical_price_surface", "split_policy", "purge_or_embargo_policy"],
+        "required_outputs": ["split_plan", "split_membership_rows", "fold_lineage_rows",
+        "overlap_and_purge_audit"], "stage_kind": "chronology_and_cv", "truth_risks":
+        ["chronology_leakage", "overlap_contamination", "fold_parentage_drift", "membership_inequality"],
+        "validation_hooks": ["exact_membership_equality", "no_overlap_across_forbidden_sets",
+        "purge_embargo_boundary_assertion", "fold_parentage_parity"]}'
+      purpose: split generation, fold lineage, purge/embargo, and no-leak truth
+      stage_id: S1_split_planning_and_membership_truth
+      stage_kind: chronology_and_cv
+    truth_risks:
+    - risk_id: TR001_split_membership_drift
+    - risk_id: TR002_chronology_and_overlap_leakage
+- name: risk_split_membership
+  args:
+  - --risk-id
+  - TR001_split_membership_drift
+  result:
+    linked_notes:
+    - line_hint: 1
+      risk_id: TR001_split_membership_drift
+      section: TR001_split_membership_drift
+      source_kind: truth_risk
+      target_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+    query_kind: risk_id
+    repo_paths:
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      severity: blocking
+      source_kind: truth_risk
+    - repo_path: /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      severity: blocking
+      source_kind: truth_risk
+    risk_records:
+    - blocking_severity: blocking
+      failure_mode: VBT-derived fold membership differs from current repo membership
+      payload_json: '{"blocking_severity": "blocking", "failure_mode": "VBT-derived
+        fold membership differs from current repo membership", "preferred_vbt_audit_surfaces":
+        ["Splitter", "SplitterCV", "split_truth_router"], "repo_targets": ["/home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py",
+        "/home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py"],
+        "required_tests": ["exact_membership_equality", "fold_parentage_parity", "holdout_visibility_forbidden_check"],
+        "risk_id": "TR001_split_membership_drift", "stage_scope": ["S1_split_planning_and_membership_truth",
+        "S7_search_optimization_and_model_selection", "S8_shadow_parity_and_promotion_gate"]}'
+      risk_id: TR001_split_membership_drift
+    stage_scope:
+    - stage_id: S1_split_planning_and_membership_truth
+    - stage_id: S7_search_optimization_and_model_selection
+    - stage_id: S8_shadow_parity_and_promotion_gate
+- name: module_machine_library
+  args:
+  - --module-id
+  - machine_library
+  result:
+    module_records:
+    - build_status: built_validated
+      module_id: machine_library
+      module_path: /home/benji/vectorbtpro-machine-library/src/vbtpro_lab/machine_library
+      payload_json: '{"blockers": [], "build_priority": "highest", "build_status":
+        "built_validated", "first_deliverable": "local contract lookup, local compiled
+        lookup wiring, and repo-integrated library access", "module_id": "machine_library",
+        "module_path": "/home/benji/vectorbtpro-machine-library/src/vbtpro_lab/machine_library",
+        "primary_stage_ids": ["S8_shadow_parity_and_promotion_gate"], "rollout_phase":
+        "phase_1_machine_library_localization", "validation_targets": ["/home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml",
+        "/home/benji/vectorbtpro-machine-library/src/vbtpro_lab/machine_library"]}'
+      rollout_phase: phase_1_machine_library_localization
+    query_kind: module_id
+    stage_links:
+    - stage_id: S8_shadow_parity_and_promotion_gate
+- name: artifact_path_timeframe_registry
+  args:
+  - --artifact-path
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/timeframe_registry.yaml
+  result:
+    query_kind: artifact_path
+    rows:
+    - artifact_kind: registered_artifact
+      artifact_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/runtime_config/timeframe_registry.yaml
+      priority: high
+      role: timeframe_registry
+- name: artifact_path_ml_gpu_index
+  args:
+  - --artifact-path
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+  result:
+    query_kind: artifact_path
+    rows: []
+- name: artifact_path_blackwell_ml_master_note
+  args:
+  - --artifact-path
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_blackwell_ml_master_note_20260416.yaml
+  result:
+    query_kind: artifact_path
+    rows: []
+- name: artifact_path_upstream_gpu_ml_source_index
+  args:
+  - --artifact-path
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+  result:
+    query_kind: artifact_path
+    rows: []
+- name: text_blackwell
+  args:
+  - --text
+  - blackwell
+  result:
+    query_kind: text
+    rows:
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_ml_integration_blueprint_20260409.yaml
+      secondary_key: topic
+      section: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_ml_integration_blueprint_20260409.yaml
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/contracts/blackwell_ml_execution_policy.yaml
+      secondary_key: topic
+      section: /home/benji/vectorbtpro-machine-library/contracts/blackwell_ml_execution_policy.yaml
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/contracts/ml_backend_registry.yaml
+      secondary_key: topic
+      section: /home/benji/vectorbtpro-machine-library/contracts/ml_backend_registry.yaml
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/contracts/ml_backend_execution_contract.yaml
+      secondary_key: topic
+      section: /home/benji/vectorbtpro-machine-library/contracts/ml_backend_execution_contract.yaml
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+      secondary_key: topic
+      section: /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/runner.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/family_pipeline.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/family_pipeline.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/targets.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/targets.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      primary_key: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/parity_audit.py
+      secondary_key: first_note
+      section: /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/parity_audit.py
+      source_kind: repo_lookup
+- name: text_gpu_ml_vectorbtpro
+  args:
+  - --text
+  - gpu ml vectorbtpro
+  result:
+    query_kind: text
+    rows:
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/purged.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/purged.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/purged.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/purged.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+      primary_key: splitters_cv_and_no_leak
+      secondary_key: null
+      section: splitters_cv_and_no_leak
+      source_kind: topic_route
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+      primary_key: blackwell_specific_adoption
+      secondary_key: null
+      section: blackwell_specific_adoption
+      source_kind: topic_route
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: splitters_cv_and_no_leak
+      secondary_key: null
+      section: splitters_cv_and_no_leak
+      source_kind: topic_route
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: vectorbtpro_native_build_surfaces
+      secondary_key: repo_owned_vectorbtpro_source_tree_for_native_script_building
+      section: vectorbtpro_native_build_surfaces
+      source_kind: topic_route
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: splitters_cv_and_no_leak
+      secondary_key: null
+      section: splitters_cv_and_no_leak
+      source_kind: topic_route
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: splitters_cv_and_no_leak
+      secondary_key: null
+      section: splitters_cv_and_no_leak
+      source_kind: topic_route
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: blackwell_specific_adoption
+      secondary_key: null
+      section: blackwell_specific_adoption
+      source_kind: topic_route
+- name: text_patsim
+  args:
+  - --text
+  - PATSIM
+  result:
+    query_kind: text
+    rows:
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: vectorbtpro.indicators.PATSIM
+      secondary_key: class
+      section: vectorbtpro.indicators.PATSIM
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: vectorbtpro.indicators.custom.PATSIM
+      secondary_key: class
+      section: vectorbtpro.indicators.custom.PATSIM
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: vectorbtpro.indicators.custom.patsim.PATSIM
+      secondary_key: class
+      section: vectorbtpro.indicators.custom.patsim.PATSIM
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: vectorbtpro.indicators.custom.patsim._PATSIM
+      secondary_key: class
+      section: vectorbtpro.indicators.custom.patsim._PATSIM
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: vectorbtpro.indicators.custom.patsim._PATSIM.plot
+      secondary_key: function
+      section: vectorbtpro.indicators.custom.patsim._PATSIM.plot
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: vectorbtpro.indicators.custom.patsim._PATSIM.overlay_with_heatmap
+      secondary_key: function
+      section: vectorbtpro.indicators.custom.patsim._PATSIM.overlay_with_heatmap
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: vectorbtpro/indicators/custom/patsim.py
+      secondary_key: indicators
+      section: vectorbtpro/indicators/custom/patsim.py
+      source_kind: external_repo_file
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/__init__.py
+      primary_key: vectorbtpro/indicators/custom/__init__.py
+      secondary_key: indicators
+      section: vectorbtpro/indicators/custom/__init__.py
+      source_kind: external_repo_file
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      secondary_key: external_repo_file
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      secondary_key: first_note
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      secondary_key: external_repo_index
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/indicators/custom/patsim.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+- name: text_trendlb
+  args:
+  - --text
+  - TRENDLB
+  result:
+    query_kind: text
+    rows:
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      primary_key: vectorbtpro.labels.TRENDLB
+      secondary_key: class
+      section: vectorbtpro.labels.TRENDLB
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      primary_key: vectorbtpro.labels.generators.TRENDLB
+      secondary_key: class
+      section: vectorbtpro.labels.generators.TRENDLB
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      primary_key: vectorbtpro.labels.generators.trendlb.TRENDLB
+      secondary_key: class
+      section: vectorbtpro.labels.generators.trendlb.TRENDLB
+      source_kind: external_runtime_export
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      primary_key: vectorbtpro.labels.generators.trendlb._TRENDLB
+      secondary_key: class
+      section: vectorbtpro.labels.generators.trendlb._TRENDLB
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      primary_key: vectorbtpro.labels.generators.trendlb._TRENDLB.plot
+      secondary_key: function
+      section: vectorbtpro.labels.generators.trendlb._TRENDLB.plot
+      source_kind: external_repo_symbol
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/nb.py
+      primary_key: vectorbtpro/labels/nb.py
+      secondary_key: labels
+      section: vectorbtpro/labels/nb.py
+      source_kind: external_repo_file
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      primary_key: vectorbtpro/labels/generators/trendlb.py
+      secondary_key: labels
+      section: vectorbtpro/labels/generators/trendlb.py
+      source_kind: external_repo_file
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/__init__.py
+      primary_key: vectorbtpro/labels/generators/__init__.py
+      secondary_key: labels
+      section: vectorbtpro/labels/generators/__init__.py
+      source_kind: external_repo_file
+    - path: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      secondary_key: external_repo_file
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      secondary_key: support_section
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      secondary_key: first_note
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      secondary_key: external_repo_index
+      section: /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/labels/generators/trendlb.py
+      source_kind: repo_lookup
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      primary_key: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      secondary_key: null
+      section: null
+      source_kind: note_body
+- name: artifact_path_upstream_gpu_ml_triple_check_note
+  args:
+  - --artifact-path
+  - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+  result:
+    query_kind: artifact_path
+    rows: []

@@ -1,0 +1,67 @@
+artifact_id: vbtpro_agent_output_protocol_20260409
+artifact_version: 1
+artifact_type: agent_output_protocol
+status: frozen
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Final immutable protocol for agent outputs entering the VBT PRO library. Agents may
+  continue to mine and organize information, but must emit only typed, destination-aware,
+  stable-id-compatible records.
+
+required_output_properties:
+  - stable_id_when_reusable
+  - typed_record_family
+  - exact_source_refs
+  - exact_route_targets
+  - explicit_registry_destination
+
+miner_output_rules:
+  must_emit:
+    - exact_vbt_paths
+    - exact_repo_paths_when_known
+    - stage_ids_when_known
+    - truth_risk_ids_when_known
+    - alias_candidates_when_query_pattern_is_repeated
+  may_emit:
+    - unmapped_capability_records_for_reservoir
+    - batch_intake_records_only_if_no_canonical_destination_exists
+  must_not_emit:
+    - prose_only_findings_without_typed_record_shape
+    - reusable_findings_without_stable_ids
+
+organizer_output_rules:
+  must_emit:
+    - canonical_registry_patch_candidates_when_schema_exists
+    - exact_cross-link_targets
+    - build_registry_updates_when_vbtpro-lab_state_changes
+  must_not_emit:
+    - leave_high_value_findings_only_in_agent_output
+    - introduce_new_record_shapes_without_constitution_version_bump
+
+destination_registry_rules:
+  stage_or_pipeline_contract_fact:
+    destination: stage_records
+  truth_or_leakage_or_drift_fact:
+    destination: truth_risk_records
+  repo_replacement_or_adoption_fact:
+    destination: replacement_records
+  repo_path_code_mapping_fact:
+    destination: code_map_records
+  vbtpro_lab_module_status_fact:
+    destination: build_module_records
+  repeated_query_shortcut:
+    destination: query_aliases
+  no_known_destination_yet:
+    destination: batch_records_or_unmapped_reservoir
+
+requeue_rules:
+  miner_half_of_agents_required: true
+  organizer_half_of_agents_required: true
+  immediate_requeue_required: true
+  contract_violation_requires_redirect_before_next_pass: true
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_encyclopedia_program_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_normalization_boundary_contract_20260409.yaml

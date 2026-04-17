@@ -1,0 +1,261 @@
+artifact_id: vbtpro_topic_router_20260408
+artifact_version: 1
+artifact_type: topic_router
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: 'Topic-first router into the VBT PRO research set. Use this when the question
+  starts with a problem domain such as splitters, patterns, reporting, Blackwell,
+  truth/leakage, or UI/dashboards.
+
+  '
+topics:
+  splitters_cv_and_no_leak:
+    primary_refs:
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      line_hint: 18
+      section: splitters_and_cv
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      line_hint: 99
+      section: splitters_and_cv
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      line_hint: 207
+      section: splitter_outer_loop
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+      line_hint: 1
+      section: ml_gpu_vectorbtpro_index
+    repo_targets:
+    - /home/benji/Desktop/vectorbt.pro-main/vectorbtpro/generic/splitting/base.py
+    - /home/benji/Desktop/vectorbt.pro-main/vectorbtpro/generic/splitting/purged.py
+    - /home/benji/Desktop/vectorbt.pro-main/vectorbtpro/generic/splitting/decorators.py
+    - /home/benji/Desktop/vectorbt.pro-main/vectorbtpro/generic/splitting/sklearn_.py
+  data_alignment_cleaning_and_store_shape:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 449
+      section: data_alignment_resampling_and_custom_data
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+      line_hint: 1
+      section: schema_note
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      line_hint: 26
+      section: equities_llm_lab_history_full_store_dataset_builder_entries
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_public_ml_evidence_deltas_20260409.yaml
+      line_hint: 1
+      section: public_ml_data_surfaces
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_metadata.py
+  patterns_features_labels_and_regimes:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 607
+      section: pattern_features_and_labels
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 631
+      section: custom_indicators_and_generic_accessors
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+      line_hint: 17
+      section: high_potential_ideas
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_runtime_filters.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+  signals_and_signal_generation:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 477
+      section: signals_and_signal_generation
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      line_hint: 26
+      section: vbt_equities_vbtpro_native_runtime_signal_related_entries
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_execution_integration.py
+  execution_params_chunking_and_cpu_acceleration:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 530
+      section: execution_engines_and_settings
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 559
+      section: parameterization_and_search
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 581
+      section: chunking_caching_parallelism
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_public_ml_evidence_deltas_20260409.yaml
+      line_hint: 1
+      section: public_ml_search_and_performance_surfaces
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/model_catalog.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+  portfolio_optimizer_and_post_prediction_evaluation:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 684
+      section: portfolio_simulation_and_optimizer
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 705
+      section: returns_drawdowns_trades_records_and_reporting
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+  graphing_dashboards_and_review_surfaces:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 663
+      section: ohlcv_px_and_visual_accessors
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 732
+      section: stats_plots_and_analysis_builders
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 933
+      section: notebook_demo_and_test_surfaces
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer.py
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_pages.py
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/viewer_review.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+    - /home/benji/trade_scanner2/scripts/render_loop_runs_dashboard.py
+  schema_rows_columns_and_accuracy:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 776
+      section: schema_row_column_and_accuracy_controls
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      line_hint: 26
+      section: equities_llm_lab_history_full_store_dataset_builder_entries
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/flatfiles.py
+    - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/feature_validation.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/reference_data.py
+  blackwell_specific_adoption:
+    primary_refs:
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_blackwell_ml_master_note_20260416.yaml
+      line_hint: 1
+      section: artifact_root
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_ml_gpu_vectorbtpro_index_20260416.yaml
+      line_hint: 1
+      section: ml_gpu_vectorbtpro_index
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      line_hint: 98
+      section: what_ships_now
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_ml_integration_blueprint_20260409.yaml
+      line_hint: 1
+      section: artifact_root
+    repo_targets:
+    - /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_ml_integration_blueprint_20260409.yaml
+    - /home/benji/vectorbtpro-machine-library/contracts/blackwell_ml_execution_policy.yaml
+    - /home/benji/vectorbtpro-machine-library/contracts/ml_backend_registry.yaml
+    - /home/benji/vectorbtpro-machine-library/contracts/ml_backend_execution_contract.yaml
+  anti_patterns_truth_and_honesty:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 814
+      section: truth_bias_leakage_and_drift_controls
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+      line_hint: 1
+      section: schema_note
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 900
+      section: anti_patterns_and_false_friends
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+      line_hint: 1
+      section: lane_command_contract
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+      line_hint: 1
+      section: strategy_factory_architecture_contract
+    repo_targets:
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+  notebooks_demos_and_tests:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_optimization_map_20260408.ipynb
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+      line_hint: 1
+      section: surfaces
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 933
+      section: notebook_demo_and_test_surfaces
+    repo_targets:
+    - /home/benji/trade_scanner2/tests/test_vbtpro_native_runtime.py
+    - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_end_to_end.py
+    - /home/benji/trade_scanner2/tests/test_blackwell_ensemble_splits.py
+  internal_ai_retrieval_and_note_indexing:
+    primary_refs:
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      line_hint: 776
+      section: knowledge_and_ai_dev_tooling
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      line_hint: 26
+      section: reports_strategy_factory_entry
+    - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_public_ml_evidence_deltas_20260409.yaml
+      line_hint: 1
+      section: public_ml_intelligence_surfaces
+    repo_targets:
+    - /home/benji/trade_scanner2/reports/strategy_factory
+    - /home/benji/trade_scanner2/trade_scanner/strategy_factory
+    - /home/benji/trade_scanner2/scripts
+  current_universe_research_execution_stack:
+    primary_refs:
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_research_execution_plan_stack_index_20260416.yaml
+      line_hint: 1
+      section: artifact_root
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_operator_cut_20260416.yaml
+      line_hint: 1
+      section: plan_root
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_active_slice_20260416.yaml
+      line_hint: 1
+      section: plan_root
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_20260416.yaml
+      line_hint: 1
+      section: plan_root
+    repo_targets:
+    - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_operator_cut_20260416.yaml
+    - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_active_slice_20260416.yaml
+    - /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_lab_detailed_research_execution_plan_v3_20260416.yaml
+  vectorbtpro_native_build_surfaces:
+    goal: repo_owned_vectorbtpro_source_tree_for_native_script_building
+    primary_refs:
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+      line_hint: 1
+      section: key_entrypoints
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_source_index_20260416.yaml
+      line_hint: 1
+      section: index_sections
+    - path: /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_upstream_gpu_ml_triple_check_note_20260416.yaml
+      line_hint: 1
+      section: how_to_use_vectorbtpro_for_future_gpu_ml_phase
+    repo_targets:
+    - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/generic/splitting/base.py
+    - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/base.py
+    - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/portfolio/nb/from_signals.py
+    - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/data/custom/polygon.py
+    - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/utils/execution.py
+    - /home/benji/vectorbtpro-machine-library/external/vectorbt.pro/vectorbtpro/mcp_server.py
+usage_notes:
+- If the question starts with a repo file, use the repo path router instead.
+- If the question starts with a tool family, start here, then jump to the long-form
+  encyclopedia.
+- Use current_universe_research_execution_stack when the question is about the active
+  plan set, execution order, or which plan layer to read next.
+source_refs:
+- /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+- /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+- /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+- /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_public_ml_evidence_deltas_20260409.yaml

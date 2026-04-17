@@ -1,0 +1,114 @@
+artifact_id: vbtpro_truth_honesty_router_20260408
+artifact_version: 1
+artifact_type: topic_router
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Machine-first router for truth, honesty, leakage, drift, schema, and evaluation-risk
+  surfaces in the VBT PRO encyclopedia stack. Use this router when the question is about
+  what can silently lie, drift, leak, or mislabel results.
+
+topics:
+  split_membership_truth:
+    goal: exact row membership for train_valid_walkforward_holdout and fold lineage
+    primary_refs:
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 814
+        section: truth_bias_leakage_and_drift_controls
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+        line_hint: 1
+        section: splitters_cv_and_no_leak
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/oos_cache.py
+
+  schema_rows_columns_accuracy:
+    goal: exact index_column_shape_identity and import_export fidelity
+    primary_refs:
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 776
+        section: schema_row_column_and_accuracy_controls
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+        line_hint: 1
+        section: schema_rows_columns_and_accuracy
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/flatfiles.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/feature_validation.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/dataset_builder.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/reference_data.py
+
+  target_and_label_leakage:
+    goal: keep future-looking labels and target metadata honest
+    primary_refs:
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 814
+        section: truth_bias_leakage_and_drift_controls
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+        line_hint: 1
+        section: patterns_features_labels_and_regimes
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+
+  signal_and_pattern_honesty:
+    goal: avoid repeated-signal bias, pattern lookahead, and state contamination
+    primary_refs:
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 814
+        section: truth_bias_leakage_and_drift_controls
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 607
+        section: pattern_features_and_labels
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_runtime_filters.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_indicator_evidence_surface.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_execution_integration.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_coarse_medium_feature_discovery.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/feature_builders_gpu.py
+
+  metric_and_evaluation_drift:
+    goal: expose misleading proxy metrics, simulation-vs-proxy mismatch, and report drift
+    primary_refs:
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 705
+        section: returns_drawdowns_trades_records_and_reporting
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 814
+        section: truth_bias_leakage_and_drift_controls
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/benchmark_baseline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/monitoring_baseline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/ranking.py
+
+  anti_patterns_and_false_friends:
+    goal: surfaces that look useful but are dangerous for restore-grade truth
+    primary_refs:
+      - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+        line_hint: 900
+        section: anti_patterns_and_false_friends
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/gpu_executor.py
+
+usage_rule:
+  statement: >
+    When the question is about leakage, drift, bias, dishonesty, mislabeled rows, wrong folds,
+    wrong metrics, or hidden contamination, start with this router instead of the general topic router.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml

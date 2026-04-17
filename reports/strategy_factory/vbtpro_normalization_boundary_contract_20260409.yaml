@@ -1,0 +1,63 @@
+artifact_id: vbtpro_normalization_boundary_contract_20260409
+artifact_version: 1
+artifact_type: normalization_boundary_contract
+status: frozen
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Final contract for what may remain in batch intake, what must graduate into canonical
+  registries, and when a record is considered canonical.
+
+batch_intake_allowed:
+  allowed_only_for:
+    - newly mined capability records not yet assigned to a canonical registry family
+    - provisional unmapped VBT PRO capabilities
+    - sparse one-off evidence that still lacks stable destination schema
+  forbidden_for:
+    - repeated high-value records that fit an existing canonical registry
+    - active build-state facts for vbtpro-lab
+    - stable truth risks
+    - stable code-level repo mappings
+    - stable alias surfaces
+
+canonical_registries:
+  current_set:
+    - stage_records
+    - truth_risk_records
+    - replacement_records
+    - code_map_records
+    - build_module_records
+    - query_aliases
+
+canonical_record_definition:
+  required_properties:
+    - stable_id_present
+    - exact_source_refs_present
+    - exact_registry_destination_known
+    - fields_conform_to_frozen_registry_shape
+    - queryable_from_compiled_lookup_without_note_body_search
+
+graduation_rules:
+  graduate_from_batch_when:
+    - record_fits_existing_registry_shape
+    - record_is_reused_or_queried_more_than_once
+    - record_affects_repo_build_order_or_truth_contract
+    - record_affects_new_repo_module_status_or_stage scope
+  remain_in_batch_when:
+    - record_has_no_frozen_destination_schema_yet
+    - record_is_unmapped_and_not_yet_repeated
+    - record_is_low-signal_or_duplicate_supporting_evidence
+
+unmapped_reservoir_boundary:
+  preserve_in_reservoir_when:
+    - capability_is_useful_but_not_repo-mapped
+    - capability_is_future-build_only
+    - capability_is_blocked_by_current_authority_or_topology
+  graduate_from_reservoir_when:
+    - repo_path_or_stage_destination_becomes_known
+    - future-build_module_destination_becomes_known
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unmapped_capability_reservoir_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml

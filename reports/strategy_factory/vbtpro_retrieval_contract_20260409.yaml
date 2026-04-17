@@ -1,0 +1,80 @@
+artifact_id: vbtpro_retrieval_contract_20260409
+artifact_version: 1
+artifact_type: retrieval_contract
+status: frozen
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Final immutable retrieval contract for the compiled library: required query kinds,
+  alias classes, result shapes, and no-drift rules.
+
+required_query_kinds:
+  - artifact_path
+  - repo_path
+  - topic
+  - truth_topic
+  - notebook_surface
+  - stage_id
+  - risk_id
+  - registry_id
+  - map_id
+  - module_id
+  - alias
+  - text
+
+required_alias_classes:
+  - topic_alias
+  - truth_alias
+  - stage_alias
+  - module_alias
+  - repo_path_alias
+  - registry_alias
+  - artifact_alias
+
+result_shapes:
+  artifact_path:
+    required_keys:
+      - query_kind
+      - rows
+  repo_path:
+    required_keys:
+      - query_kind
+      - routes
+      - stage_links
+      - risk_links
+      - candidate_links
+  stage_id:
+    required_keys:
+      - query_kind
+      - stage_records
+      - linked_notes
+      - repo_paths
+      - truth_risks
+  risk_id:
+    required_keys:
+      - query_kind
+      - risk_records
+      - linked_notes
+      - repo_paths
+      - stage_scope
+  module_id:
+    required_keys:
+      - query_kind
+      - module_records
+      - stage_links
+  alias:
+    required_keys:
+      - query_kind
+      - rows
+      - resolved
+
+drift_rules:
+  query_kind_addition_requires_version_bump: true
+  result_shape_change_requires_version_bump: true
+  alias_class_change_requires_version_bump: true
+  missing_required_keys_is_forbidden: true
+
+source_refs:
+  - /home/benji/trade_scanner2/scripts/query_vbtpro_machine_library.py
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml

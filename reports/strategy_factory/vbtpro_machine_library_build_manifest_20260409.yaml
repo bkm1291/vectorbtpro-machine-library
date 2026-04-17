@@ -1,0 +1,137 @@
+artifact_id: vbtpro_machine_library_build_manifest_20260409
+artifact_version: 1
+artifact_type: build_manifest
+status: generated
+created_on: '2026-04-17T06:31:41.833660+00:00'
+owner: codex
+db_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_machine_library_20260409.sqlite
+dashboard_path: /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+source_inputs:
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_reset_rebuild_notes_plan_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/artifact_registry.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+validation:
+  required_tables:
+  - artifacts
+  - quick_start_routes
+  - topic_routes
+  - repo_path_routes
+  - truth_routes
+  - notebook_surfaces
+  - stage_records
+  - truth_risk_records
+  - replacement_records
+  - code_map_records
+  - build_module_records
+  - query_aliases
+  - external_repo_symbols
+  - external_runtime_exports
+  - lookup_by_repo_path
+  - lookup_by_symbol
+  - lookup_by_topic
+  - lookup_by_truth_topic
+  - lookup_by_notebook_surface
+  - lookup_by_artifact_path
+  - lookup_by_stage_id
+  - lookup_by_risk_id
+  - lookup_by_alias
+  - repo_stage_links
+  - repo_truth_links
+  - repo_candidate_links
+  - stage_truth_links
+  - module_stage_links
+  - search_documents
+  row_counts:
+    artifacts: 324
+    quick_start_routes: 36
+    topic_routes: 47
+    repo_path_routes: 289
+    truth_routes: 11
+    notebook_surfaces: 19
+    stage_records: 9
+    truth_risk_records: 10
+    replacement_records: 10
+    code_map_records: 48
+    build_module_records: 10
+    query_aliases: 74
+    external_repo_symbols: 6402
+    external_runtime_exports: 2625
+    lookup_by_repo_path: 909
+    lookup_by_symbol: 9027
+    lookup_by_topic: 47
+    lookup_by_truth_topic: 11
+    lookup_by_notebook_surface: 31
+    lookup_by_artifact_path: 324
+    lookup_by_stage_id: 153
+    lookup_by_risk_id: 10
+    lookup_by_alias: 74
+    repo_stage_links: 195
+    repo_truth_links: 20
+    repo_candidate_links: 1025
+    stage_truth_links: 25
+    module_stage_links: 15
+    search_documents: 10804
+  external_vectorbtpro_metrics:
+    repo_path_routes: 253
+    lookup_by_repo_path: 525
+    search_documents: 9516
+    symbol_records: 6402
+    runtime_export_records: 2625
+  all_nonzero: true
+quick_start_route_count: 36
+topic_route_count: 47
+repo_route_count: 289
+external_vectorbtpro_repo_route_count: 253
+external_vectorbtpro_search_document_count: 9516
+external_vectorbtpro_symbol_count: 6402
+external_vectorbtpro_runtime_export_count: 2625
+truth_route_count: 11
+notebook_surface_count: 8
+note_section_index_count: 4082
+normalized_counts:
+  artifact_count: 324
+  search_document_count: 10804
+  stage_record_count: 9
+  truth_risk_count: 10
+  replacement_count: 10
+  code_map_count: 48
+  build_module_count: 10
+  query_alias_count: 74
+  repo_stage_link_count: 195
+  repo_truth_link_count: 20
+  repo_candidate_link_count: 1025
+  external_vectorbtpro_repo_route_count: 253
+  external_vectorbtpro_search_document_count: 9516
+  external_vectorbtpro_symbol_count: 6402
+  external_vectorbtpro_runtime_export_count: 2625
+source_refs:
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/vbtpro_lab_reset_rebuild_notes_plan_20260409.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml
+- /home/benji/vectorbtpro-machine-library/contracts/artifact_registry.yaml
+- /home/benji/vectorbtpro-machine-library/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+- /home/benji/vectorbtpro-machine-library/artifacts/specs/control_plane/vbtpro_external_vectorbtpro_library_index_20260416.yaml
+- /home/benji/vectorbtpro-machine-library/scripts/build_vbtpro_machine_library.py

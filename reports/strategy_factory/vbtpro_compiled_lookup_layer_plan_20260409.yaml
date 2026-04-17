@@ -1,0 +1,366 @@
+artifact_id: vbtpro_compiled_lookup_layer_plan_20260409
+artifact_version: 1
+artifact_type: implementation_plan
+status: active_build
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Detailed machine-first plan for building a compiled lookup layer over the VBT PRO
+  encyclopedia stack so agents can retrieve routes, artifact refs, repo-fit pointers,
+  truth-risk surfaces, and notebook surfaces without scanning large YAML notes.
+
+design_goal:
+  primary: lightning_fast_machine_lookup
+  constraints:
+    - zero_information_loss_from_existing_router_stack
+    - YAML_notes_remain_source_of_truth
+    - compiled_layer_is_derivative_and_rebuildable
+    - minimal_view_first_full_record_second
+    - exact_path_and_section_refs_preserved
+    - low_context_retrieval_default
+
+source_of_truth_inputs:
+  primary_compile_inputs:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+  secondary_metadata_inputs:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_retrieval_specs_20260409.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_atomic_record_schema_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_family_contract_schema_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_machine_specs_20260409.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_retrieval_specs_20260409.yaml
+
+compiled_outputs:
+  sqlite_db:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_20260409.sqlite
+    role: primary_fast_lookup_store
+  build_manifest:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml
+    role: machine_build_metadata_and_validation_summary
+  query_examples:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+    role: durable_machine_query_examples
+
+builder_scripts:
+  build_script:
+    path: /home/benji/trade_scanner2/scripts/build_vbtpro_machine_library.py
+    role: compile_yaml_router_stack_into_sqlite
+  query_script:
+    path: /home/benji/trade_scanner2/scripts/query_vbtpro_machine_library.py
+    role: low_context_query_surface_for_agents
+
+build_phases:
+  phase_1_plan_and_contract:
+    goal: define exact compiled-layer contract before code
+    outputs:
+      - this_plan_note
+  phase_2_compile_core_router_tables:
+    goal: compile the live router stack into normalized SQLite tables
+    tables:
+      - build_meta
+      - source_files
+      - artifacts
+      - quick_start_routes
+      - topic_routes
+      - topic_repo_targets
+      - repo_path_routes
+      - repo_support_sections
+      - truth_routes
+      - truth_repo_targets
+      - notebook_surfaces
+      - notebook_note_refs
+      - notebook_repo_targets
+  phase_3_compile_denormalized_lookup_tables:
+    goal: precompute fast lookup projections
+    tables:
+      - lookup_by_repo_path
+      - lookup_by_repo_function
+      - lookup_by_topic
+      - lookup_by_truth_topic
+      - lookup_by_notebook_surface
+      - lookup_by_artifact_path
+      - lookup_by_priority
+      - lookup_by_role
+      - note_section_index
+  phase_4_compile_search_surface:
+    goal: provide low-friction text lookup without scanning YAML
+    tables:
+      - search_documents
+      - search_documents_fts
+  phase_5_query_cli:
+    goal: provide stable machine query entrypoint
+    supported_queries:
+      - exact_artifact_lookup
+      - topic_lookup
+      - truth_topic_lookup
+      - repo_path_lookup
+      - notebook_surface_lookup
+      - text_search
+      - mixed_filter_lookup
+  phase_6_validation:
+    goal: prove compiled layer matches live router stack sufficiently for agent use
+    validations:
+      - source_file_existence
+      - YAML_parse_clean
+      - required_table_presence
+      - nonzero_row_counts_for_core_tables
+      - expected_topic_count_match
+      - expected_repo_route_count_match
+      - expected_notebook_surface_count_match
+      - query_smoke_tests
+
+sqlite_schema:
+  build_meta:
+    columns:
+      - key
+      - value_json
+  source_files:
+    columns:
+      - path
+      - role
+      - sha256
+      - mtime
+      - bytes
+  artifacts:
+    columns:
+      - artifact_path
+      - artifact_kind
+      - role
+      - priority
+      - line_hint
+      - section
+      - source_group
+      - payload_json
+    indexes:
+      - artifact_path
+      - artifact_kind
+      - priority
+  quick_start_routes:
+    columns:
+      - route_group
+      - route_name
+      - ord
+      - path
+      - line_hint
+      - section
+    indexes:
+      - route_group
+      - route_name
+  topic_routes:
+    columns:
+      - topic
+      - goal
+      - path
+      - line_hint
+      - section
+    indexes:
+      - topic
+      - path
+  topic_repo_targets:
+    columns:
+      - topic
+      - repo_target
+    indexes:
+      - topic
+      - repo_target
+  repo_path_routes:
+    columns:
+      - repo_group
+      - repo_path
+      - first_note
+      - first_section_line
+    indexes:
+      - repo_path
+      - repo_group
+  repo_support_sections:
+    columns:
+      - repo_path
+      - support_path
+      - line_hint
+      - section
+    indexes:
+      - repo_path
+      - support_path
+  truth_routes:
+    columns:
+      - truth_topic
+      - goal
+      - path
+      - line_hint
+      - section
+    indexes:
+      - truth_topic
+  truth_repo_targets:
+    columns:
+      - truth_topic
+      - repo_target
+    indexes:
+      - truth_topic
+      - repo_target
+  notebook_surfaces:
+    columns:
+      - surface_name
+      - route_kind
+      - artifact_path
+    indexes:
+      - surface_name
+      - route_kind
+  notebook_note_refs:
+    columns:
+      - surface_name
+      - note_path
+    indexes:
+      - surface_name
+      - note_path
+  notebook_repo_targets:
+    columns:
+      - surface_name
+      - repo_target
+    indexes:
+      - surface_name
+      - repo_target
+  lookup_by_repo_path:
+    columns:
+      - repo_path
+      - source_kind
+      - source_key
+      - target_path
+      - line_hint
+      - section
+      - priority_rank
+    indexes:
+      - repo_path
+      - source_kind
+  lookup_by_topic:
+    columns:
+      - topic
+      - source_kind
+      - target_path
+      - line_hint
+      - section
+    indexes:
+      - topic
+  lookup_by_truth_topic:
+    columns:
+      - truth_topic
+      - source_kind
+      - target_path
+      - line_hint
+      - section
+    indexes:
+      - truth_topic
+  lookup_by_notebook_surface:
+    columns:
+      - surface_name
+      - source_kind
+      - target_path
+      - line_hint
+      - section
+    indexes:
+      - surface_name
+  lookup_by_artifact_path:
+    columns:
+      - artifact_path
+      - artifact_kind
+      - role
+      - priority
+    indexes:
+      - artifact_path
+  note_section_index:
+    columns:
+      - note_path
+      - line_no
+      - indent
+      - key_name
+    indexes:
+      - note_path
+      - key_name
+  search_documents:
+    columns:
+      - doc_id
+      - source_kind
+      - primary_key
+      - secondary_key
+      - path
+      - section
+      - body_text
+    indexes:
+      - source_kind
+      - primary_key
+      - path
+  search_documents_fts:
+    virtual_table: fts5
+    columns:
+      - body_text
+      - path
+      - section
+      - source_kind
+      - primary_key
+      - secondary_key
+
+query_contract:
+  default_behavior:
+    - minimal_rows_only
+    - no_full_yaml_loads
+    - exact_filter_then_expand
+  supported_filters:
+    - artifact_path
+    - repo_path
+    - repo_function
+    - topic
+    - truth_topic
+    - notebook_surface
+    - artifact_kind
+    - role
+    - priority
+    - text
+  result_modes:
+    - json
+    - table
+  default_sort:
+    - priority_rank_asc
+    - line_hint_asc
+    - path_asc
+
+validation_plan:
+  pre_build_validation:
+    commands:
+      - python - <<'PY' ... YAML parse all primary_compile_inputs ... PY
+  post_build_validation:
+    commands:
+      - python scripts/build_vbtpro_machine_library.py --validate-only
+      - python scripts/query_vbtpro_machine_library.py --db-path reports/strategy_factory/vbtpro_machine_library_20260409.sqlite --topic splitters_cv_and_no_leak --format json
+      - python scripts/query_vbtpro_machine_library.py --db-path reports/strategy_factory/vbtpro_machine_library_20260409.sqlite --repo-path /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py --format json
+      - python scripts/query_vbtpro_machine_library.py --db-path reports/strategy_factory/vbtpro_machine_library_20260409.sqlite --truth-topic split_membership_truth --format json
+      - python scripts/query_vbtpro_machine_library.py --db-path reports/strategy_factory/vbtpro_machine_library_20260409.sqlite --text duckdb --format json
+  success_gates:
+    - sqlite_db_created
+    - all_core_tables_nonempty
+    - sample_queries_return_rows
+    - build_manifest_written
+    - master_index_registered
+
+master_index_registration:
+  add_refs:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_compiled_lookup_layer_plan_20260409.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+  optional_runtime_ref:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_20260409.sqlite
+
+stop_conditions:
+  - missing_primary_compile_input
+  - YAML_parse_failure_in_primary_inputs
+  - sqlite_schema_build_failure
+  - query_smoke_tests_return_zero_rows_for_expected_known_routes
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml

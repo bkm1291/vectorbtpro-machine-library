@@ -1,0 +1,132 @@
+artifact_id: vbtpro_future_build_structure_20260408
+artifact_version: 1
+artifact_type: future_build_note
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Machine-first structure note for a future optimized build or rebuilt VBT-native shadow
+  pipeline. This note links current repo-mapped capability knowledge with unmapped-but-valuable
+  VBT PRO knowledge so the encyclopedia can eventually support a best-possible pipeline design.
+
+role_in_library:
+  statement: >
+    This note is the bridge between:
+    1. current repo-fit implementation knowledge
+    2. unmapped capability preservation
+    3. future greenfield or shadow-pipeline architecture planning
+
+input_surfaces:
+  current_repo_fit_inputs:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+  preserved_unmapped_inputs:
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unmapped_capability_reservoir_20260408.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+  authority_inputs:
+    - /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+    - /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+
+future_build_objectives:
+  - objective_id: FB1_best_possible_pipeline
+    statement: >
+      Design the best achievable pipeline using VBT PRO where it is strongest, without losing
+      the truth, anti-leak, and validation lessons already recorded in the encyclopedia.
+  - objective_id: FB2_shadow_pipeline_readiness
+    statement: >
+      Keep a clean route toward a VBT-native shadow pipeline even if the live repo remains
+      adapter-first for a long time.
+  - objective_id: FB3_anti_loss_of_unmapped_gold
+    statement: >
+      Ensure non-local or not-yet-placed VBT PRO capabilities remain available as future
+      building blocks instead of being discarded because they do not fit the current repo yet.
+
+future_build_buckets:
+  current_build_reusable_now:
+    meaning: capabilities that already map cleanly to current repo implementation
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+  future_build_reusable_later:
+    meaning: capabilities preserved in the unmapped reservoir that may belong in a future build
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unmapped_capability_reservoir_20260408.yaml
+  blocked_by_current_authority_but_useful:
+    meaning: capabilities useful in principle but blocked by current repo contract or topology
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+  greenfield_only_candidates:
+    meaning: capabilities best saved for a rebuilt or VBT-native shadow pipeline
+    source_refs:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unmapped_capability_reservoir_20260408.yaml
+
+future_pipeline_shape_candidates:
+  adapter_first_evolution:
+    statement: >
+      Continue improving the live repo using adapter-first, overlay-first, and parity-first
+      adoption while the encyclopedia matures.
+    inputs:
+      - repo_fit_matrix
+      - truth_honesty_router
+      - notebook_script_test_index
+  hybrid_shadow_pipeline:
+    statement: >
+      Build a second research lane where VBT PRO owns split inspection, pattern features,
+      reporting, portfolio mirrors, and more of the research shell around current GPU and repo authority.
+    inputs:
+      - repo_fit_matrix
+      - unmapped_capability_reservoir
+      - brainstorm ideas
+  deeper_vbt_native_pipeline:
+    statement: >
+      Explore a future pipeline where VBT PRO owns much more of the split/feature/signal/reporting
+      shell and the current pipeline serves as semantic draft and authority reference.
+    inputs:
+      - unmapped capability reservoir
+      - future handbooks
+      - authority contracts for parity boundaries
+
+linkage_rules:
+  from_unmapped_reservoir:
+    - every future_greenfield_candidate should be reachable from this note
+    - every blocked_by_authority or blocked_by_topology capability should have a future-build home here
+  from_repo_fit_matrix:
+    - repo-fit knowledge should still feed future-build planning where it remains strong
+  from_brainstorm_note:
+    - future ideas should be anchored here when they become structure-worthy
+
+planning_rule:
+  statement: >
+    The future-build note should not replace the current implementation library. It should
+    consume current repo-fit knowledge plus unmapped preserved knowledge and turn them into
+    eventual new-build architecture options.
+
+current_seed_links:
+  - source_type: unmapped_capability
+    stable_id: unmapped_greenfield_full_vbt_shadow_pipeline
+    destination_bucket: greenfield_only_candidates
+  - source_type: unmapped_capability
+    stable_id: unmapped_knowledge_asset_pipeline_family
+    destination_bucket: future_build_reusable_later
+  - source_type: unmapped_capability
+    stable_id: unmapped_pfopt_research_surface_expansion
+    destination_bucket: future_build_reusable_later
+
+future_expansion_targets:
+  - optimized_new_build_playbook
+  - shadow_pipeline_architecture_note
+  - greenfield_module_layout
+  - migration_bridge_plan
+
+usage_rule:
+  statement: >
+    When a capability is valuable but not yet cleanly placeable in the current repo, preserve
+    it in the reservoir and route its future-build meaning through this note. This keeps the
+    encyclopedia pointed toward an eventual best-possible pipeline rather than just the current build.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unmapped_capability_reservoir_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unified_end_state_build_plan_20260409.yaml

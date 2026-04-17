@@ -1,0 +1,206 @@
+artifact_id: vbtpro_truth_risk_test_matrix_20260409
+artifact_version: 1
+artifact_type: truth_risk_matrix
+status: active_research
+created_on: 2026-04-09
+owner: codex
+purpose: >
+  Machine-first matrix linking truth risks to exact required tests, preferred VBT audit
+  surfaces, repo validation targets, and blocking severity before any VBT-native promotion.
+
+risk_matrix:
+  - risk_id: TR001_split_membership_drift
+    stage_scope:
+      - S1_split_planning_and_membership_truth
+      - S7_search_optimization_and_model_selection
+      - S8_shadow_parity_and_promotion_gate
+    failure_mode: VBT-derived fold membership differs from current repo membership
+    required_tests:
+      - exact_membership_equality
+      - fold_parentage_parity
+      - holdout_visibility_forbidden_check
+    preferred_vbt_audit_surfaces:
+      - Splitter
+      - SplitterCV
+      - split_truth_router
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/walk_forward.py
+    blocking_severity: blocking
+
+  - risk_id: TR002_chronology_and_overlap_leakage
+    stage_scope:
+      - S1_split_planning_and_membership_truth
+      - S7_search_optimization_and_model_selection
+    failure_mode: train/valid/test windows overlap or violate purge/embargo boundaries
+    required_tests:
+      - no_overlap_across_forbidden_sets
+      - purge_embargo_boundary_assertion
+      - overlap_and_purge_audit_nonempty
+    preferred_vbt_audit_surfaces:
+      - purged_kfold
+      - purged_walkforward
+      - split_truth_router
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/validation_segments.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/splits.py
+    blocking_severity: blocking
+
+  - risk_id: TR003_target_feature_mixing
+    stage_scope:
+      - S2_feature_family_build
+      - S3_label_and_target_build
+      - S7_search_optimization_and_model_selection
+    failure_mode: future-looking targets bleed into features or runtime gates
+    required_tests:
+      - no_future_lookahead_feature_assertion
+      - target_shift_contract_check
+      - split_required_from_forbidden_outputs_check
+    preferred_vbt_audit_surfaces:
+      - TRENDLB
+      - PIVOTLB
+      - family_contract_registry
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/labels.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+    blocking_severity: blocking
+
+  - risk_id: TR004_schema_and_column_drift
+    stage_scope:
+      - S0_data_ingestion_and_canonicalization
+      - S2_feature_family_build
+      - S3_label_and_target_build
+      - S8_shadow_parity_and_promotion_gate
+    failure_mode: columns, prefixes, row identity, or semantic tags drift
+    required_tests:
+      - required_column_contract
+      - feature_family_contract_guard
+      - target_prefix_contract_check
+      - exact_artifact_parity_check
+    preferred_vbt_audit_surfaces:
+      - file_adapters
+      - family_contract_registry
+      - compiled_machine_lookup_layer
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/semantic_lane2_data_prep.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/datasets.py
+    blocking_severity: blocking
+
+  - risk_id: TR005_execution_reconstruction_drift
+    stage_scope:
+      - S5_simulation_and_execution_mirror
+      - S6_evaluation_review_and_bias_audit
+      - S8_shadow_parity_and_promotion_gate
+    failure_mode: orders, trades, logs, or stop reasons drift from expected execution truth
+    required_tests:
+      - order_to_trade_reconstruction_check
+      - stop_reason_truth_check
+      - exposure_value_consistency_check
+    preferred_vbt_audit_surfaces:
+      - Portfolio.from_signals
+      - Portfolio.from_order_func
+      - orders_trades_logs
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbtpro_native_runtime.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/vbt_equities.py
+    blocking_severity: blocking
+
+  - risk_id: TR006_benchmark_relative_dishonesty
+    stage_scope:
+      - S0_data_ingestion_and_canonicalization
+      - S5_simulation_and_execution_mirror
+      - S6_evaluation_review_and_bias_audit
+    failure_mode: benchmark calendar, fill, or metric basis misaligns with strategy results
+    required_tests:
+      - benchmark_calendar_alignment_check
+      - benchmark_close_alignment_check
+      - qs_defaults_consistency_check
+    preferred_vbt_audit_surfaces:
+      - returns_accessors
+      - qs_adapter
+      - benchmark_relative_metrics
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/benchmark_baseline.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/strategy_research_reports.py
+    blocking_severity: blocking
+
+  - risk_id: TR007_metric_definition_drift
+    stage_scope:
+      - S6_evaluation_review_and_bias_audit
+      - S7_search_optimization_and_model_selection
+      - S8_shadow_parity_and_promotion_gate
+    failure_mode: performance metrics differ because defaults or definitions differ
+    required_tests:
+      - probabilistic_sharpe_check
+      - deflated_sharpe_check
+      - downside_tail_risk_check
+      - exact_artifact_parity_check
+    preferred_vbt_audit_surfaces:
+      - returns_accessors
+      - stats_builder
+      - qs_adapter
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/per_family_holdout.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/evaluation.py
+    blocking_severity: high
+
+  - risk_id: TR008_selection_bias_and_overfitting
+    stage_scope:
+      - S6_evaluation_review_and_bias_audit
+      - S7_search_optimization_and_model_selection
+    failure_mode: model or strategy promoted on overfit or multiple-tested results
+    required_tests:
+      - probabilistic_sharpe_check
+      - deflated_sharpe_check
+      - bias_audit_required_check
+    preferred_vbt_audit_surfaces:
+      - returns_accessors
+      - PortfolioOptimizer
+      - SplitterCV
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/models.py
+      - /home/benji/trade_scanner2/trade_scanner/strategy_factory/blackwell_ensemble/trainers.py
+    blocking_severity: high
+
+  - risk_id: TR009_update_and_refresh_integrity
+    stage_scope:
+      - S0_data_ingestion_and_canonicalization
+    failure_mode: incremental updates produce missing rows, duplicates, or stale trailing windows
+    required_tests:
+      - update_idempotence_check
+      - exact_index_equality
+      - required_column_contract
+    preferred_vbt_audit_surfaces:
+      - updater_and_saver
+      - file_adapters
+      - duckdb_adapters
+    repo_targets:
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/history.py
+      - /home/benji/trade_scanner2/trade_scanner/equities_llm_lab/full_store.py
+    blocking_severity: high
+
+  - risk_id: TR010_silent_authority_change
+    stage_scope:
+      - S8_shadow_parity_and_promotion_gate
+    failure_mode: new VBT-native path silently changes command or artifact contracts
+    required_tests:
+      - command_contract_parity_check
+      - exact_artifact_parity_check
+      - truth_risk_matrix_satisfaction_check
+    preferred_vbt_audit_surfaces:
+      - compiled_machine_lookup_layer
+      - split_truth_router
+    repo_targets:
+      - /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+    blocking_severity: blocking
+
+severity_order:
+  - blocking
+  - high
+  - medium
+  - low
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_machine_specs_20260409.yaml

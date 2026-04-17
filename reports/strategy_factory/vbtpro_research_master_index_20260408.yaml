@@ -1,0 +1,493 @@
+artifact_id: vbtpro_research_master_index_20260408
+artifact_version: 1
+artifact_type: master_index
+status: active_research
+created_on: 2026-04-08
+owner: codex
+purpose: >
+  Zero-loss master index over the VBT PRO research set for fast access by artifact,
+  topic, repo target, and implementation phase. This index does not replace any note;
+  it routes into them.
+
+design_rules:
+  - preserve_zero_information_loss_by_indexing_not_compressing
+  - keep_authority_contracts_separate_from_research_notes
+  - route_by_question_type_first_then_by_repo_file
+  - prefer_one_hop_navigation_into_long_notes
+
+quick_start_routes:
+  if_you_want:
+    understand_whole_space_fast:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 1028
+          section: integration_paths
+    see_where_to_touch_repo_first:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+          line_hint: 26
+          section: files
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+    find_best_first_adoptions_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 1168
+          section: fast_access_map
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 1204
+          section: high_value_next_moves
+    compare_minimal_vs_aggressive_integration:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 1028
+          section: integration_paths
+    study_blackwell_fit_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 270
+          section: blackwell_lane_in_repo_architecture_map
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 803
+          section: blackwell_gpu_guidance
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+          line_hint: 26
+          section: blackwell_related_file_entries
+    study_ml_splitters_and_no_leak_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 505
+          section: splitters_and_cv
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 824
+          section: anti_patterns_and_false_friends
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 933
+          section: notebook_demo_and_test_surfaces
+    study_patterns_features_and_labels_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 607
+          section: pattern_features_and_labels
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+          line_hint: 17
+          section: high_potential_ideas
+    study_execution_chunking_params_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 530
+          section: execution_engines_and_settings
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 559
+          section: parameterization_and_search
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 581
+          section: chunking_caching_parallelism
+    study_reporting_and_review_surfaces_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 705
+          section: returns_drawdowns_trades_records_and_reporting
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 732
+          section: stats_plots_and_analysis_builders
+    study_schema_rows_columns_and_accuracy_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 776
+          section: schema_row_column_and_accuracy_controls
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+          line_hint: 26
+          section: schema_sensitive_repo_entries
+    study_truth_bias_leakage_and_drift_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 814
+          section: truth_bias_leakage_and_drift_controls
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 862
+          section: anti_patterns_and_false_friends
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+          line_hint: 1
+          section: anti_patterns_truth_and_honesty
+    study_internal_ai_retrieval_and_indexing_only:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+          line_hint: 852
+          section: knowledge_and_ai_dev_tooling
+    query_lightning_fast:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+    understand_frozen_library_contracts:
+      read_order:
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_normalization_boundary_contract_20260409.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+        - path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_agent_output_protocol_20260409.yaml
+
+artifact_catalog:
+  primary_authority_refs:
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/lane_command_contract_20260330.yaml
+      artifact_kind: authority_contract
+      role: command_contract_and_lane_rules
+      line_hint: 1
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/lane_artifact_map_20260330.yaml
+      artifact_kind: authority_contract
+      role: canonical_lane_artifact_contract
+      line_hint: 1
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/failure_regime_pipeline_architecture_20260401.yaml
+      artifact_kind: authority_contract
+      role: strategy_factory_pipeline_architecture
+      line_hint: 1
+  library_control_refs:
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_encyclopedia_program_20260408.yaml
+      artifact_kind: master_program_note
+      role: top_level_machine_library_operating_plan
+      priority: highest
+      line_hint: 1
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+      artifact_kind: master_index
+      role: one_hop_machine_library_entrypoint
+      priority: highest
+      line_hint: 1
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+      artifact_kind: topic_router
+      role: top_level_problem_and_tool_family_router
+      priority: highest
+      line_hint: 1
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+      artifact_kind: repo_router
+      role: top_level_repo_path_router
+      priority: highest
+      line_hint: 1
+  vbtpro_research_refs:
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      artifact_kind: master_research_note
+      role: comprehensive_capability_map_and_integration_plan
+      priority: highest
+      section_hints:
+        scope: 12
+        installed_surface: 32
+        current_repo_touchpoints: 64
+        repo_architecture_map: 111
+        preserved_contracts: 418
+        vbtpro_capability_encyclopedia: 448
+        splitters_and_cv: 505
+        pattern_features_and_labels: 607
+        portfolio_and_optimizer: 684
+        reporting: 705
+        schema_row_column_and_accuracy_controls: 776
+        truth_bias_leakage_and_drift_controls: 814
+        knowledge_and_ai_dev_tooling: 852
+        anti_patterns: 900
+        greenfield_boundary: 981
+        notebook_demo_and_test_surfaces: 1009
+        integration_paths: 1104
+        recommended_new_modules: 1164
+        implementation_instructions: 1181
+        fast_access_map: 1244
+        high_value_next_moves: 1280
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      artifact_kind: repo_router
+      role: file_by_file_repo_fit_map
+      priority: highest
+      section_hints:
+        labels: 12
+        files: 26
+        summary: 494
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+      artifact_kind: brainstorm_note
+      role: preserved_future_ideas_and_greenfield_tracks
+      priority: medium
+      section_hints:
+        guardrails: 12
+        high_potential_ideas: 17
+        greenfield_tracks: 172
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_module_family_index_20260408.yaml
+      artifact_kind: source_index
+      role: installed_vbtpro_module_family_overview
+      priority: medium
+      section_hints:
+        module_families: 13
+        primary_families_for_repo: 103
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+      artifact_kind: secondary_research_note
+      role: alternate_agent_built_encyclopedia_and_integration_map
+      priority: medium
+      section_hints:
+        encyclopedia: 39
+        repo_architecture_map: 275
+        integration_map: 426
+        detailed_code_instructions: 527
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb
+      artifact_kind: notebook
+      role: capability_dump_and_source_lookup_sandbox
+      priority: medium
+      cells: 15
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_optimization_map_20260408.ipynb
+      artifact_kind: notebook
+      role: repo_fit_notebook_and_optimization_tracking_surface
+      priority: medium
+      cells: 8
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+      artifact_kind: topic_router
+      role: truth_honesty_machine_router
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+      artifact_kind: topic_router
+      role: runnable_surface_machine_router
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_atomic_record_schema_20260408.yaml
+      artifact_kind: schema_note
+      role: future_atomic_record_normalization_target
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+      artifact_kind: schema_note
+      role: dedicated_split_membership_chronology_overlap_and_artifact_parity_schema
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml
+      artifact_kind: schema_note
+      role: dedicated_review_notebook_script_dashboard_and_playbook_schema
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_family_contract_schema_20260408.yaml
+      artifact_kind: schema_note
+      role: dedicated_feature_label_signal_pattern_family_contract_schema
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+      artifact_kind: batch_record_note
+      role: zero_loss_landing_zone_for_mined_capability_batches
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_machine_specs_20260409.yaml
+      artifact_kind: schema_note
+      role: extended_split_truth_router_index_parity_matrix_and_artifact_contract_specs
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_retrieval_specs_20260409.yaml
+      artifact_kind: schema_note
+      role: extended_reporting_and_low_context_retrieval_specs
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_compiled_lookup_layer_plan_20260409.yaml
+      artifact_kind: implementation_plan
+      role: detailed_plan_for_compiled_sqlite_lookup_layer_and_query_cli
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml
+      artifact_kind: build_manifest
+      role: compiled_machine_library_build_output_and_validation_counts
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+      artifact_kind: query_examples
+      role: canonical_sample_queries_and_expected_lookup_shapes
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_20260409.sqlite
+      artifact_kind: compiled_lookup_store
+      role: low_context_machine_retrieval_database
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+      artifact_kind: machine_contract_constitution
+      role: frozen_schema_enum_registry_crosslink_and_validator_contract
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_normalization_boundary_contract_20260409.yaml
+      artifact_kind: normalization_boundary_contract
+      role: frozen_batch_to_canonical_boundary_contract
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+      artifact_kind: retrieval_contract
+      role: frozen_query_and_result_shape_contract
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+      artifact_kind: completion_contract
+      role: frozen_definition_of_library_minimum_and_gold_completion_thresholds
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_agent_output_protocol_20260409.yaml
+      artifact_kind: agent_output_protocol
+      role: frozen_agent_output_and_registry_destination_protocol
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+      artifact_kind: query_alias_registry
+      role: stable_low_context_aliases_for_compiled_machine_lookup
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+      artifact_kind: coverage_dashboard
+      role: generated_coverage_and_normalization_status_surface
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+      artifact_kind: build_registry
+      role: active_new_repo_module_status_and_next_slice_registry
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      artifact_kind: stage_contract_note
+      role: machine_stage_contracts_for_future_vbt_native_or_hybrid_shadow_pipeline
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      artifact_kind: replacement_registry
+      role: repo_module_to_vbt_candidate_registry_with_adoption_modes
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      artifact_kind: truth_risk_matrix
+      role: risk_to_test_binding_for_future_vbt_native_adoption
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_cpu_gpu_role_map_20260409.yaml
+      artifact_kind: role_map_note
+      role: cpu_gpu_ownership_and_blackwell_usage_map
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+      artifact_kind: build_order_note
+      role: truth_first_staged_build_order_for_hybrid_or_vbt_native_shadow_pipeline
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+      artifact_kind: code_level_map
+      role: more_detailed_repo_code_surface_map_with_stage_ids_and_first_safe_targets
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_public_ml_evidence_deltas_20260409.yaml
+      artifact_kind: external_evidence_note
+      role: canonicalized_public_doc_ml_deltas_kept_as_supporting_evidence
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unified_end_state_build_plan_20260409.yaml
+      artifact_kind: unified_build_plan
+      role: permanent_end_state_architecture_with_rollout_phases_embedded
+      priority: highest
+    - artifact_path: /home/benji/vectorbtpro-machine-library/repo_manifest.yaml
+      artifact_kind: repo_manifest
+      role: bootstrap_manifest_for_new_vbt_native_authority_repo
+      priority: highest
+    - artifact_path: /home/benji/vectorbtpro-machine-library/contracts/first_slice_module_contracts.yaml
+      artifact_kind: module_contract_bundle
+      role: validated_first_slice_module_contract_bundle_for_vbtpro_lab
+      priority: highest
+    - artifact_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/first_build_slice_20260409.yaml
+      artifact_kind: build_slice_plan
+      role: validated_first_real_build_slice_for_vbtpro_lab
+      priority: highest
+    - artifact_path: /home/benji/vectorbtpro-machine-library/contracts/data_authority_module_contract_20260409.yaml
+      artifact_kind: module_contract
+      role: validated_data_authority_module_contract_for_vbtpro_lab
+      priority: highest
+    - artifact_path: /home/benji/vectorbtpro-machine-library/artifacts/specs/data_authority_build_slice_20260409.yaml
+      artifact_kind: build_slice_plan
+      role: validated_data_authority_build_slice_for_vbtpro_lab
+      priority: highest
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unmapped_capability_reservoir_20260408.yaml
+      artifact_kind: reservoir_note
+      role: preserved_unmapped_vbt_capability_buffer
+      priority: medium
+    - artifact_path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+      artifact_kind: future_build_note
+      role: bridge_from_current_library_to_future_optimized_pipeline_design
+      priority: medium
+
+organization_layers:
+  layer_0a_frozen_constitution:
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_contract_constitution_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_normalization_boundary_contract_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_retrieval_contract_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_completion_contract_20260409_v2.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_agent_output_protocol_20260409.yaml
+    purpose: immutable machine contract layer for all future library growth
+  layer_0_compiled_lookup:
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_20260409.sqlite
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_query_examples_20260409.yaml
+    purpose: compiled low-context retrieval layer for exact path, topic, truth, notebook, and text lookup
+  layer_0b_compiled_controls:
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_query_alias_registry_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_library_coverage_dashboard_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_lab_build_registry_20260409.yaml
+    purpose: alias routing, coverage monitoring, and new-repo build control for machine use
+  layer_1_master_index:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_research_master_index_20260408.yaml
+    purpose: one-hop routing into the full research set
+  layer_2_topic_router:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+    purpose: route by problem or tool family
+  layer_3_repo_path_router:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+    purpose: route by repo file or subsystem
+  layer_3b_truth_router:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_honesty_router_20260408.yaml
+    purpose: route by leakage, drift, honesty, schema, and evaluation risk
+  layer_3c_runnable_surface_router:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_notebook_script_test_index_20260408.yaml
+    purpose: route by notebook, script, and test surface
+  layer_3d_split_truth_schema:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_split_truth_record_schema_20260408.yaml
+    purpose: machine schema for split membership, chronology, leakage, and artifact parity claims
+  layer_3e_reporting_surface_schema:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_reporting_surface_router_schema_20260408.yaml
+    purpose: machine schema for review, notebook, script, dashboard, and playbook surfaces
+  layer_3f_family_contract_schema:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_family_contract_schema_20260408.yaml
+    purpose: machine schema for feature, label, signal, pattern, provenance, and guard contracts
+  layer_4a_batch_records:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_batch_records_20260408.yaml
+    purpose: zero-loss intake zone for mined capability batches before full condensation
+  layer_4b_future_build_contracts:
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_native_pipeline_stage_contracts_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_replacement_registry_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_truth_risk_test_matrix_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_cpu_gpu_role_map_20260409.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_shadow_pipeline_build_order_20260409.yaml
+    purpose: machine-first contracts that make future VBT-native and hybrid-shadow pipeline building low-friction
+  layer_4c_code_level_repo_map:
+    path: /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_code_level_map_20260409.yaml
+    purpose: stage-bound code-surface map tying repo modules, tests, and scripts to first-safe VBT adoption targets
+  layer_4d_new_repo_blueprint:
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unified_end_state_build_plan_20260409.yaml
+      - /home/benji/vectorbtpro-machine-library/repo_manifest.yaml
+      - /home/benji/vectorbtpro-machine-library/contracts/authority_contract.yaml
+      - /home/benji/vectorbtpro-machine-library/contracts/stage_registry.yaml
+      - /home/benji/vectorbtpro-machine-library/contracts/artifact_registry.yaml
+      - /home/benji/vectorbtpro-machine-library/contracts/promotion_gates.yaml
+      - /home/benji/vectorbtpro-machine-library/contracts/module_registry.yaml
+      - /home/benji/vectorbtpro-machine-library/contracts/first_slice_module_contracts.yaml
+      - /home/benji/vectorbtpro-machine-library/contracts/data_authority_module_contract_20260409.yaml
+      - /home/benji/vectorbtpro-machine-library/artifacts/specs/first_build_slice_20260409.yaml
+      - /home/benji/vectorbtpro-machine-library/artifacts/specs/data_authority_build_slice_20260409.yaml
+    purpose: new VBT-native authority repo blueprint and bootstrap scaffold
+  layer_4_long_form_notes:
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_blackwell_encyclopedia_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_file_matrix_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_brainstorm_ideas_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_encyclopedia_and_integration_map_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_atomic_record_schema_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_unmapped_capability_reservoir_20260408.yaml
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_future_build_structure_20260408.yaml
+  layer_5_notebooks:
+    paths:
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_capability_dump_20260408.ipynb
+      - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_optimization_map_20260408.ipynb
+
+recommended_usage_pattern:
+  for_reading:
+    - use_compiled_lookup_first_for_exact_path_topic_truth_and_text_queries
+    - start_with_master_index
+    - jump_to_topic_router_or_repo_path_router
+    - only_then_open_long_form_notes
+  for_implementation:
+    - start_with_repo_file_matrix
+    - confirm_constraints_in_authority_contracts
+    - use_encyclopedia_for_tool_selection
+    - use_brainstorm_note_only_after_restore_safe_choices_are_clear
+  for_notebook_work:
+    - use_capability_dump_for_source_lookup
+    - use_repo_optimization_map_for_repo_fit_tracking
+
+preservation_guarantee:
+  statement: >
+    No information has been removed or rewritten by this index layer. The index is additive
+    and routes into the full original artifacts.
+
+source_refs:
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_encyclopedia_program_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_topic_router_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_repo_path_router_20260408.yaml
+  - /home/benji/trade_scanner2/reports/strategy_factory/vbtpro_machine_library_build_manifest_20260409.yaml
