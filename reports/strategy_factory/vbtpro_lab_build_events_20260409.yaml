@@ -3900,7 +3900,7 @@ events:
     a fresh live rebuild and artifact-contract validation under the 32-worker config.
   details:
     runtime_id: vbtpro_python
-    proof_target_artifact: /home/benji/vbtpro-machine-library/vbtpro_three_layer_regime_engine_20260410.yaml
+    proof_target_artifact: /home/benji/vectorbtpro-machine-library/vbtpro_three_layer_regime_engine_20260410.yaml
     commands_planned:
     - rebuild_three_layer_regime_outputs_under_worker_count_32
     - validate_outputs_against_machine_library_contract
@@ -3982,7 +3982,7 @@ events:
     parquet outputs and sequential machine-library validate-only.
   details:
     runtime_id: vbtpro_python
-    proof_target_artifact: /home/benji/vbtpro-machine-library/vbtpro_three_layer_regime_engine_20260410.yaml
+    proof_target_artifact: /home/benji/vectorbtpro-machine-library/vbtpro_three_layer_regime_engine_20260410.yaml
     validated_facts:
       worker_count: 32
       coarse_market_state_rows: 5280
